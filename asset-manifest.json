@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/competencias-frontend/static/css/main.073c9b0a.css",
+    "main.js": "/competencias-frontend/static/js/main.ed9f609a.js",
+    "static/js/787.f6245e21.chunk.js": "/competencias-frontend/static/js/787.f6245e21.chunk.js",
+    "static/media/logo.svg": "/competencias-frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/competencias-frontend/index.html",
+    "main.073c9b0a.css.map": "/competencias-frontend/static/css/main.073c9b0a.css.map",
+    "main.ed9f609a.js.map": "/competencias-frontend/static/js/main.ed9f609a.js.map",
+    "787.f6245e21.chunk.js.map": "/competencias-frontend/static/js/787.f6245e21.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.ed9f609a.js"
+  ]
+}
