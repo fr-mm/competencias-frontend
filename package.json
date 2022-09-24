@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mock-api": "json-server -p 4000 --watch __testes__/mockAPI/fakeDB.json"
+    "mock-api": "json-server -p 4000 --watch testes/mockAPI/fakeDB.json"
   },
   "eslintConfig": {
     "extends": [
