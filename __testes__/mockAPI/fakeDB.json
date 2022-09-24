@@ -1,0 +1,24 @@
+{
+    "docentes": [
+        {
+            "id": 0,
+            "nome": "Fulano de Tal",
+            "competencias": {
+                "Lógica de Prpogramação": 1,
+                "Bancoo de Dados": 2,
+                "Desenvolvimento Mobile": 3,
+                "TCC": 4
+            }
+        },
+        {
+            "id": 1,
+            "nome": "Cicrano de Coisa",
+            "competencias": {
+                "Lógica de Prpogramação": 4,
+                "Bancoo de Dados": 3,
+                "Desenvolvimento Mobile": 2,
+                "TCC": 1
+            }
+        }
+    ]
+}
