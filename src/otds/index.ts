@@ -1,5 +1,9 @@
-import OTDLinhaDeTabela from "./otdLinhaDeTabela";
-import OTDDocente from "./otdDocente";
-import OTDDisciplina from "./otdDisciplina";
+import LinhaDeTabela from "./linhaDeTabela";
+import Docente from "./docente";
+import Disciplina from "./disciplina";
 
-export { OTDLinhaDeTabela, OTDDocente, OTDDisciplina };
+export {
+  LinhaDeTabela as OTDLinhaDeTabela,
+  Docente as OTDDocente,
+  Disciplina as OTDDisciplina,
+};

@@ -3,7 +3,7 @@ interface ArgsOTDDisciplinaNaTabela {
   nome: string;
 }
 
-export default class OTDDisciplinaNaTabela {
+export default class DisciplinaNaTabela {
   id: string;
   nome: string;
 
