@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
-import BackendAPI from "../../backend-api";
-import { OTDDocente } from "../../otds";
+import { BackendAPI } from "../../api";
+import { Docente, LinhaDeTabela } from "../../otds";
+import { ServicoConstruirPropsDeTabela } from "../../servicos";
 import "./tabela.css";
 
 export interface IData {}
 
 function Tabela() {
-  const [docentes, setDocentes] = useState<OTDDocente[]>([]);
+  const [linhas, setLinhas] = useState<LinhaDeTabela[]>([]);
+  const [docentes, setDocentes] = useState<Docente[]>([]);
 
   const fetchData = async () => {
     const api = new BackendAPI("http://localhost:4000");
-    const payload = await api.getConteudoDaTabela();
-    setDocentes(payload);
+    const docentes = await api.getDocentes();
+    const servicoConstruirPropsDeTabela = new ServicoConstruirPropsDeTabela();
+    const linhas = servicoConstruirPropsDeTabela.executar(docentes);
+    setLinhas(linhas);
+    setDocentes(docentes);
   };
 
   useEffect(() => {
@@ -21,10 +26,21 @@ function Tabela() {
   return (
     <div className="container">
       <table>
-        <tbody>
-          {docentes.map((docente) => (
-            <tr key={docente.id}>
+        <thead>
+          <tr>
+            <td></td>
+            {docentes.map((docente) => (
               <td>{docente.nome}</td>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {linhas.map((linha) => (
+            <tr key={linha.disciplina.id}>
+              <td>{linha.disciplina.nome}</td>
+              {linha.niveisDeDocentes.map((nivel) => (
+                <td>{nivel}</td>
+              ))}
             </tr>
           ))}
         </tbody>

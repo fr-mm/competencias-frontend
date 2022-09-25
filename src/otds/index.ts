@@ -1,9 +1,6 @@
 import LinhaDeTabela from "./linhaDeTabela";
 import Docente from "./docente";
 import Disciplina from "./disciplina";
+import Competencia from "./competencia";
 
-export {
-  LinhaDeTabela as OTDLinhaDeTabela,
-  Docente as OTDDocente,
-  Disciplina as OTDDisciplina,
-};
+export { LinhaDeTabela, Docente, Disciplina, Competencia };

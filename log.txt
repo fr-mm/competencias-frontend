@@ -1,0 +1,292 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.013  000.013: --- NVIM STARTING ---
+000.312  000.299: locale set
+000.542  000.230: inits 1
+000.554  000.012: window checked
+000.556  000.003: parsing arguments
+000.685  000.129: expanding arguments
+000.738  000.052: inits 2
+001.183  000.445: init highlight
+001.317  000.134: waiting for UI
+086.915  085.598: done waiting for UI
+086.944  000.029: initialized screen early for UI
+101.963  000.055  000.055: sourcing /home/chico/code/dot-files/files/vim/defaults.vim
+102.346  000.247  000.247: sourcing /home/chico/code/dot-files/files/vim/plugins/coc.vim
+102.414  000.029  000.029: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-airline.vim
+102.488  000.050  000.050: sourcing /home/chico/code/dot-files/files/vim/plugins/NERDTree.vim
+102.534  000.015  000.015: sourcing /home/chico/code/dot-files/files/vim/plugins/auto-pairs.vim
+102.573  000.017  000.017: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-prettier.vim
+102.614  000.018  000.018: sourcing /home/chico/code/dot-files/files/vim/plugins/gruvbox.vim
+102.649  000.014  000.014: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-go.vim
+102.682  000.013  000.013: sourcing /home/chico/code/dot-files/files/vim/plugins/coc-pyright.vim
+102.716  000.013  000.013: sourcing /home/chico/code/dot-files/files/vim/plugins/emmet-vim.vim
+102.768  000.031  000.031: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-js.vim
+102.826  000.023  000.023: sourcing /home/chico/code/dot-files/files/vim/plugins/yats.vim
+102.871  000.016  000.016: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-styled-components.vim
+102.909  000.014  000.014: sourcing /home/chico/code/dot-files/files/vim/plugins/typescript-vim.vim
+102.943  000.013  000.013: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-jsx-pretty.vim
+102.978  000.013  000.013: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-react-snippets.vim
+103.012  000.013  000.013: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-jsx-typescript.vim
+104.044  001.002  001.002: sourcing /home/chico/.config/nvim/autoload/plug.vim
+123.235  000.024  000.024: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/css.vim
+123.303  000.020  000.020: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/graphql.vim
+123.356  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/html.vim
+123.413  000.018  000.018: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/javascript.vim
+123.468  000.019  000.019: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/json.vim
+123.523  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/less.vim
+123.575  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/lua.vim
+123.650  000.033  000.033: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/markdown.vim
+123.703  000.015  000.015: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/php.vim
+123.758  000.015  000.015: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/ruby.vim
+123.814  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/scss.vim
+123.871  000.019  000.019: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/svelte.vim
+123.934  000.025  000.025: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/typescript.vim
+124.004  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/vue.vim
+124.059  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/xml.vim
+124.119  000.022  000.022: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/yaml.vim
+144.138  000.076  000.076: sourcing /home/chico/.local/share/nvim/plugged/vim-go/ftdetect/gofiletype.vim
+307.783  000.041  000.041: sourcing /home/chico/.local/share/nvim/plugged/vim-js/ftdetect/javascript.vim
+308.058  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/yats.vim/ftdetect/typescript.vim
+308.087  000.013  000.013: sourcing /home/chico/.local/share/nvim/plugged/yats.vim/ftdetect/typescriptreact.vim
+325.642  000.031  000.031: sourcing /home/chico/.local/share/nvim/plugged/typescript-vim/ftdetect/typescript.vim
+334.715  000.039  000.039: sourcing /home/chico/.local/share/nvim/plugged/vim-jsx-typescript/ftdetect/typescript.vim
+344.676  064.813  064.672: sourcing /usr/share/nvim/runtime/filetype.vim
+344.846  000.030  000.030: sourcing /usr/share/nvim/runtime/ftplugin.vim
+345.016  000.027  000.027: sourcing /usr/share/nvim/runtime/indent.vim
+363.776  018.426  018.426: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+363.947  018.698  000.271: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+363.982  018.875  000.177: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+364.660  000.138  000.138: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+365.321  000.200  000.200: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+376.371  012.284  011.946: sourcing /home/chico/.local/share/nvim/plugged/gruvbox/colors/gruvbox.vim
+376.388  274.380  176.427: sourcing /home/chico/code/dot-files/files/vim/plugins.vim
+376.399  274.648  000.213: sourcing /home/chico/.config/nvim/init.vim
+376.402  014.811: sourcing vimrc file(s)
+411.513  000.111  000.111: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/autoload/coc/rpc.vim
+412.275  000.685  000.685: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/autoload/coc/util.vim
+412.729  000.227  000.227: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/autoload/coc/client.vim
+425.414  014.201  013.178: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/plugin/coc.vim
+432.054  000.060  000.060: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/init.vim
+432.311  000.053  000.053: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/parts.vim
+432.444  000.013  000.013: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/formatter/short_path.vim
+433.515  000.158  000.158: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/util.vim
+433.615  001.975  001.691: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/plugin/airline.vim
+433.944  000.043  000.043: sourcing /home/chico/.local/share/nvim/plugged/vim-airline-themes/plugin/airline-themes.vim
+457.909  000.173  000.173: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/autoload/nerdtree.vim
+458.564  000.358  000.358: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/path.vim
+458.727  000.072  000.072: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/menu_controller.vim
+458.815  000.041  000.041: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/menu_item.vim
+458.907  000.051  000.051: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/key_map.vim
+459.081  000.137  000.137: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/bookmark.vim
+459.317  000.164  000.164: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/tree_file_node.vim
+459.718  000.332  000.332: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/tree_dir_node.vim
+459.908  000.122  000.122: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/opener.vim
+460.184  000.209  000.209: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/creator.vim
+460.331  000.063  000.063: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/flag_set.vim
+460.540  000.135  000.135: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/nerdtree.vim
+460.884  000.269  000.269: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/ui.vim
+461.011  000.032  000.032: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/event.vim
+461.150  000.052  000.052: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/notifier.vim
+488.949  027.672  027.672: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/autoload/nerdtree/ui_glue.vim
+558.702  000.137  000.137: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/nerdtree_plugin/exec_menuitem.vim
+586.966  000.422  000.422: sourcing /usr/share/nvim/runtime/autoload/provider/clipboard.vim
+587.537  028.811  028.389: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/nerdtree_plugin/fs_menu.vim
+587.635  000.063  000.063: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/nerdtree_plugin/vcs.vim
+587.885  130.377  071.484: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/plugin/NERD_tree.vim
+588.995  000.511  000.511: sourcing /home/chico/.local/share/nvim/plugged/auto-pairs/plugin/auto-pairs.vim
+590.073  000.391  000.391: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+590.139  000.022  000.022: sourcing /usr/share/nvim/runtime/plugin/health.vim
+590.384  000.219  000.219: sourcing /usr/share/nvim/runtime/plugin/man.vim
+591.826  000.381  000.381: sourcing /usr/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+591.896  001.482  001.101: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+592.121  000.202  000.202: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+593.523  001.373  001.373: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+617.155  023.591  023.591: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+617.462  000.256  000.256: sourcing /usr/share/nvim/runtime/plugin/shada.vim
+617.527  000.031  000.031: sourcing /usr/share/nvim/runtime/plugin/spellfile.vim
+617.795  000.243  000.243: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+617.889  000.067  000.067: sourcing /usr/share/nvim/runtime/plugin/tohtml.vim
+617.929  000.017  000.017: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+618.100  000.149  000.149: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+618.108  066.555: loading plugins
+618.190  000.082: loading packages
+618.265  000.075: loading after plugins
+618.282  000.017: inits 3
+620.404  002.122: reading ShaDa
+620.984  000.357  000.357: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions.vim
+621.174  000.113  000.113: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/quickfix.vim
+621.735  000.470  000.470: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline.vim
+622.004  000.099  000.099: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/netrw.vim
+622.326  000.111  000.111: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/section.vim
+622.951  000.470  000.470: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/highlighter.vim
+623.256  001.125  000.543: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/term.vim
+623.619  000.224  000.224: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/hunks.vim
+625.344  000.048  000.048: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/coc.vim
+625.570  000.075  000.075: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/whitespace.vim
+626.060  000.108  000.108: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/wordcount.vim
+626.312  000.029  000.029: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/keymap.vim
+732.794  000.156  000.156: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/themes.vim
+735.549  003.019  002.863: sourcing /home/chico/.local/share/nvim/plugged/gruvbox/autoload/airline/themes/gruvbox.vim
+738.797  026.328  023.309: sourcing /home/chico/.local/share/nvim/plugged/gruvbox/autoload/airline/themes/gruvbox.vim
+784.969  000.167  000.167: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/builder.vim
+785.438  000.104  000.104: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/default.vim
+842.687  193.038: opening buffers
+843.630  000.943: BufEnter autocommands
+843.636  000.006: editing files in windows
+844.115  000.479: VimEnter autocommands
+844.120  000.005: UIEnter autocommands
+844.122  000.002: before starting main loop
+845.156  000.983  000.983: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/autoload/coc/float.vim
+847.658  002.554: first screen update
+847.663  000.004: --- NVIM STARTED ---
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.010  000.010: --- NVIM STARTING ---
+000.335  000.325: locale set
+000.605  000.270: inits 1
+000.621  000.016: window checked
+000.624  000.003: parsing arguments
+000.742  000.118: expanding arguments
+000.780  000.038: inits 2
+001.320  000.541: init highlight
+001.445  000.124: waiting for UI
+002.228  000.784: done waiting for UI
+002.251  000.023: initialized screen early for UI
+002.503  000.050  000.050: sourcing /home/chico/code/dot-files/files/vim/defaults.vim
+003.011  000.380  000.380: sourcing /home/chico/code/dot-files/files/vim/plugins/coc.vim
+003.075  000.027  000.027: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-airline.vim
+003.163  000.061  000.061: sourcing /home/chico/code/dot-files/files/vim/plugins/NERDTree.vim
+003.209  000.015  000.015: sourcing /home/chico/code/dot-files/files/vim/plugins/auto-pairs.vim
+003.249  000.018  000.018: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-prettier.vim
+003.289  000.018  000.018: sourcing /home/chico/code/dot-files/files/vim/plugins/gruvbox.vim
+003.325  000.014  000.014: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-go.vim
+003.370  000.021  000.021: sourcing /home/chico/code/dot-files/files/vim/plugins/coc-pyright.vim
+003.424  000.020  000.020: sourcing /home/chico/code/dot-files/files/vim/plugins/emmet-vim.vim
+003.476  000.022  000.022: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-js.vim
+003.532  000.023  000.023: sourcing /home/chico/code/dot-files/files/vim/plugins/yats.vim
+003.597  000.025  000.025: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-styled-components.vim
+003.656  000.023  000.023: sourcing /home/chico/code/dot-files/files/vim/plugins/typescript-vim.vim
+003.712  000.022  000.022: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-jsx-pretty.vim
+003.762  000.016  000.016: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-react-snippets.vim
+003.797  000.014  000.014: sourcing /home/chico/code/dot-files/files/vim/plugins/vim-jsx-typescript.vim
+005.015  001.189  001.189: sourcing /home/chico/.config/nvim/autoload/plug.vim
+008.774  000.024  000.024: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/css.vim
+008.840  000.021  000.021: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/graphql.vim
+008.897  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/html.vim
+008.953  000.019  000.019: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/javascript.vim
+009.013  000.021  000.021: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/json.vim
+009.069  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/less.vim
+009.119  000.015  000.015: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/lua.vim
+009.193  000.035  000.035: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/markdown.vim
+009.256  000.022  000.022: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/php.vim
+009.301  000.013  000.013: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/ruby.vim
+009.338  000.013  000.013: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/scss.vim
+009.371  000.012  000.012: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/svelte.vim
+009.421  000.028  000.028: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/typescript.vim
+009.454  000.010  000.010: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/vue.vim
+009.498  000.020  000.020: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/xml.vim
+009.655  000.017  000.017: sourcing /home/chico/.local/share/nvim/plugged/vim-prettier/ftdetect/yaml.vim
+010.147  000.100  000.100: sourcing /home/chico/.local/share/nvim/plugged/vim-go/ftdetect/gofiletype.vim
+017.484  000.023  000.023: sourcing /home/chico/.local/share/nvim/plugged/vim-js/ftdetect/javascript.vim
+017.713  000.016  000.016: sourcing /home/chico/.local/share/nvim/plugged/yats.vim/ftdetect/typescript.vim
+017.741  000.013  000.013: sourcing /home/chico/.local/share/nvim/plugged/yats.vim/ftdetect/typescriptreact.vim
+017.800  000.014  000.014: sourcing /home/chico/.local/share/nvim/plugged/typescript-vim/ftdetect/typescript.vim
+017.857  000.014  000.014: sourcing /home/chico/.local/share/nvim/plugged/vim-jsx-typescript/ftdetect/typescript.vim
+017.978  006.266  006.185: sourcing /usr/share/nvim/runtime/filetype.vim
+018.098  000.025  000.025: sourcing /usr/share/nvim/runtime/ftplugin.vim
+018.210  000.023  000.023: sourcing /usr/share/nvim/runtime/indent.vim
+018.844  000.277  000.277: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+018.961  000.537  000.261: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+018.993  000.708  000.171: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+019.710  000.191  000.191: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+020.198  000.133  000.133: sourcing /usr/share/nvim/runtime/syntax/syncolor.vim
+027.562  008.500  008.175: sourcing /home/chico/.local/share/nvim/plugged/gruvbox/colors/gruvbox.vim
+027.586  025.047  007.213: sourcing /home/chico/code/dot-files/files/vim/plugins.vim
+027.604  025.280  000.183: sourcing /home/chico/.config/nvim/init.vim
+027.608  000.077: sourcing vimrc file(s)
+028.022  000.058  000.058: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/autoload/coc/rpc.vim
+028.557  000.492  000.492: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/autoload/coc/util.vim
+028.886  000.170  000.170: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/autoload/coc/client.vim
+039.342  011.478  010.758: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/plugin/coc.vim
+039.736  000.059  000.059: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/init.vim
+039.985  000.051  000.051: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/parts.vim
+040.145  000.014  000.014: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/formatter/short_path.vim
+041.018  000.103  000.103: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/util.vim
+041.087  001.614  001.386: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/plugin/airline.vim
+041.192  000.032  000.032: sourcing /home/chico/.local/share/nvim/plugged/vim-airline-themes/plugin/airline-themes.vim
+041.474  000.114  000.114: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/autoload/nerdtree.vim
+041.867  000.228  000.228: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/path.vim
+041.981  000.063  000.063: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/menu_controller.vim
+042.062  000.040  000.040: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/menu_item.vim
+042.151  000.049  000.049: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/key_map.vim
+042.296  000.110  000.110: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/bookmark.vim
+042.450  000.103  000.103: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/tree_file_node.vim
+042.758  000.269  000.269: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/tree_dir_node.vim
+042.904  000.091  000.091: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/opener.vim
+043.065  000.114  000.114: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/creator.vim
+043.137  000.029  000.029: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/flag_set.vim
+043.242  000.070  000.070: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/nerdtree.vim
+043.420  000.141  000.141: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/ui.vim
+043.486  000.019  000.019: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/event.vim
+043.551  000.029  000.029: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/lib/nerdtree/notifier.vim
+043.945  000.324  000.324: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/autoload/nerdtree/ui_glue.vim
+046.838  000.170  000.170: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/nerdtree_plugin/exec_menuitem.vim
+047.467  000.226  000.226: sourcing /usr/share/nvim/runtime/autoload/provider/clipboard.vim
+047.984  001.112  000.886: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/nerdtree_plugin/fs_menu.vim
+048.095  000.080  000.080: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/nerdtree_plugin/vcs.vim
+048.379  007.131  003.976: sourcing /home/chico/.local/share/nvim/plugged/nerdtree/plugin/NERD_tree.vim
+049.097  000.641  000.641: sourcing /home/chico/.local/share/nvim/plugged/auto-pairs/plugin/auto-pairs.vim
+049.719  000.293  000.293: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+049.756  000.012  000.012: sourcing /usr/share/nvim/runtime/plugin/health.vim
+049.944  000.172  000.172: sourcing /usr/share/nvim/runtime/plugin/man.vim
+050.593  000.196  000.196: sourcing /usr/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+050.660  000.682  000.486: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+050.862  000.182  000.182: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+051.701  000.810  000.810: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+051.980  000.231  000.231: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+052.297  000.282  000.282: sourcing /usr/share/nvim/runtime/plugin/shada.vim
+052.380  000.041  000.041: sourcing /usr/share/nvim/runtime/plugin/spellfile.vim
+052.708  000.295  000.295: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+052.806  000.070  000.070: sourcing /usr/share/nvim/runtime/plugin/tohtml.vim
+052.853  000.023  000.023: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+053.157  000.271  000.271: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+053.171  001.303: loading plugins
+053.332  000.161: loading packages
+053.418  000.087: loading after plugins
+053.437  000.019: inits 3
+056.176  002.739: reading ShaDa
+056.832  000.371  000.371: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions.vim
+056.979  000.072  000.072: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/quickfix.vim
+057.444  000.422  000.422: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline.vim
+057.699  000.082  000.082: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/netrw.vim
+058.083  000.139  000.139: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/section.vim
+058.639  000.408  000.408: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/highlighter.vim
+059.049  001.224  000.677: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/term.vim
+059.321  000.097  000.097: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/hunks.vim
+060.577  000.047  000.047: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/coc.vim
+060.826  000.119  000.119: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/whitespace.vim
+061.238  000.064  000.064: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/wordcount.vim
+061.439  000.039  000.039: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/keymap.vim
+069.712  000.047  000.047: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/themes.vim
+072.213  002.637  002.590: sourcing /home/chico/.local/share/nvim/plugged/gruvbox/autoload/airline/themes/gruvbox.vim
+074.084  004.590  001.953: sourcing /home/chico/.local/share/nvim/plugged/gruvbox/autoload/airline/themes/gruvbox.vim
+099.294  000.111  000.111: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/builder.vim
+099.612  000.078  000.078: sourcing /home/chico/.local/share/nvim/plugged/vim-airline/autoload/airline/extensions/default.vim
+170.763  107.270: opening buffers
+172.082  001.319: BufEnter autocommands
+172.089  000.007: editing files in windows
+172.553  000.464: VimEnter autocommands
+172.559  000.006: UIEnter autocommands
+172.561  000.002: before starting main loop
+173.393  000.757  000.757: sourcing /home/chico/.local/share/nvim/plugged/coc.nvim/autoload/coc/float.vim
+184.011  010.693: first screen update
+184.018  000.006: --- NVIM STARTED ---

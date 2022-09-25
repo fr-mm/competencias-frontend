@@ -4,10 +4,6 @@
   "homepage": "https://francisco-mascarenhas.github.io/competencias-frontend",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
     "@types/node": "^16.11.59",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
@@ -24,7 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mock-api": "json-server -p 4000 --watch testes/mockAPI/fakeDB.json"
+    "mock-api": "json-server -p 4000 --watch src/mockAPI/fakeDB.json",
+    "randomize-db": "bun run ./src/mockAPI/randomizarFakeDB.ts"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +42,11 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "fetch-mock": "^9.11.0",
     "gh-pages": "^4.0.0",
     "json-server": "^0.17.0"
   }

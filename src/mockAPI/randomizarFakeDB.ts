@@ -1,20 +1,20 @@
 import * as fs from "fs";
 import * as path from "path";
-
-interface Competencia {
-  nome: string;
-  nivel: number;
-}
+import { Disciplina, Competencia } from "../otds";
 
 class RandomizadorDeFakeDB {
   readonly arquivo = "./fakeDB.json";
   readonly quantidade = 10;
-  readonly competencias = [
-    "LOGICA_DE_PROGRAMACAO",
-    "BANCO_DE_DADOS",
-    "DESENVOLVIMENTO_MOBILE",
-    "TCC",
-  ];
+  readonly disciplinas;
+
+  constructor() {
+    this.disciplinas = [
+      this.criarDisciplina("Logica de Programacao"),
+      this.criarDisciplina("Banco de Dados"),
+      this.criarDisciplina("Desenvolvimento Mobile"),
+      this.criarDisciplina("TCC"),
+    ];
+  }
 
   public randomizar(): void {
     const conteudo = JSON.stringify(this.conteudoDoDB);
@@ -51,11 +51,18 @@ class RandomizadorDeFakeDB {
 
   private get competenciasAleatorias(): Competencia[] {
     const resultado = [];
-    for (let competencia of this.competencias) {
-      const nivel = this.escolher([1, 2, 3, 4]);
-      resultado.push({ id: this.idAleatorio, nome: competencia, nivel: nivel });
+    for (let disciplina of this.disciplinas) {
+      resultado.push(this.criarCompetencia(disciplina));
     }
     return resultado;
+  }
+
+  private criarDisciplina(nome: string): Disciplina {
+    return new Disciplina(this.idAleatorio, nome);
+  }
+
+  private criarCompetencia(disciplina: Disciplina): Competencia {
+    return new Competencia(disciplina, this.escolher([1, 2, 3, 4]));
   }
 
   private get nomeAleatorio(): string {
@@ -63,7 +70,7 @@ class RandomizadorDeFakeDB {
   }
 
   private get idAleatorio(): string {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+    return `${[1e7]}-${1e3}-${4e3}-${8e3}-${1e11}`.replace(/[018]/g, (c: any) =>
       (
         c ^
         (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))

@@ -1,13 +1,13 @@
 import { EnumNivelDeCompetencia } from "../enums";
-import DisciplinaNaTabela from "./disciplinaNaTabela";
+import Disciplina from "./disciplina";
 
 interface ArgsLinhaDeTabela {
-  disciplina: DisciplinaNaTabela;
+  disciplina: Disciplina;
   niveisDeDocentes: EnumNivelDeCompetencia[];
 }
 
 export default class LinhaDeTabela {
-  disciplina: DisciplinaNaTabela;
+  disciplina: Disciplina;
   niveisDeDocentes: EnumNivelDeCompetencia[];
 
   constructor({ disciplina, niveisDeDocentes }: ArgsLinhaDeTabela) {
