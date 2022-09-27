@@ -33,11 +33,13 @@ class RandomizadorDeFakeDB {
     fs.writeFileSync(arquivo, conteudo, "utf8");
   }
 
-  private construirConteudo(): Interface.Payload {
+  private construirConteudo(): object {
     const docentes = this.construirDocentes();
     return {
-      cursos: this.construirCursos(docentes),
-      docentes: docentes,
+      tabela: {
+        cursos: this.construirCursos(docentes),
+        docentes: docentes,
+      },
     };
   }
 

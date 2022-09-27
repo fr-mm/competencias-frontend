@@ -10,8 +10,8 @@ function Tabela() {
   const [docentes, setDocentes] = useState<Docente[]>([]);
 
   const fetchData = async () => {
-    const api = new BackendAPI("http://localhost:4000");
-    const docentes = await api.getDocentes();
+    const api = BackendAPI.construirMockAPI();
+    const docentes = await api.getConteudoDeTabela();
     console.log(docentes);
   };
 

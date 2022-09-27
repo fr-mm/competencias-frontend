@@ -10,7 +10,7 @@ export default class BackendAPI {
     this.fetch = metodoFetch ? metodoFetch : this.fetchDeUrl;
   }
 
-  public async getDocentes(): Promise<Docente[]> {
+  public async getConteudoDeTabela(): Promise<Docente[]> {
     const payload = await this.fetch("docentes");
     return payload.map((docente) => docente as Docente);
   }
@@ -30,7 +30,7 @@ export default class BackendAPI {
   static construirAPITeste(): BackendAPI {
     return new BackendAPI("", this.fetchDeTeste);
   }
-  private static async fetchDeTeste(url: string): Promise<object[]> {
-    return db[url as keyof typeof db];
+  private static async fetchDeTeste(rota: string): Promise<object[]> {
+    return db[rota as keyof object];
   }
 }
