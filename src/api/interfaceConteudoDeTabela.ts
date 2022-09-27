@@ -1,4 +1,4 @@
-export interface Payload {
+export interface ConteudoDeTabela {
   docentes: Docentes;
   cursos: Cursos;
 }

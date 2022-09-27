@@ -22,8 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mock-api": "json-server -p 4000 --watch src/mockAPI/fakeDB.json",
-    "randomize-db": "bun run ./src/mockAPI/randomizarFakeDB.ts"
+    "mock-api": "json-server -p 4000 --watch src/api/mock/fakeDB.json",
+    "randomize-db": "bun run ./src/api/mock/randomizarFakeDB.ts"
   },
   "eslintConfig": {
     "extends": [

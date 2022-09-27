@@ -1,25 +1,27 @@
+import "./tabela.css";
 import React, { useEffect, useState } from "react";
 import { BackendAPI } from "../../api";
-import { Docente, LinhaDeTabela } from "../../otds";
-import "./tabela.css";
-
-export interface IData {}
+import { InterfaceConteudoDeTabela } from "../../api";
+import gerarColunas from "./gerarColunas";
 
 function Tabela() {
-  const [linhas, setLinhas] = useState<LinhaDeTabela[]>([]);
-  const [docentes, setDocentes] = useState<Docente[]>([]);
-
-  const fetchData = async () => {
-    const api = BackendAPI.construirMockAPI();
-    const docentes = await api.getConteudoDeTabela();
-    console.log(docentes);
-  };
+  const [conteudo, setConteudo] =
+    useState<InterfaceConteudoDeTabela.ConteudoDeTabela>(
+      {} as InterfaceConteudoDeTabela.ConteudoDeTabela
+    );
 
   useEffect(() => {
-    fetchData();
+    const api = BackendAPI.construirMockAPI();
+    api.getConteudoDeTabela().then((c) => setConteudo(c));
   }, []);
 
-  return <div>foo</div>;
+  return (
+    <div>
+      {Object.values(conteudo.docentes).map((d) => (
+        <div>{d.nome}</div>
+      ))}
+    </div>
+  );
 }
 
 export default Tabela;
