@@ -1,4 +1,4 @@
-import App from "./app/app";
-import Tabela from "./tabela/tabela";
+import App from "./app/App";
+import Tabela from "./tabela/Tabela";
 
 export { App, Tabela };
