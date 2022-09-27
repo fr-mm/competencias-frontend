@@ -1,23 +1,29 @@
 import * as fs from "fs";
 import * as path from "path";
-import { Disciplina, Competencia } from "../otds";
+import * as Interface from "./interfaces";
 
 class RandomizadorDeFakeDB {
   readonly arquivo = "./fakeDB.json";
-  readonly quantidade = 10;
-  readonly disciplinas;
+  readonly quantidadeDocentes = 10;
+  readonly disciplinas = [];
+  readonly cursos = {
+    "Desenvolvimento de Sistemas": {
+      1: [
+        "Logica de Programacao",
+        "Banco de Dados",
+        "Desenvolvimento Mobile",
+        "TCC",
+      ],
+      2: ["Desenvolvimento de Sistemas I", "Disciplina II", "Disciplina III"],
+    },
+    "Seguranca do Trabalho": {
+      1: ["Disciplina IV", "Disciplina V", "Disciplina VI"],
+      2: ["Disciplina VII", "Disciplina VIII", "Disciplina IX"],
+    },
+  };
 
-  constructor() {
-    this.disciplinas = [
-      this.criarDisciplina("Logica de Programacao"),
-      this.criarDisciplina("Banco de Dados"),
-      this.criarDisciplina("Desenvolvimento Mobile"),
-      this.criarDisciplina("TCC"),
-    ];
-  }
-
-  public randomizar(): void {
-    const conteudo = JSON.stringify(this.conteudoDoDB);
+  public randomizarDB(): void {
+    const conteudo = JSON.stringify(this.construirConteudo());
     this.sobrescreverArquivo(conteudo);
     console.log("DB randomizado");
   }
@@ -27,49 +33,102 @@ class RandomizadorDeFakeDB {
     fs.writeFileSync(arquivo, conteudo, "utf8");
   }
 
-  private get conteudoDoDB(): object {
+  private construirConteudo(): Interface.Payload {
+    const docentes = this.construirDocentes();
     return {
-      docentes: this.docentesAleatorios,
+      cursos: this.construirCursos(docentes),
+      docentes: docentes,
     };
   }
 
-  private get docentesAleatorios(): object[] {
-    const docentes = [];
-    for (let i = 0; i < this.quantidade; i++) {
-      docentes.push(this.docenteAleatorio);
+  private construirDocentes(): Interface.Docentes {
+    const docentes: Interface.Docentes = {};
+    for (let i = 0; i < this.quantidadeDocentes; i++) {
+      const docente = this.construirDocente();
+      docentes[docente.id] = this.construirDocente();
     }
     return docentes;
   }
 
-  private get docenteAleatorio() {
+  private construirDocente(): Interface.Docente {
     return {
-      id: this.idAleatorio,
-      nome: this.nomeAleatorio,
-      competencias: this.competenciasAleatorias,
+      id: this.gerarId(),
+      nome: this.gerarNome(),
     };
   }
 
-  private get competenciasAleatorias(): Competencia[] {
-    const resultado = [];
-    for (let disciplina of this.disciplinas) {
-      resultado.push(this.criarCompetencia(disciplina));
+  private construirCursos(docentes: Interface.Docentes): Interface.Cursos {
+    const cursos: Interface.Cursos = {};
+    for (let nomeCurso of Object.keys(this.cursos)) {
+      const curso = this.construirCurso(nomeCurso, docentes);
+      cursos[curso.id] = curso;
     }
-    return resultado;
+    return cursos;
   }
 
-  private criarDisciplina(nome: string): Disciplina {
-    return new Disciplina(this.idAleatorio, nome);
+  private construirCurso(nome: string, docentes: Interface.Docentes) {
+    return {
+      id: this.gerarId(),
+      nome: nome,
+      modulos: this.construirModulos(nome, docentes),
+    };
   }
 
-  private criarCompetencia(disciplina: Disciplina): Competencia {
-    return new Competencia(disciplina, this.escolher([1, 2, 3, 4]));
+  private construirModulos(
+    nomeCurso: string,
+    docentes: Interface.Docentes
+  ): Interface.Modulos {
+    const curso = this.cursos[nomeCurso as keyof object];
+    const numerosDosModulos = Object.keys(curso);
+    const modulos: Interface.Modulos = {};
+    for (let numero of numerosDosModulos) {
+      const nomesDisciplinas = curso[numero];
+      modulos[numero as keyof object] = this.construirModulo(
+        nomesDisciplinas,
+        docentes
+      );
+    }
+    return modulos;
   }
 
-  private get nomeAleatorio(): string {
+  private construirModulo(
+    nomesDisciplinas: string[],
+    docentes: Interface.Docentes
+  ): Interface.Modulo {
+    const modulo: Interface.Modulo = {};
+    for (let nome of nomesDisciplinas) {
+      const disciplina = this.construirDisciplina(nome, docentes);
+      modulo[disciplina.id] = disciplina;
+    }
+    return modulo;
+  }
+
+  private construirDisciplina(
+    nome: string,
+    docentes: Interface.Docentes
+  ): Interface.Disciplina {
+    return {
+      id: this.gerarId(),
+      nome: nome,
+      competencias: this.construirCompetencias(docentes),
+    };
+  }
+
+  private construirCompetencias(
+    docentes: Interface.Docentes
+  ): Interface.Competencias {
+    const competencias: Interface.Competencias = {};
+    for (let docente of Object.keys(docentes)) {
+      competencias[docente] = this.escolher([1, 2, 3, 4]);
+    }
+    return competencias;
+  }
+
+  private gerarNome(): string {
     return Math.random().toString(36).slice(2, 7);
   }
 
-  private get idAleatorio(): string {
+  private gerarId(): string {
     return `${[1e7]}-${1e3}-${4e3}-${8e3}-${1e11}`.replace(/[018]/g, (c: any) =>
       (
         c ^
@@ -87,4 +146,4 @@ class RandomizadorDeFakeDB {
   }
 }
 
-new RandomizadorDeFakeDB().randomizar();
+new RandomizadorDeFakeDB().randomizarDB();

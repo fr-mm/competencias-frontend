@@ -1,4 +1,5 @@
 import { EnumNivelDeCompetencia } from "../enums";
+
 import Disciplina from "./disciplina";
 
 interface ArgsLinhaDeTabela {
