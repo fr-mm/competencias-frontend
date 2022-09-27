@@ -1,5 +1,5 @@
 import { Docente } from "../otds";
-import db from "../mockAPI/fakeDB.json";
+import db from "./mock/fakeDB.json";
 
 type FetchFunction = (url: string) => Promise<object[]>;
 

@@ -1,4 +1,4 @@
-import db from "../mockAPI/fakeDB.json";
+import db from "./mock/fakeDB.json";
 
 import BackendAPI from "./backend-api";
 
