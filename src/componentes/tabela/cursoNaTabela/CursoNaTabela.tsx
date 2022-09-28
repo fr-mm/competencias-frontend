@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import useCollapse from "react-collapsed";
 import { InterfaceConteudoDeTabela } from "../../../api";
 import ModuloNaTabela from "../moduloNaTabela";
 
@@ -7,14 +9,16 @@ interface CursoNaTabelaProps {
 }
 
 function CursoNaTabela(props: CursoNaTabelaProps) {
+  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+
   const modulos = Object.values(props.curso.modulos);
   return (
     <div className="container">
-      <div className="linha borda ">
+      <div className="linha borda colapsavel" {...getToggleProps()}>
         <div className="primeira-coluna">{props.curso.nome}</div>
         <div className="borda "></div>
       </div>
-      <div>
+      <div {...getCollapseProps()}>
         {modulos.map((modulo) => (
           <ModuloNaTabela
             key={props.curso.id + modulo.numero}

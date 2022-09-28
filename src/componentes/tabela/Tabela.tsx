@@ -23,7 +23,7 @@ function Tabela() {
 
   try {
     return (
-      <div className="tabela">
+      <div className="tabela borda">
         <Cabecalho key="cabecalhoDaTabela" docentes={docentes} />
         <div>
           {Object.values(cursos).map((curso) => (
