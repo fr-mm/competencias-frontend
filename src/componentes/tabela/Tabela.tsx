@@ -9,7 +9,7 @@ function Tabela() {
     {}
   );
   const [cursos, setCursos] = useState<InterfaceConteudoDeTabela.Cursos>({});
-  const [visivel, setVisivel] = useState(true);
+  const [visivel, setVisivel] = useState(false);
   const [docentesFiltrados, setDocentesFiltrados] = useState(
     Object.values(docentes)
   );
