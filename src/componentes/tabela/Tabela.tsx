@@ -10,17 +10,31 @@ function Tabela() {
   );
   const [cursos, setCursos] = useState<InterfaceConteudoDeTabela.Cursos>({});
   const [visivel, setVisivel] = useState(true);
+  const [docentesFiltrados, setDocentesFiltrados] = useState(
+    Object.values(docentes)
+  );
+  const [montado, setMontado] = useState(false);
 
   const getConteudo = async () => {
     const api = BackendAPI.construirMockAPI();
     const conteudo = await api.getConteudoDeTabela();
     setDocentes(conteudo.docentes);
     setCursos(conteudo.cursos);
+    if (!montado) {
+      setDocentesFiltrados(Object.values(conteudo.docentes));
+      setMontado(true);
+    }
+  };
+
+  const filtrarDocentes = (filtro: string): void => {
+    const todos = Object.values(docentes);
+    const filtrados = todos.filter((docente) => docente.nome.includes(filtro));
+    setDocentesFiltrados(filtrados);
   };
 
   useEffect(() => {
     getConteudo();
-  }, []);
+  });
 
   try {
     return (
@@ -32,13 +46,21 @@ function Tabela() {
         >
           {visivel ? "esconder" : "mostrar"}
         </button>
-        <Cabecalho key="cabecalhoDaTabela" docentes={docentes} />
+        <input
+          type="text"
+          onChange={(evento) => filtrarDocentes(evento.target.value)}
+        />
+        <Cabecalho
+          key="cabecalhoDaTabela"
+          docentesFiltrados={docentesFiltrados}
+        />
         <div>
           {Object.values(cursos).map((curso) => (
             <CursoNaTabela
               key={curso.id}
               curso={curso}
               docentes={docentes}
+              docentesFiltrados={docentesFiltrados}
               visivel={visivel}
             />
           ))}

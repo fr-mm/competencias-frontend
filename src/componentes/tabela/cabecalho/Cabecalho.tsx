@@ -2,15 +2,14 @@ import "./Cabecalho.css";
 import { InterfaceConteudoDeTabela } from "../../../api";
 
 interface CabecalhoProps {
-  docentes: InterfaceConteudoDeTabela.Docentes;
+  docentesFiltrados: InterfaceConteudoDeTabela.Docente[];
 }
 
 function Cabecalho(props: CabecalhoProps) {
-  const docentes = Object.values(props.docentes);
   return (
     <div className="linha">
       <div className="borda primeira-coluna"></div>
-      {docentes.map((docente) => (
+      {props.docentesFiltrados.map((docente) => (
         <div className="celula borda" key={docente.id}>
           {docente.nome}
         </div>

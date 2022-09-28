@@ -6,6 +6,7 @@ import DisciplinaNaTabela from "../disciplinaNaTabela";
 interface ModuloNaTabelaProps {
   modulo: InterfaceConteudoDeTabela.Modulo;
   docentes: InterfaceConteudoDeTabela.Docentes;
+  docentesFiltrados: InterfaceConteudoDeTabela.Docente[];
   visivel: boolean;
 }
 
@@ -35,6 +36,7 @@ function ModuloNaTabela(props: ModuloNaTabelaProps) {
             key={disciplina.id}
             disciplna={disciplina}
             docentes={props.docentes}
+            docentesFiltrados={props.docentesFiltrados}
           />
         ))}
       </div>
