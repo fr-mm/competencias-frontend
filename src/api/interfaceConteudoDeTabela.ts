@@ -28,12 +28,15 @@ export interface Modulos {
 
 export interface Modulo {
   numero: string;
+  cursoId: string;
   disciplinas: { [idDisciplina: string]: Disciplina };
 }
 
 export interface Disciplina {
   id: string;
   nome: string;
+  cursoId: string;
+  moduloNumero: string;
   competencias: Competencias;
 }
 

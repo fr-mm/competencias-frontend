@@ -11,6 +11,7 @@ function ModuloNaTabela(props: ModuloNaTabelaProps) {
     <div className="linha borda ">
       <div className="primeira-coluna">Módulo {props.numero}</div>
       <div className="borda "></div>
+      <div>{}</div>
     </div>
   );
 }

@@ -69,15 +69,17 @@ class RandomizadorDeFakeDB {
   }
 
   private construirCurso(nome: string, docentes: Interface.Docentes) {
+    const id = this.gerarId();
     return {
-      id: this.gerarId(),
+      id: id,
       nome: nome,
-      modulos: this.construirModulos(nome, docentes),
+      modulos: this.construirModulos(nome, id, docentes),
     };
   }
 
   private construirModulos(
     nomeCurso: string,
+    cursoId: string,
     docentes: Interface.Docentes
   ): Interface.Modulos {
     const curso = this.cursos[nomeCurso as keyof object];
@@ -87,6 +89,7 @@ class RandomizadorDeFakeDB {
       const nomesDisciplinas = curso[numero];
       modulos[numero as keyof object] = this.construirModulo(
         numero,
+        cursoId,
         nomesDisciplinas,
         docentes
       );
@@ -96,12 +99,22 @@ class RandomizadorDeFakeDB {
 
   private construirModulo(
     numero: string,
+    cursoId: string,
     nomesDisciplinas: string[],
     docentes: Interface.Docentes
   ): Interface.Modulo {
-    const modulo: Interface.Modulo = { numero: numero, disciplinas: {} };
+    const modulo: Interface.Modulo = {
+      numero: numero,
+      cursoId: cursoId,
+      disciplinas: {},
+    };
     for (let nome of nomesDisciplinas) {
-      const disciplina = this.construirDisciplina(nome, docentes);
+      const disciplina = this.construirDisciplina(
+        nome,
+        cursoId,
+        modulo.numero,
+        docentes
+      );
       modulo.disciplinas[disciplina.id] = disciplina;
     }
     return modulo;
@@ -109,11 +122,15 @@ class RandomizadorDeFakeDB {
 
   private construirDisciplina(
     nome: string,
+    cursoId: string,
+    moduloNumero: string,
     docentes: Interface.Docentes
   ): Interface.Disciplina {
     return {
       id: this.gerarId(),
       nome: nome,
+      cursoId: cursoId,
+      moduloNumero: moduloNumero,
       competencias: this.construirCompetencias(docentes),
     };
   }
