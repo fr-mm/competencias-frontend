@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useCollapse from "react-collapsed";
 import { InterfaceConteudoDeTabela } from "../../../api";
 import DisciplinaNaTabela from "../disciplinaNaTabela";
@@ -6,15 +6,26 @@ import DisciplinaNaTabela from "../disciplinaNaTabela";
 interface ModuloNaTabelaProps {
   modulo: InterfaceConteudoDeTabela.Modulo;
   docentes: InterfaceConteudoDeTabela.Docentes;
+  visivel: boolean;
 }
 
 function ModuloNaTabela(props: ModuloNaTabelaProps) {
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+  const [isExpanded, setExpanded] = useState(props.visivel);
+  const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+
+  useEffect(() => {
+    setExpanded(props.visivel);
+  }, [setExpanded, props.visivel]);
 
   const disciplinas = Object.values(props.modulo.disciplinas);
   return (
     <div className="container">
-      <div className="linha borda colapsavel" {...getToggleProps()}>
+      <div
+        className="linha borda colapsavel"
+        {...getToggleProps({
+          onClick: () => setExpanded(!isExpanded),
+        })}
+      >
         <div className="primeira-coluna">Módulo {props.modulo.numero}</div>
         <div className="borda "></div>
       </div>

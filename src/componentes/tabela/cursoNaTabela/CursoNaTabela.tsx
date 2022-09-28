@@ -6,15 +6,28 @@ import ModuloNaTabela from "../moduloNaTabela";
 interface CursoNaTabelaProps {
   curso: InterfaceConteudoDeTabela.Curso;
   docentes: InterfaceConteudoDeTabela.Docentes;
+  visivel: boolean;
 }
 
 function CursoNaTabela(props: CursoNaTabelaProps) {
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+  const [isExpanded, setExpanded] = useState(props.visivel);
+  const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+
+  useEffect(() => {
+    setExpanded(props.visivel);
+  }, [setExpanded, props.visivel]);
 
   const modulos = Object.values(props.curso.modulos);
   return (
     <div className="container">
-      <div className="linha borda colapsavel" {...getToggleProps()}>
+      <div
+        className="linha borda colapsavel"
+        {...getToggleProps({
+          onClick: () => {
+            setExpanded(!isExpanded);
+          },
+        })}
+      >
         <div className="primeira-coluna">{props.curso.nome}</div>
         <div className="borda "></div>
       </div>
@@ -24,6 +37,7 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
             key={props.curso.id + modulo.numero}
             modulo={modulo}
             docentes={props.docentes}
+            visivel={isExpanded}
           />
         ))}
       </div>

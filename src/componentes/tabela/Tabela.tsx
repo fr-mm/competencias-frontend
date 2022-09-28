@@ -9,6 +9,7 @@ function Tabela() {
     {}
   );
   const [cursos, setCursos] = useState<InterfaceConteudoDeTabela.Cursos>({});
+  const [visivel, setVisivel] = useState(true);
 
   const getConteudo = async () => {
     const api = BackendAPI.construirMockAPI();
@@ -24,10 +25,22 @@ function Tabela() {
   try {
     return (
       <div className="tabela borda">
+        <button
+          onClick={() => {
+            setVisivel(!visivel);
+          }}
+        >
+          {visivel ? "esconder" : "mostrar"}
+        </button>
         <Cabecalho key="cabecalhoDaTabela" docentes={docentes} />
         <div>
           {Object.values(cursos).map((curso) => (
-            <CursoNaTabela key={curso.id} curso={curso} docentes={docentes} />
+            <CursoNaTabela
+              key={curso.id}
+              curso={curso}
+              docentes={docentes}
+              visivel={visivel}
+            />
           ))}
         </div>
       </div>
