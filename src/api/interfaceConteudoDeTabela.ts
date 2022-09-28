@@ -27,7 +27,8 @@ export interface Modulos {
 }
 
 export interface Modulo {
-  [idDisciplina: string]: Disciplina;
+  numero: string;
+  disciplinas: { [idDisciplina: string]: Disciplina };
 }
 
 export interface Disciplina {

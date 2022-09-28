@@ -2,6 +2,7 @@ import "./Tabela.css";
 import React, { useEffect, useState } from "react";
 import { InterfaceConteudoDeTabela, BackendAPI } from "../../api";
 import Cabecalho from "./cabecalho";
+import CursoNaTabela from "./cursoNaTabela";
 
 function Tabela() {
   const [docentes, setDocentes] = useState<InterfaceConteudoDeTabela.Docentes>(
@@ -22,9 +23,14 @@ function Tabela() {
 
   try {
     return (
-      <table>
+      <div className="tabela">
         <Cabecalho key="cabecalhoDaTabela" docentes={docentes} />
-      </table>
+        <div>
+          {Object.values(cursos).map((curso) => (
+            <CursoNaTabela key={curso.id} curso={curso} docentes={docentes} />
+          ))}
+        </div>
+      </div>
     );
   } catch (e) {
     return <p>carregando...</p>;

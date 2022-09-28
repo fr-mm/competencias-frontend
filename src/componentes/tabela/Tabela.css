@@ -1,5 +1,31 @@
-table,
-th,
-td {
+div {
+  font-size: 0.95em;
+  font-weight: 300;
+}
+
+.linhaTabela {
+  display: flex;
+}
+
+.borda {
   border: 1px solid white;
+}
+
+.linha {
+  display: flex;
+  flex-direction: row;
+}
+
+.celula {
+  display: flexbox;
+  width: 5rem;
+}
+.primeira-coluna {
+  display: flexbox;
+  width: 20rem;
+}
+
+.contaianer {
+  display: flex;
+  flex-direction: column;
 }

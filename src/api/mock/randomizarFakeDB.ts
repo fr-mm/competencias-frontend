@@ -86,6 +86,7 @@ class RandomizadorDeFakeDB {
     for (let numero of numerosDosModulos) {
       const nomesDisciplinas = curso[numero];
       modulos[numero as keyof object] = this.construirModulo(
+        numero,
         nomesDisciplinas,
         docentes
       );
@@ -94,13 +95,14 @@ class RandomizadorDeFakeDB {
   }
 
   private construirModulo(
+    numero: string,
     nomesDisciplinas: string[],
     docentes: Interface.Docentes
   ): Interface.Modulo {
-    const modulo: Interface.Modulo = {};
+    const modulo: Interface.Modulo = { numero: numero, disciplinas: {} };
     for (let nome of nomesDisciplinas) {
       const disciplina = this.construirDisciplina(nome, docentes);
-      modulo[disciplina.id] = disciplina;
+      modulo.disciplinas[disciplina.id] = disciplina;
     }
     return modulo;
   }

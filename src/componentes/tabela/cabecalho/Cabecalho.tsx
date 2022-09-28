@@ -1,3 +1,4 @@
+import "./Cabecalho.css";
 import { InterfaceConteudoDeTabela } from "../../../api";
 
 interface CabecalhoProps {
@@ -7,13 +8,14 @@ interface CabecalhoProps {
 function Cabecalho(props: CabecalhoProps) {
   const docentes = Object.values(props.docentes);
   return (
-    <thead>
-      <tr>
-        {docentes.map((docente) => (
-          <th key={docente.id}>{docente.nome}</th>
-        ))}
-      </tr>
-    </thead>
+    <div className="linha">
+      <div className="borda primeira-coluna"></div>
+      {docentes.map((docente) => (
+        <div className="celula borda" key={docente.id}>
+          {docente.nome}
+        </div>
+      ))}
+    </div>
   );
 }
 
