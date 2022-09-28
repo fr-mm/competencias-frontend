@@ -47,7 +47,7 @@ class RandomizadorDeFakeDB {
     const docentes: Interface.Docentes = {};
     for (let i = 0; i < this.quantidadeDocentes; i++) {
       const docente = this.construirDocente();
-      docentes[docente.id] = this.construirDocente();
+      docentes[docente.id] = docente;
     }
     return docentes;
   }

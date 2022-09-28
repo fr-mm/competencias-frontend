@@ -18,8 +18,7 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
         {modulos.map((modulo) => (
           <ModuloNaTabela
             key={props.curso.id + modulo.numero}
-            numero={modulo.numero}
-            curso={props.curso}
+            modulo={modulo}
             docentes={props.docentes}
           />
         ))}
