@@ -1,19 +1,12 @@
 import "./Cabecalho.css";
 import { InterfaceConteudoDeTabela } from "../../../api";
-import { store } from "../../../redux/store";
-import { atualizarDocentesFiltrados } from "../../../redux/slices/docentesFiltrados";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store/store";
 
-interface CabecalhoProps {
-  docentesFiltrados: InterfaceConteudoDeTabela.Docente[];
-}
-
-function Cabecalho(props: CabecalhoProps) {
-  const docentesFiltrados: InterfaceConteudoDeTabela.Docente[] = useSelector(
-    (state: any) => {
-      console.log(state);
-      return state.docentesFiltrados.value;
-    }
+function Cabecalho() {
+  const docentesFiltrados = useSelector(
+    (state: RootState): InterfaceConteudoDeTabela.Docente[] =>
+      state.docentes.filtrados
   );
   return (
     <div className="linha">

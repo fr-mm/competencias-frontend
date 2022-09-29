@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { InterfaceConteudoDeTabela, BackendAPI } from "../../api";
 import Cabecalho from "./cabecalho";
 import CursoNaTabela from "./cursoNaTabela";
-import { store } from "../../redux/store";
-import { atualizarDocentesFiltrados } from "../../redux/slices/docentesFiltrados";
+import {
+  atualizarDocentes,
+  filtrarDocentesPorNome,
+} from "../../store/slices/docentesReducer";
 import { useDispatch } from "react-redux";
 
 function Tabela() {
@@ -13,9 +15,6 @@ function Tabela() {
   );
   const [cursos, setCursos] = useState<InterfaceConteudoDeTabela.Cursos>({});
   const [visivel, setVisivel] = useState(false);
-  const [docentesFiltrados, setDocentesFiltrados] = useState(
-    Object.values(docentes)
-  );
   const [montado, setMontado] = useState(false);
 
   const dispatch = useDispatch();
@@ -23,18 +22,13 @@ function Tabela() {
   const getConteudo = async () => {
     const api = BackendAPI.construirMockAPI();
     const conteudo = await api.getConteudoDeTabela();
-    setDocentes(conteudo.docentes);
+    dispatch(atualizarDocentes(conteudo.docentes));
     setCursos(conteudo.cursos);
+    setDocentes({});
     if (!montado) {
-      filtrarDocentes("");
+      dispatch(filtrarDocentesPorNome(""));
       setMontado(true);
     }
-  };
-
-  const filtrarDocentes = (filtro: string): void => {
-    const todos = Object.values(docentes);
-    const filtrados = todos.filter((docente) => docente.nome.includes(filtro));
-    dispatch(atualizarDocentesFiltrados(filtrados));
   };
 
   useEffect(() => {
@@ -53,19 +47,18 @@ function Tabela() {
         </button>
         <input
           type="text"
-          onChange={(evento) => filtrarDocentes(evento.target.value)}
+          onChange={(evento) =>
+            dispatch(filtrarDocentesPorNome(evento.target.value))
+          }
         />
-        <Cabecalho
-          key="cabecalhoDaTabela"
-          docentesFiltrados={docentesFiltrados}
-        />
+        <Cabecalho key="cabecalhoDaTabela" />
         <div>
           {Object.values(cursos).map((curso) => (
             <CursoNaTabela
               key={curso.id}
               curso={curso}
               docentes={docentes}
-              docentesFiltrados={docentesFiltrados}
+              docentesFiltrados={[]}
               visivel={visivel}
             />
           ))}
