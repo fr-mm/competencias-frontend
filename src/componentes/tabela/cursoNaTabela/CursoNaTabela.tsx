@@ -5,8 +5,6 @@ import ModuloNaTabela from "../moduloNaTabela";
 
 interface CursoNaTabelaProps {
   curso: InterfaceConteudoDeTabela.Curso;
-  docentes: InterfaceConteudoDeTabela.Docentes;
-  docentesFiltrados: InterfaceConteudoDeTabela.Docente[];
   visivel: boolean;
 }
 
@@ -37,8 +35,6 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
           <ModuloNaTabela
             key={props.curso.id + modulo.numero}
             modulo={modulo}
-            docentes={props.docentes}
-            docentesFiltrados={props.docentesFiltrados}
             visivel={isExpanded}
           />
         ))}

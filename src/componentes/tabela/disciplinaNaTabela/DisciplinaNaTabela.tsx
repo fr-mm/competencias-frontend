@@ -1,18 +1,21 @@
+import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../api";
+import { RootState } from "../../../store/store";
 
 interface DisciplinaNaTabelaProps {
-  docentes: InterfaceConteudoDeTabela.Docentes;
-  docentesFiltrados: InterfaceConteudoDeTabela.Docente[];
   disciplna: InterfaceConteudoDeTabela.Disciplina;
 }
 
 function DisciplinaNaTabela(props: DisciplinaNaTabelaProps) {
+  const docentesFiltrados = useSelector(
+    (state: RootState) => state.docentes.filtrados
+  );
   return (
     <div className="container">
       <div className="linha borda ">
         <div className="primeira-coluna">{props.disciplna.nome}</div>
         <div className="linha borda">
-          {props.docentesFiltrados.map((docente) => (
+          {docentesFiltrados.map((docente) => (
             <div key={props.disciplna.id + docente.id} className="celula borda">
               {props.disciplna.competencias[docente.id]}
             </div>
