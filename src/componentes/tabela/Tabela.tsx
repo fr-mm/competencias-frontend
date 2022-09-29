@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { InterfaceConteudoDeTabela, BackendAPI } from "../../api";
 import Cabecalho from "./cabecalho";
 import CursoNaTabela from "./cursoNaTabela";
+import { store } from "../../redux/store";
+import { atualizarDocentesFiltrados } from "../../redux/slices/docentesFiltrados";
+import { useDispatch } from "react-redux";
 
 function Tabela() {
   const [docentes, setDocentes] = useState<InterfaceConteudoDeTabela.Docentes>(
@@ -15,13 +18,15 @@ function Tabela() {
   );
   const [montado, setMontado] = useState(false);
 
+  const dispatch = useDispatch();
+
   const getConteudo = async () => {
     const api = BackendAPI.construirMockAPI();
     const conteudo = await api.getConteudoDeTabela();
     setDocentes(conteudo.docentes);
     setCursos(conteudo.cursos);
     if (!montado) {
-      setDocentesFiltrados(Object.values(conteudo.docentes));
+      filtrarDocentes("");
       setMontado(true);
     }
   };
@@ -29,7 +34,7 @@ function Tabela() {
   const filtrarDocentes = (filtro: string): void => {
     const todos = Object.values(docentes);
     const filtrados = todos.filter((docente) => docente.nome.includes(filtro));
-    setDocentesFiltrados(filtrados);
+    dispatch(atualizarDocentesFiltrados(filtrados));
   };
 
   useEffect(() => {
