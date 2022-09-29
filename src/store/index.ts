@@ -1,3 +1,5 @@
-import { store } from "./store";
+import { store, RootState } from "./store";
+import * as reducers from "./slices";
 
-export { store };
+export { store, reducers };
+export type { RootState };

@@ -1,18 +1,10 @@
 import "./Tabela.css";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, reducers } from "../../store";
 import { BackendAPI } from "../../api";
 import Cabecalho from "./cabecalho";
 import CursoNaTabela from "./cursoNaTabela";
-import {
-  atualizarDocentes,
-  filtrarDocentesPorNome,
-} from "../../store/slices/docentesReducer";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import {
-  atualizarCursos,
-  filtrarCursosPorNome,
-} from "../../store/slices/cursosReducer";
 
 function Tabela() {
   const [visivel, setVisivel] = useState(false);
@@ -24,10 +16,10 @@ function Tabela() {
     if (!montado) {
       const api = BackendAPI.construirMockAPI();
       const conteudo = await api.getConteudoDeTabela();
-      dispatch(atualizarDocentes(conteudo.docentes));
-      dispatch(atualizarCursos(conteudo.cursos));
-      dispatch(filtrarDocentesPorNome(""));
-      dispatch(filtrarCursosPorNome(""));
+      dispatch(reducers.docentes.atualizar(conteudo.docentes));
+      dispatch(reducers.cursos.atualizar(conteudo.cursos));
+      dispatch(reducers.docentes.filtrarPorNome(""));
+      dispatch(reducers.cursos.filtrarPorNome(""));
       setMontado(true);
     }
   };
@@ -53,7 +45,7 @@ function Tabela() {
         <input
           type="text"
           onChange={(evento) =>
-            dispatch(filtrarDocentesPorNome(evento.target.value))
+            dispatch(reducers.docentes.filtrarPorNome(evento.target.value))
           }
         />
         <Cabecalho key="cabecalhoDaTabela" />

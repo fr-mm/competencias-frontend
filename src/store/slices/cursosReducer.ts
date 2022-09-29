@@ -24,8 +24,5 @@ const cursosSlice = createSlice({
   },
 });
 
-export const {
-  atualizar: atualizarCursos,
-  filtrarPorNome: filtrarCursosPorNome,
-} = cursosSlice.actions;
+export const { atualizar, filtrarPorNome } = cursosSlice.actions;
 export default cursosSlice.reducer;

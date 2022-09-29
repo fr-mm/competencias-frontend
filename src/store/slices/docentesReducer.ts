@@ -24,8 +24,5 @@ const docentesSlice = createSlice({
   },
 });
 
-export const {
-  atualizar: atualizarDocentes,
-  filtrarPorNome: filtrarDocentesPorNome,
-} = docentesSlice.actions;
+export const { atualizar, filtrarPorNome } = docentesSlice.actions;
 export default docentesSlice.reducer;

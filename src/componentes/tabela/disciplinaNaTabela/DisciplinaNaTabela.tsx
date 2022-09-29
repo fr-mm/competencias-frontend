@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../api";
-import { RootState } from "../../../store/store";
+import { RootState } from "../../../store";
 
 interface DisciplinaNaTabelaProps {
   disciplna: InterfaceConteudoDeTabela.Disciplina;
