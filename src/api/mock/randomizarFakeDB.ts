@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import * as Interface from "../interfaceConteudoDeTabela";
+import { InterfaceConteudoDeTabela as Interface } from "../../interfaces";
 
 class RandomizadorDeFakeDB {
   readonly arquivo = "./fakeDB.json";

@@ -1,4 +1,4 @@
-export interface ConteudoDeTabela {
+export interface Tabela {
   docentes: Docentes;
   cursos: Cursos;
 }

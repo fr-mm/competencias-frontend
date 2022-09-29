@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { InterfaceConteudoDeTabela } from "../../api";
+import { InterfaceConteudoDeTabela } from "../../interfaces";
 
 const initialState = {
   todos: {} as InterfaceConteudoDeTabela.Cursos,

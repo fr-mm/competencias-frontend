@@ -1,5 +1,5 @@
 import "./Cabecalho.css";
-import { InterfaceConteudoDeTabela } from "../../../api";
+import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 

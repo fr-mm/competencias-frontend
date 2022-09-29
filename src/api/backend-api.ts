@@ -1,5 +1,7 @@
-import { ConteudoDeTabela } from "./interfaceConteudoDeTabela";
+import { InterfaceConteudoDeTabela } from "../interfaces";
 import db from "./mock/fakeDB.json";
+
+type ConteudoDeTabela = InterfaceConteudoDeTabela.Tabela;
 
 type FetchFunction = (url: string) => Promise<ConteudoDeTabela>;
 

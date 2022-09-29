@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useCollapse from "react-collapsed";
-import { InterfaceConteudoDeTabela } from "../../../api";
+import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import ModuloNaTabela from "../moduloNaTabela";
 
 interface CursoNaTabelaProps {
