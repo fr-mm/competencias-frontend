@@ -1,0 +1,9 @@
+.painel-de-controle {
+  width: 40rem;
+  display: flex;
+}
+
+.coluna {
+  display: flex;
+  flex-direction: column;
+}

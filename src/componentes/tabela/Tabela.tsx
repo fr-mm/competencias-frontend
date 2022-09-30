@@ -37,12 +37,6 @@ function Tabela() {
   try {
     return (
       <div className="tabela borda">
-        <input
-          type="text"
-          onChange={(evento) =>
-            dispatch(reducers.docentes.filtrarPorNome(evento.target.value))
-          }
-        />
         <Cabecalho key="cabecalhoDaTabela" />
         <div>
           {Object.values(cursosFiltrados).map((curso) => (

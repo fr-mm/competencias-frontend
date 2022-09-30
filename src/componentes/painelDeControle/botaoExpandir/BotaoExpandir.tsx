@@ -1,3 +1,4 @@
+import "./BotaoExpandir.css";
 import { useDispatch, useSelector } from "react-redux";
 import { reducers, RootState } from "../../../store";
 
@@ -9,13 +10,15 @@ function BotaoExpandir() {
   );
 
   return (
-    <button
-      onClick={() => {
-        dispatch(reducers.tabela.expandirContrair());
-      }}
-    >
-      {tabelaExpandida ? "esconder" : "mostrar"}
-    </button>
+    <div className="botao-expandir">
+      <button
+        onClick={() => {
+          dispatch(reducers.tabela.expandirContrair());
+        }}
+      >
+        {tabelaExpandida ? "esconder tabela" : "expandir tabela"}
+      </button>
+    </div>
   );
 }
 
