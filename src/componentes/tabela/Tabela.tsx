@@ -7,7 +7,6 @@ import Cabecalho from "./cabecalho";
 import CursoNaTabela from "./cursoNaTabela";
 
 function Tabela() {
-  const [visivel, setVisivel] = useState(false);
   const [montado, setMontado] = useState(false);
 
   const dispatch = useDispatch();
@@ -33,17 +32,11 @@ function Tabela() {
   const cursosFiltrados = useSelector(
     (state: RootState) => state.cursos.filtrados
   );
+  const vis = useSelector((state: RootState) => state.tabela.expandida);
 
   try {
     return (
       <div className="tabela borda">
-        <button
-          onClick={() => {
-            setVisivel(!visivel);
-          }}
-        >
-          {visivel ? "esconder" : "mostrar"}
-        </button>
         <input
           type="text"
           onChange={(evento) =>
@@ -53,7 +46,7 @@ function Tabela() {
         <Cabecalho key="cabecalhoDaTabela" />
         <div>
           {Object.values(cursosFiltrados).map((curso) => (
-            <CursoNaTabela key={curso.id} curso={curso} visivel={visivel} />
+            <CursoNaTabela key={curso.id} curso={curso} visivel={vis} />
           ))}
         </div>
       </div>
