@@ -1,4 +1,4 @@
-import * as cursos from "./cursosReducer";
-import * as docentes from "./docentesReducer";
+import * as cursos from "./cursosSlice";
+import * as docentes from "./docentesSlice";
 
 export { cursos, docentes };

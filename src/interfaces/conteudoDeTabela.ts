@@ -27,6 +27,7 @@ export interface Modulos {
 }
 
 export interface Modulo {
+  id: string;
   numero: string;
   cursoId: string;
   disciplinas: { [idDisciplina: string]: Disciplina };

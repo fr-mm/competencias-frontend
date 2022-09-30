@@ -16,10 +16,12 @@ function Tabela() {
     if (!montado) {
       const api = BackendAPI.construirMockAPI();
       const conteudo = await api.getConteudoDeTabela();
+
       dispatch(reducers.docentes.atualizar(conteudo.docentes));
       dispatch(reducers.cursos.atualizar(conteudo.cursos));
       dispatch(reducers.docentes.filtrarPorNome(""));
       dispatch(reducers.cursos.filtrarPorNome(""));
+
       setMontado(true);
     }
   };

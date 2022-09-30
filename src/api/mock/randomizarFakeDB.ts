@@ -104,6 +104,7 @@ class RandomizadorDeFakeDB {
     docentes: Interface.Docentes
   ): Interface.Modulo {
     const modulo: Interface.Modulo = {
+      id: this.gerarId(),
       numero: numero,
       cursoId: cursoId,
       disciplinas: {},
@@ -156,10 +157,6 @@ class RandomizadorDeFakeDB {
         (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
       ).toString(16)
     );
-  }
-
-  private dec2hex(dec: number): string {
-    return dec.toString(16).padStart(2, "0");
   }
 
   private escolher(opcoes: any[]): any {
