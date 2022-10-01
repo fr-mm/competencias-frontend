@@ -8,10 +8,6 @@
   border-bottom: 1px solid black;
 }
 
-.linhaTabela {
-  display: flex;
-}
-
 .linha {
   display: flex;
   flex-direction: row;
