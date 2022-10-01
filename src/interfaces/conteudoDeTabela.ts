@@ -10,13 +10,16 @@ interface Tabela {
       id: string;
       nome: string;
       cargaHoraria: number;
+      cargaHorariaPorDocente: {
+        [idDocente: string]: number;
+      };
       modulos: {
         [id: string]: {
           id: string;
           numero: string;
           cargaHoraria: number;
           cargaHorariaPorDocente: {
-            [docenteId: string]: number;
+            [idDocente: string]: number;
           };
           cursoId: string;
           disciplinas: {

@@ -44,7 +44,9 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
             <div
               key={docente.id + props.curso.id}
               className="celula azul escuro borda"
-            ></div>
+            >
+              {props.curso.cargaHorariaPorDocente[docente.id]}
+            </div>
           ))}
         </div>
       </div>
