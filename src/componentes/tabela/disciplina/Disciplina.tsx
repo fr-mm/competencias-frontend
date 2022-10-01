@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { RootState } from "../../../store";
-import CompetenciaNaTabela from "../competenciaNaTabela";
+import Competencia from "../competencia";
 
-interface DisciplinaNaTabelaProps {
+interface DisciplinaProps {
   disciplina: InterfaceConteudoDeTabela.Disciplina;
 }
 
-function DisciplinaNaTabela(props: DisciplinaNaTabelaProps) {
+function Disciplina(props: DisciplinaProps) {
   const docentesFiltrados = useSelector(
     (state: RootState) => state.docentes.filtrados
   );
@@ -24,7 +24,7 @@ function DisciplinaNaTabela(props: DisciplinaNaTabelaProps) {
 
         <div className="linha">
           {docentesFiltrados.map((docente) => (
-            <CompetenciaNaTabela
+            <Competencia
               key={props.disciplina.id + docente.id}
               docente={docente}
               disciplina={props.disciplina}
@@ -36,4 +36,4 @@ function DisciplinaNaTabela(props: DisciplinaNaTabelaProps) {
   );
 }
 
-export default DisciplinaNaTabela;
+export default Disciplina;

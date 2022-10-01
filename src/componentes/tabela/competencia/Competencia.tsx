@@ -1,7 +1,7 @@
 import { EnumNivelDeCompetencia } from "../../../enums";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 
-interface CompetenciaNaTabelaProps {
+interface CompetenciaProps {
   disciplina: InterfaceConteudoDeTabela.Disciplina;
   docente: InterfaceConteudoDeTabela.Docente;
 }
@@ -17,11 +17,11 @@ const getClassNameDeNivel = (nivel: EnumNivelDeCompetencia): string => {
   return `celula borda competencia ${corDeNivel[nivel]}`;
 };
 
-function CompetenciaNaTabela(props: CompetenciaNaTabelaProps) {
+function Competencia(props: CompetenciaProps) {
   const nivel: EnumNivelDeCompetencia =
     props.disciplina.competencias[props.docente.id];
 
   return <div className={getClassNameDeNivel(nivel)}>{nivel}</div>;
 }
 
-export default CompetenciaNaTabela;
+export default Competencia;

@@ -3,14 +3,14 @@ import useCollapse from "react-collapsed";
 import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { RootState } from "../../../store";
-import ModuloNaTabela from "../moduloNaTabela";
+import Disciplina from "../disciplina";
 
-interface CursoNaTabelaProps {
-  curso: InterfaceConteudoDeTabela.Curso;
+interface ModuloProps {
+  modulo: InterfaceConteudoDeTabela.Modulo;
   visivel: boolean;
 }
 
-function CursoNaTabela(props: CursoNaTabelaProps) {
+function Modulo(props: ModuloProps) {
   const [isExpanded, setExpanded] = useState(props.visivel);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
 
@@ -18,7 +18,7 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
     setExpanded(props.visivel);
   }, [setExpanded, props.visivel]);
 
-  const modulos = Object.values(props.curso.modulos);
+  const disciplinas = Object.values(props.modulo.disciplinas);
   const docentes = useSelector((state: RootState) => state.docentes.filtrados);
 
   return (
@@ -26,41 +26,35 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
       <div
         className="linha colapsavel"
         {...getToggleProps({
-          onClick: () => {
-            setExpanded(!isExpanded);
-          },
+          onClick: () => setExpanded(!isExpanded),
         })}
       >
-        <div className="celula azul escuro primeira-coluna borda">
-          {props.curso.nome}
+        <div className="celula azul primeira-coluna borda">
+          Módulo {props.modulo.numero}
         </div>
 
-        <div className="celula azul escuro coluna-carga-horaria borda">
-          {props.curso.cargaHoraria}
+        <div className="celula azul coluna-carga-horaria borda">
+          {props.modulo.cargaHoraria}
         </div>
 
         <div className="linha">
           {docentes.map((docente) => (
             <div
-              key={docente.id + props.curso.id}
-              className="celula azul escuro borda"
+              key={docente.id + props.modulo.id}
+              className="celula azul borda"
             >
-              {props.curso.cargaHorariaPorDocente[docente.id]}
+              {props.modulo.cargaHorariaPorDocente[docente.id]}
             </div>
           ))}
         </div>
       </div>
       <div {...getCollapseProps()}>
-        {modulos.map((modulo) => (
-          <ModuloNaTabela
-            key={props.curso.id + modulo.numero}
-            modulo={modulo}
-            visivel={isExpanded}
-          />
+        {disciplinas.map((disciplina) => (
+          <Disciplina key={disciplina.id} disciplina={disciplina} />
         ))}
       </div>
     </div>
   );
 }
 
-export default CursoNaTabela;
+export default Modulo;

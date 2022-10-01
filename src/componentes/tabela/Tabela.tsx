@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, reducers } from "../../store";
 import { BackendAPI } from "../../api";
 import Cabecalho from "./cabecalho";
-import CursoNaTabela from "./cursoNaTabela";
+import Curso from "./curso";
 
 function Tabela() {
   const [montado, setMontado] = useState(false);
@@ -39,7 +39,7 @@ function Tabela() {
         <Cabecalho key="cabecalhoDaTabela" />
         <div>
           {Object.values(cursosFiltrados).map((curso) => (
-            <CursoNaTabela key={curso.id} curso={curso} visivel={vis} />
+            <Curso key={curso.id} curso={curso} visivel={vis} />
           ))}
         </div>
       </div>
