@@ -1,17 +1,17 @@
 import { useDispatch } from "react-redux";
 import { reducers } from "../../../store";
 
-function FiltroDocentes() {
+function FiltroCursos() {
   const dispatch = useDispatch();
 
   return (
-    <div className="filtro-docentes">
+    <div>
       <label>
-        Filtrar docentes:
+        Filtrar cursos:
         <input
           type="text"
           onChange={(evento) =>
-            dispatch(reducers.docentes.filtrarPorNome(evento.target.value))
+            dispatch(reducers.cursos.filtrarPorNome(evento.target.value))
           }
         />
       </label>
@@ -19,4 +19,4 @@ function FiltroDocentes() {
   );
 }
 
-export default FiltroDocentes;
+export default FiltroCursos;
