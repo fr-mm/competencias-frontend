@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import useCollapse from "react-collapsed";
+import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
+import { RootState } from "../../../store";
 import ModuloNaTabela from "../moduloNaTabela";
 
 interface CursoNaTabelaProps {
@@ -17,18 +19,28 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
   }, [setExpanded, props.visivel]);
 
   const modulos = Object.values(props.curso.modulos);
+  const docentes = useSelector((state: RootState) => state.docentes.filtrados);
   return (
     <div className="container">
       <div
-        className="linha borda colapsavel"
+        className="linha colapsavel"
         {...getToggleProps({
           onClick: () => {
             setExpanded(!isExpanded);
           },
         })}
       >
-        <div className="primeira-coluna">{props.curso.nome}</div>
-        <div className="borda "></div>
+        <div className="celula azul primeira-coluna borda">
+          {props.curso.nome}
+        </div>
+        <div className="linha">
+          {docentes.map((docente) => (
+            <div
+              key={docente.id + props.curso.id}
+              className="celula azul borda"
+            ></div>
+          ))}
+        </div>
       </div>
       <div {...getCollapseProps()}>
         {modulos.map((modulo) => (

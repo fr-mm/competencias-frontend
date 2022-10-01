@@ -8,7 +8,9 @@ function PainelDeControle() {
     <div className="painel-de-controle">
       <div className="coluna">
         <FiltroDocentes />
+        <div className="separador"></div>
         <FiltroCursos />
+        <div className="separador"></div>
 
         <BotaoExpandir />
       </div>

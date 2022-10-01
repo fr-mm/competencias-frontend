@@ -1,14 +1,15 @@
-div {
-  font-size: 0.95em;
-  font-weight: 300;
+.tabela {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.borda {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .linhaTabela {
   display: flex;
-}
-
-.borda {
-  outline: 1px solid white;
 }
 
 .linha {
@@ -19,6 +20,7 @@ div {
 .celula {
   display: flexbox;
   width: 5rem;
+  padding: 0.3rem;
 }
 .primeira-coluna {
   display: flexbox;
@@ -36,4 +38,30 @@ div {
 
 .colapsavel:hover {
   box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
+
+.azul {
+  background-color: #3a589a;
+  color: white;
+  font-weight: 600;
+}
+
+.azul-claro {
+  background-color: #e0e4f4;
+}
+
+.verde {
+  background-color: #c0f4cc;
+}
+
+.amarelo {
+  background-color: #fff49c;
+}
+
+.vermelho {
+  background-color: #ffbccc;
+}
+
+.texto-esquerda {
+  text-align: left;
 }

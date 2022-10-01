@@ -1,4 +1,3 @@
-import "./Cabecalho.css";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -10,9 +9,11 @@ function Cabecalho() {
   );
   return (
     <div className="linha">
-      <div className="borda primeira-coluna"></div>
+      <div className="celula azul borda primeira-coluna">
+        Unidades Curriculares
+      </div>
       {docentesFiltrados.map((docente) => (
-        <div className="celula borda" key={docente.id}>
+        <div className="celula azul borda" key={docente.id}>
           {docente.nome}
         </div>
       ))}

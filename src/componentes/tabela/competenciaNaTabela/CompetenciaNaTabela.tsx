@@ -1,4 +1,3 @@
-import "./CompetenciaNaTabela.css";
 import { EnumNivelDeCompetencia } from "../../../enums";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 
@@ -7,8 +6,15 @@ interface CompetenciaNaTabelaProps {
   docente: InterfaceConteudoDeTabela.Docente;
 }
 
+const corDeNivel = {
+  1: "vermelho",
+  2: "amarelo",
+  3: "verde",
+  4: "",
+};
+
 const getClassNameDeNivel = (nivel: EnumNivelDeCompetencia): string => {
-  return `celula borda competencia nivel${nivel}`;
+  return `celula borda competencia ${corDeNivel[nivel]}`;
 };
 
 function CompetenciaNaTabela(props: CompetenciaNaTabelaProps) {

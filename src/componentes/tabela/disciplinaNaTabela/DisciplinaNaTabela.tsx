@@ -13,9 +13,11 @@ function DisciplinaNaTabela(props: DisciplinaNaTabelaProps) {
   );
   return (
     <div className="container">
-      <div className="linha borda ">
-        <div className="primeira-coluna">{props.disciplina.nome}</div>
-        <div className="linha borda">
+      <div className="linha">
+        <div className="celula primeira-coluna texto-esquerda borda">
+          {props.disciplina.nome}
+        </div>
+        <div className="linha">
           {docentesFiltrados.map((docente) => (
             <CompetenciaNaTabela
               key={props.disciplina.id + docente.id}
