@@ -15,6 +15,9 @@ interface Tabela {
           id: string;
           numero: string;
           cargaHoraria: number;
+          cargaHorariaPorDocente: {
+            [docenteId: string]: number;
+          };
           cursoId: string;
           disciplinas: {
             [id: string]: {

@@ -113,6 +113,7 @@ class RandomizadorDeFakeDB {
       id: this.gerarId(),
       numero: numero,
       cargaHoraria: 0,
+      cargaHorariaPorDocente: {},
       cursoId: cursoId,
       disciplinas: {},
     };
@@ -129,6 +130,15 @@ class RandomizadorDeFakeDB {
       (total, disciplina) => total + disciplina.cargaHoraria,
       0
     );
+    for (let docente of Object.values(docentes)) {
+      modulo.cargaHorariaPorDocente[docente.id] = Object.values(
+        modulo.disciplinas
+      ).reduce((total, disciplina) => {
+        const competencia = disciplina.competencias[docente.id];
+        return total + (competencia >= 3 ? disciplina.cargaHoraria : 0);
+      }, 0);
+    }
+
     return modulo;
   }
 

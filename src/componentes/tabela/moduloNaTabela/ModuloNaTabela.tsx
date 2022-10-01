@@ -42,7 +42,9 @@ function ModuloNaTabela(props: ModuloNaTabelaProps) {
             <div
               key={docente.id + props.modulo.id}
               className="celula azul borda"
-            ></div>
+            >
+              {props.modulo.cargaHorariaPorDocente[docente.id]}
+            </div>
           ))}
         </div>
       </div>
