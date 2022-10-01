@@ -9,10 +9,12 @@ interface Tabela {
     [id: string]: {
       id: string;
       nome: string;
+      cargaHoraria: number;
       modulos: {
         [id: string]: {
           id: string;
           numero: string;
+          cargaHoraria: number;
           cursoId: string;
           disciplinas: {
             [id: string]: {

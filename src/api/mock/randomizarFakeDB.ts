@@ -70,11 +70,17 @@ class RandomizadorDeFakeDB {
 
   private construirCurso(nome: string, docentes: Interface.Docentes) {
     const id = this.gerarId();
-    return {
+    const curso = {
       id: id,
       nome: nome,
+      cargaHoraria: 0,
       modulos: this.construirModulos(nome, id, docentes),
     };
+    curso.cargaHoraria = Object.values(curso.modulos).reduce(
+      (total, modulo) => total + modulo.cargaHoraria,
+      0
+    );
+    return curso;
   }
 
   private construirModulos(
@@ -106,6 +112,7 @@ class RandomizadorDeFakeDB {
     const modulo: Interface.Modulo = {
       id: this.gerarId(),
       numero: numero,
+      cargaHoraria: 0,
       cursoId: cursoId,
       disciplinas: {},
     };
@@ -118,6 +125,10 @@ class RandomizadorDeFakeDB {
       );
       modulo.disciplinas[disciplina.id] = disciplina;
     }
+    modulo.cargaHoraria = Object.values(modulo.disciplinas).reduce(
+      (total, disciplina) => total + disciplina.cargaHoraria,
+      0
+    );
     return modulo;
   }
 

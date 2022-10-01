@@ -20,9 +20,6 @@ function ModuloNaTabela(props: ModuloNaTabelaProps) {
 
   const disciplinas = Object.values(props.modulo.disciplinas);
   const docentes = useSelector((state: RootState) => state.docentes.filtrados);
-  const cargaHoraria = disciplinas.reduce((total, disciplina) => {
-    return total + disciplina.cargaHoraria;
-  }, 0);
 
   return (
     <div className="container">
@@ -37,7 +34,7 @@ function ModuloNaTabela(props: ModuloNaTabelaProps) {
         </div>
 
         <div className="celula azul coluna-carga-horaria borda">
-          {cargaHoraria}
+          {props.modulo.cargaHoraria}
         </div>
 
         <div className="linha">
