@@ -18,7 +18,7 @@ function DisciplinaNaTabela(props: DisciplinaNaTabelaProps) {
           {props.disciplina.nome}
         </div>
 
-        <div className="celula escuro borda coluna-carga-horaria">
+        <div className="celula azul-claro borda coluna-carga-horaria">
           {props.disciplina.cargaHoraria}
         </div>
 
