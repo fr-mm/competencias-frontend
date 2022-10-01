@@ -6,10 +6,11 @@ type ConteudoDeTabela = InterfaceConteudoDeTabela.Tabela;
 type FetchFunction = (url: string) => Promise<ConteudoDeTabela>;
 
 export default class BackendAPI {
+  private metodoFetchPadrao = BackendAPI.fetchDeTeste;
   private fetch: FetchFunction;
 
   constructor(readonly urlBase: string, metodoFetch?: FetchFunction) {
-    this.fetch = metodoFetch ? metodoFetch : this.fetchDeUrl;
+    this.fetch = metodoFetch ? metodoFetch : this.metodoFetchPadrao;
   }
 
   public async getConteudoDeTabela(): Promise<ConteudoDeTabela> {

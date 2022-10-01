@@ -13,6 +13,7 @@ function Tabela() {
 
   const getConteudo = async () => {
     if (!montado) {
+      setMontado(true);
       const api = BackendAPI.construirMockAPI();
       const conteudo = await api.getConteudoDeTabela();
 
@@ -20,8 +21,6 @@ function Tabela() {
       dispatch(reducers.cursos.atualizar(conteudo.cursos));
       dispatch(reducers.docentes.filtrarPorNome(""));
       dispatch(reducers.cursos.filtrarPorNome(""));
-
-      setMontado(true);
     }
   };
 
