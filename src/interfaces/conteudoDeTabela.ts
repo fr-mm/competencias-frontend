@@ -18,6 +18,7 @@ interface Tabela {
             [id: string]: {
               id: string;
               nome: string;
+              cargaHoraria: number;
               cursoId: string;
               moduloNumero: string;
               competencias: {

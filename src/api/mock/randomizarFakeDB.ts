@@ -130,6 +130,7 @@ class RandomizadorDeFakeDB {
     return {
       id: this.gerarId(),
       nome: nome,
+      cargaHoraria: this.gerarCargaHoraria(),
       cursoId: cursoId,
       moduloNumero: moduloNumero,
       competencias: this.construirCompetencias(docentes),
@@ -157,6 +158,12 @@ class RandomizadorDeFakeDB {
         (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
       ).toString(16)
     );
+  }
+
+  private gerarCargaHoraria(): number {
+    const min = 30;
+    const max = 120;
+    return Math.floor(Math.random() * max - min) + min;
   }
 
   private escolher(opcoes: any[]): any {
