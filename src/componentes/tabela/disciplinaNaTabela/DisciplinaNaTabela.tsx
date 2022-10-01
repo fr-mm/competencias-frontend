@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { RootState } from "../../../store";
+import CompetenciaNaTabela from "../competenciaNaTabela";
 
 interface DisciplinaNaTabelaProps {
-  disciplna: InterfaceConteudoDeTabela.Disciplina;
+  disciplina: InterfaceConteudoDeTabela.Disciplina;
 }
 
 function DisciplinaNaTabela(props: DisciplinaNaTabelaProps) {
@@ -13,12 +14,14 @@ function DisciplinaNaTabela(props: DisciplinaNaTabelaProps) {
   return (
     <div className="container">
       <div className="linha borda ">
-        <div className="primeira-coluna">{props.disciplna.nome}</div>
+        <div className="primeira-coluna">{props.disciplina.nome}</div>
         <div className="linha borda">
           {docentesFiltrados.map((docente) => (
-            <div key={props.disciplna.id + docente.id} className="celula borda">
-              {props.disciplna.competencias[docente.id]}
-            </div>
+            <CompetenciaNaTabela
+              key={props.disciplina.id + docente.id}
+              docente={docente}
+              disciplina={props.disciplina}
+            />
           ))}
         </div>
       </div>

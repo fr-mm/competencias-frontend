@@ -30,7 +30,7 @@ function ModuloNaTabela(props: ModuloNaTabelaProps) {
       </div>
       <div {...getCollapseProps()}>
         {disciplinas.map((disciplina) => (
-          <DisciplinaNaTabela key={disciplina.id} disciplna={disciplina} />
+          <DisciplinaNaTabela key={disciplina.id} disciplina={disciplina} />
         ))}
       </div>
     </div>

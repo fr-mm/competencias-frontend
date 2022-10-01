@@ -1,0 +1,19 @@
+.competencia {
+  font-weight: 500;
+}
+
+.nivel1 {
+  color: red;
+}
+
+.nivel2 {
+  color: yellow;
+}
+
+.nivel3 {
+  color: lightgreen;
+}
+
+.nivel4 {
+  color: white;
+}
