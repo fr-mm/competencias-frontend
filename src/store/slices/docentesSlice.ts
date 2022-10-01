@@ -16,9 +16,9 @@ const docentesSlice = createSlice({
 
     filtrarPorNome(state, action: PayloadAction<string>) {
       const todos = Object.values(state.todos);
-      const filtro = action.payload;
+      const filtro = action.payload.toLowerCase();
       state.filtrados = todos.filter((docente) =>
-        docente.nome.includes(filtro)
+        docente.nome.toLowerCase().includes(filtro)
       );
     },
   },
