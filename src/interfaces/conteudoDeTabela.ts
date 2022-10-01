@@ -1,46 +1,57 @@
-export interface Tabela {
-  docentes: Docentes;
-  cursos: Cursos;
+interface Tabela {
+  docentes: {
+    [id: string]: {
+      id: string;
+      nome: string;
+    };
+  };
+  cursos: {
+    [id: string]: {
+      id: string;
+      nome: string;
+      modulos: {
+        [id: string]: {
+          id: string;
+          numero: string;
+          cursoId: string;
+          disciplinas: {
+            [id: string]: {
+              id: string;
+              nome: string;
+              cursoId: string;
+              moduloNumero: string;
+              competencias: {
+                [idDocente: string]: number;
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }
 
-export interface Docentes {
-  [id: string]: Docente;
-}
+type Docentes = Tabela["docentes"];
+type Docente = Docentes["id"];
+type Cursos = Tabela["cursos"];
+type Curso = Cursos["id"];
+type Modulos = Curso["modulos"];
+type Modulo = Modulos["id"];
+type Disciplinas = Modulo["disciplinas"];
+type Disciplina = Disciplinas["id"];
+type Competencias = Disciplina["competencias"];
+type Competencia = Competencias["idDocente"];
 
-export interface Docente {
-  id: string;
-  nome: string;
-}
-
-export interface Cursos {
-  [id: string]: Curso;
-}
-
-export interface Curso {
-  id: string;
-  nome: string;
-  modulos: Modulos;
-}
-
-export interface Modulos {
-  [numero: number]: Modulo;
-}
-
-export interface Modulo {
-  id: string;
-  numero: string;
-  cursoId: string;
-  disciplinas: { [idDisciplina: string]: Disciplina };
-}
-
-export interface Disciplina {
-  id: string;
-  nome: string;
-  cursoId: string;
-  moduloNumero: string;
-  competencias: Competencias;
-}
-
-export interface Competencias {
-  [idDocente: string]: number;
-}
+export type {
+  Tabela,
+  Docentes,
+  Docente,
+  Cursos,
+  Curso,
+  Modulos,
+  Modulo,
+  Disciplinas,
+  Disciplina,
+  Competencias,
+  Competencia,
+};
