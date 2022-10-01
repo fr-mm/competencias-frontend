@@ -23,6 +23,11 @@
   width: 20rem;
 }
 
+.coluna-carga-horaria {
+  display: flexbox;
+  width: 3rem;
+}
+
 .contaianer {
   display: flex;
   flex-direction: column;

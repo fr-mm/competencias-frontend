@@ -12,6 +12,9 @@ function Cabecalho() {
       <div className="celula azul borda primeira-coluna">
         Unidades Curriculares
       </div>
+
+      <div className="celula azul borda coluna-carga-horaria">CH</div>
+
       {docentesFiltrados.map((docente) => (
         <div className="celula azul borda" key={docente.id}>
           {docente.nome}

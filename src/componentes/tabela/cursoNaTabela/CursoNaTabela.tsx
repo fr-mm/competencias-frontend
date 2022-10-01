@@ -20,6 +20,21 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
 
   const modulos = Object.values(props.curso.modulos);
   const docentes = useSelector((state: RootState) => state.docentes.filtrados);
+
+  const getCargaHorariaDeModulo = (
+    modulo: InterfaceConteudoDeTabela.Modulo
+  ): number => {
+    const disciplinas = Object.values(modulo.disciplinas);
+    return disciplinas.reduce(
+      (total, disciplina) => total + disciplina.cargaHoraria,
+      0
+    );
+  };
+  const cargaHoraria = modulos.reduce(
+    (total, modulo) => total + getCargaHorariaDeModulo(modulo),
+    0
+  );
+
   return (
     <div className="container">
       <div
@@ -33,6 +48,11 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
         <div className="celula azul escuro primeira-coluna borda">
           {props.curso.nome}
         </div>
+
+        <div className="celula azul escuro coluna-carga-horaria borda">
+          {cargaHoraria}
+        </div>
+
         <div className="linha">
           {docentes.map((docente) => (
             <div
