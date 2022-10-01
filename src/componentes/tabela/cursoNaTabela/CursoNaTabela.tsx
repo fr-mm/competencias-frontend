@@ -30,14 +30,14 @@ function CursoNaTabela(props: CursoNaTabelaProps) {
           },
         })}
       >
-        <div className="celula azul primeira-coluna borda">
+        <div className="celula azul escuro primeira-coluna borda">
           {props.curso.nome}
         </div>
         <div className="linha">
           {docentes.map((docente) => (
             <div
               key={docente.id + props.curso.id}
-              className="celula azul borda"
+              className="celula azul escuro borda"
             ></div>
           ))}
         </div>
