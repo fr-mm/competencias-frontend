@@ -1,3 +1,4 @@
 import EnumNivelDeCompetencia from "./enumNivelDeCompetencia";
+import EnumOrdem from "./enumOrdem";
 
-export { EnumNivelDeCompetencia };
+export { EnumNivelDeCompetencia, EnumOrdem };
