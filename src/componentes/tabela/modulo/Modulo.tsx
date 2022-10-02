@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { RootState } from "../../../store";
 import Disciplina from "../disciplina";
+import CargaHorariaPorDocente from "./CargaHorariaPorDocente";
 
 interface ModuloProps {
   modulo: InterfaceConteudoDeTabela.Modulo;
@@ -39,15 +40,15 @@ function Modulo(props: ModuloProps) {
 
         <div className="linha">
           {docentes.map((docente) => (
-            <div
-              key={docente.id + props.modulo.id}
-              className="celula azul borda"
-            >
-              {props.modulo.cargaHorariaPorDocente[docente.id]}
-            </div>
+            <CargaHorariaPorDocente
+              key={docente.id + props.modulo.id + "ch"}
+              docente={docente}
+              colecao={props.modulo}
+            />
           ))}
         </div>
       </div>
+
       <div {...getCollapseProps()}>
         {disciplinas.map((disciplina) => (
           <Disciplina key={disciplina.id} disciplina={disciplina} />
