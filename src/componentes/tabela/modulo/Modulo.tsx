@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { RootState } from "../../../store";
 import Disciplina from "../disciplina";
-import CargaHorariaPorDocente from "./CargaHorariaPorDocente";
+import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
 
 interface ModuloProps {
   modulo: InterfaceConteudoDeTabela.Modulo;
@@ -44,6 +44,7 @@ function Modulo(props: ModuloProps) {
               key={docente.id + props.modulo.id + "ch"}
               docente={docente}
               colecao={props.modulo}
+              extraClassNames=""
             />
           ))}
         </div>

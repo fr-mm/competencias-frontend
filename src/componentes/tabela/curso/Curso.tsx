@@ -3,6 +3,7 @@ import useCollapse from "react-collapsed";
 import { useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { RootState } from "../../../store";
+import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
 import Modulo from "../modulo";
 
 interface CursoProps {
@@ -41,12 +42,12 @@ function Curso(props: CursoProps) {
 
         <div className="linha">
           {docentes.map((docente) => (
-            <div
+            <CargaHorariaPorDocente
               key={docente.id + props.curso.id}
-              className="celula azul escuro borda"
-            >
-              {props.curso.cargaHorariaPorDocente[docente.id]}
-            </div>
+              docente={docente}
+              colecao={props.curso}
+              extraClassNames="escuro"
+            />
           ))}
         </div>
       </div>
