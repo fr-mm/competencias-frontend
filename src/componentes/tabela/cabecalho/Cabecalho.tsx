@@ -9,14 +9,14 @@ function Cabecalho() {
   );
   return (
     <div className="linha">
-      <div className="celula azul borda primeira-coluna">
+      <div className="celula azul borda topo primeira-coluna">
         Unidades Curriculares
       </div>
 
-      <div className="celula azul borda coluna-carga-horaria">CH</div>
+      <div className="celula azul borda topo coluna-carga-horaria ">CH</div>
 
       {docentesFiltrados.map((docente) => (
-        <div className="celula azul borda" key={docente.id}>
+        <div className="celula azul borda topo" key={docente.id}>
           {docente.nome}
         </div>
       ))}

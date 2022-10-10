@@ -5,6 +5,7 @@ import { RootState, reducers } from "../../store";
 import { BackendAPI } from "../../api";
 import Cabecalho from "./cabecalho";
 import Curso from "./curso";
+import RemocaoDocentes from "./remocaoDocentes";
 
 function Tabela() {
   const [montado, setMontado] = useState(false);
@@ -36,7 +37,8 @@ function Tabela() {
   try {
     return (
       <div className="tabela">
-        <Cabecalho key="cabecalhoDaTabela" />
+        <RemocaoDocentes />
+        <Cabecalho />
         <div>
           {Object.values(cursosFiltrados).map((curso) => (
             <Curso key={curso.id} curso={curso} visivel={vis} />

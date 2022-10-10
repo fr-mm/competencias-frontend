@@ -1,0 +1,16 @@
+.invisivel {
+  border-color: transparent;
+}
+
+.marcador {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.checkbox {
+  margin: 0;
+}
+
+.borda-direita {
+  border-right: 1px solid black;
+}

@@ -1,9 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { InterfaceConteudoDeTabela } from "../../interfaces";
 
+type IdDocente = string;
+
 const initialState = {
   todos: {} as InterfaceConteudoDeTabela.Docentes,
   filtrados: [] as InterfaceConteudoDeTabela.Docente[],
+  removendo: true,
+  idsARemover: [] as string[],
 };
 
 const docentesSlice = createSlice({
@@ -45,6 +49,21 @@ const docentesSlice = createSlice({
         competencias[a.id] < competencias[b.id] ? 1 : -1
       );
     },
+
+    setRemovendo(state, action: PayloadAction<boolean>) {
+      state.removendo = action.payload;
+    },
+
+    incluirParaRemocao(state, action: PayloadAction<IdDocente>) {
+      const id = action.payload;
+      if (!state.idsARemover.includes(id)) {
+        state.idsARemover.push(id);
+      }
+    },
+
+    limparListaDeRemocao(state) {
+      state.idsARemover = [];
+    },
   },
 });
 
@@ -54,5 +73,8 @@ export const {
   ordenarAlfabeticamente,
   ordenarPorCompetenciaCrescente,
   ordenarPorCompetenciaDecrescente,
+  setRemovendo,
+  incluirParaRemocao,
+  limparListaDeRemocao,
 } = docentesSlice.actions;
 export default docentesSlice.reducer;

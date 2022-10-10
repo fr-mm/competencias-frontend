@@ -1,4 +1,3 @@
-import "./BotaoExpandir.css";
 import { useDispatch, useSelector } from "react-redux";
 import { reducers, RootState } from "../../../store";
 
@@ -10,7 +9,7 @@ function BotaoExpandir() {
   );
 
   return (
-    <div className="botao-expandir">
+    <div className="botao botao-expandir">
       <button
         onClick={() => {
           dispatch(reducers.tabela.expandirContrair());
