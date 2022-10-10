@@ -21,8 +21,38 @@ const docentesSlice = createSlice({
         docente.nome.toLowerCase().includes(filtro)
       );
     },
+
+    ordenarAlfabeticamente(state) {
+      state.filtrados.sort((a, b) => (a.nome > b.nome ? 1 : -1));
+    },
+
+    ordenarPorCompetenciaCrescente(
+      state,
+      action: PayloadAction<InterfaceConteudoDeTabela.Disciplina>
+    ) {
+      const competencias = action.payload.competencias;
+      state.filtrados.sort((a, b) =>
+        competencias[a.id] > competencias[b.id] ? 1 : -1
+      );
+    },
+
+    ordenarPorCompetenciaDecrescente(
+      state,
+      action: PayloadAction<InterfaceConteudoDeTabela.Disciplina>
+    ) {
+      const competencias = action.payload.competencias;
+      state.filtrados.sort((a, b) =>
+        competencias[a.id] < competencias[b.id] ? 1 : -1
+      );
+    },
   },
 });
 
-export const { atualizar, filtrarPorNome } = docentesSlice.actions;
+export const {
+  atualizar,
+  filtrarPorNome,
+  ordenarAlfabeticamente,
+  ordenarPorCompetenciaCrescente,
+  ordenarPorCompetenciaDecrescente,
+} = docentesSlice.actions;
 export default docentesSlice.reducer;

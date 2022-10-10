@@ -13,9 +13,9 @@ function BotoesOrdenadores(props: BotoesOrdenadoresProps) {
     if (ordenacao.idElemento === props.idElemento) {
       switch (ordenacao.ordem) {
         case Ordem.CRESCENTE:
-          return <div className="seta direita"></div>;
-        case Ordem.DECRESCENTE:
           return <div className="seta esquerda"></div>;
+        case Ordem.DECRESCENTE:
+          return <div className="seta direita"></div>;
         default:
           return;
       }

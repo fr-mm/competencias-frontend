@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
-import BotoesOrdenadores from "../botoesOrdenadores";
+import BotoesOrdenadores, { Ordem } from "../botoesOrdenadores";
 import Competencia from "../competencia";
 
 interface DisciplinaProps {
@@ -10,14 +10,36 @@ interface DisciplinaProps {
 
 function Disciplina(props: DisciplinaProps) {
   const dispatch = useDispatch();
-
-  function mudarOrdem() {
-    dispatch(reducers.ordenacao.ordenar(props.disciplina.id));
-  }
-
+  const ordenacao = useSelector((state: RootState) => state.ordenacao);
   const docentesFiltrados = useSelector(
     (state: RootState) => state.docentes.filtrados
   );
+
+  function mudarOrdem() {
+    if (ordenacao.idElemento === props.disciplina.id) {
+      switch (ordenacao.proximaOrdem) {
+        case Ordem.DECRESCENTE:
+          dispatch(
+            reducers.docentes.ordenarPorCompetenciaDecrescente(props.disciplina)
+          );
+          break;
+        case Ordem.CRESCENTE:
+          dispatch(
+            reducers.docentes.ordenarPorCompetenciaCrescente(props.disciplina)
+          );
+          break;
+        case Ordem.NENHUMA:
+          dispatch(reducers.docentes.ordenarAlfabeticamente());
+      }
+      dispatch(reducers.ordenacao.alternarOrdem());
+    } else {
+      dispatch(
+        reducers.docentes.ordenarPorCompetenciaDecrescente(props.disciplina)
+      );
+      dispatch(reducers.ordenacao.mudarElemento(props.disciplina.id));
+    }
+  }
+
   return (
     <div className="container">
       <div className="linha">
