@@ -1,3 +1,4 @@
+import BotaoDocentes from "./botaoDocentes/BotaoDocentes";
 import { BotaoExpandir } from "./botaoExpandir";
 import BotaoFiltrar from "./botaoFiltrar";
 import Filtros from "./filtros";
@@ -9,6 +10,7 @@ function NavBar() {
       <div className="nav-bar azul">
         <BotaoExpandir />
         <BotaoFiltrar />
+        <BotaoDocentes />
       </div>
       <Filtros />
     </div>
