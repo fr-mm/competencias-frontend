@@ -3,6 +3,7 @@ import cursos from "./slices/cursosSlice";
 import docentes from "./slices/docentesSlice";
 import tabela from "./slices/tabelaSlice";
 import ordenacao from "./slices/ordenacaoSlice";
+import popUps from "./slices/popUsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     cursos,
     tabela,
     ordenacao,
+    popUps,
   },
 });
 

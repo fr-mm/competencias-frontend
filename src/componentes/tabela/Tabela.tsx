@@ -1,27 +1,27 @@
 import "./Tabela.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, reducers } from "../../store";
-import { BackendAPI } from "../../api";
+import api from "../../api";
 import Cabecalho from "./cabecalho";
 import Curso from "./curso";
 import RemocaoDocentes from "./remocaoDocentes";
 
 function Tabela() {
-  const [montado, setMontado] = useState(false);
+  const atualizada = useSelector((state: RootState) => state.tabela.atualizada);
 
   const dispatch = useDispatch();
 
   const getConteudo = async () => {
-    if (!montado) {
-      setMontado(true);
-      const api = BackendAPI.construirMockAPI();
+    if (!atualizada) {
       const conteudo = await api.getConteudoDeTabela();
 
       dispatch(reducers.docentes.atualizar(conteudo.docentes));
-      dispatch(reducers.cursos.atualizar(conteudo.cursos));
       dispatch(reducers.docentes.filtrarPorNome(""));
+      dispatch(reducers.docentes.ordenarAlfabeticamente());
+      dispatch(reducers.cursos.atualizar(conteudo.cursos));
       dispatch(reducers.cursos.filtrarPorNome(""));
+      dispatch(reducers.tabela.setAtualizada(true));
     }
   };
 
@@ -32,7 +32,7 @@ function Tabela() {
   const cursosFiltrados = useSelector(
     (state: RootState) => state.cursos.filtrados
   );
-  const vis = useSelector((state: RootState) => state.tabela.expandida);
+  const visivel = useSelector((state: RootState) => state.tabela.expandida);
 
   try {
     return (
@@ -41,7 +41,7 @@ function Tabela() {
         <Cabecalho />
         <div>
           {Object.values(cursosFiltrados).map((curso) => (
-            <Curso key={curso.id} curso={curso} visivel={vis} />
+            <Curso key={curso.id} curso={curso} visivel={visivel} />
           ))}
         </div>
       </div>

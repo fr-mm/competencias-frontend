@@ -1,11 +1,11 @@
-import { InterfaceConteudoDeTabela } from "../interfaces";
+import { APIInterface, InterfaceConteudoDeTabela } from "../interfaces";
 import db from "./mock/fakeDB.json";
 
 type ConteudoDeTabela = InterfaceConteudoDeTabela.Tabela;
 
 type FetchFunction = (url: string) => Promise<ConteudoDeTabela>;
 
-export default class BackendAPI {
+export default class BackendAPI implements APIInterface {
   private metodoFetchPadrao = BackendAPI.fetchDeTeste;
   private fetch: FetchFunction;
 
@@ -15,6 +15,10 @@ export default class BackendAPI {
 
   public async getConteudoDeTabela(): Promise<ConteudoDeTabela> {
     return await this.fetch("tabela");
+  }
+
+  public async removerDocentes(ids: string[]): Promise<void> {
+    return new Promise(() => {});
   }
 
   static construirMockAPI(): BackendAPI {

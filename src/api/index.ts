@@ -1,3 +1,5 @@
-import BackendAPI from "./backend-api";
+import MockAPI from "./mock/mockAPI";
 
-export { BackendAPI };
+const api = new MockAPI();
+
+export default api;

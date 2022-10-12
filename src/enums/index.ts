@@ -1,4 +1,5 @@
 import EnumNivelDeCompetencia from "./enumNivelDeCompetencia";
 import EnumOrdem from "./enumOrdem";
+import EnumPopUpNomes from "./enumPopUpNomes";
 
-export { EnumNivelDeCompetencia, EnumOrdem };
+export { EnumNivelDeCompetencia, EnumOrdem, EnumPopUpNomes };

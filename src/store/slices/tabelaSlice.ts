@@ -1,6 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = { expandida: false };
+const initialState = {
+  expandida: false,
+  atualizada: false,
+};
 
 const tabelaSlice = createSlice({
   name: "tabelaExpandida",
@@ -9,8 +12,12 @@ const tabelaSlice = createSlice({
     expandirContrair(state) {
       state.expandida = !state.expandida;
     },
+
+    setAtualizada(state, action: PayloadAction<boolean>) {
+      state.atualizada = action.payload;
+    },
   },
 });
 
-export const { expandirContrair } = tabelaSlice.actions;
+export const { expandirContrair, setAtualizada } = tabelaSlice.actions;
 export default tabelaSlice.reducer;

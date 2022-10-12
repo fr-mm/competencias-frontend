@@ -12,14 +12,16 @@ function RemocaoDocentes() {
   function getMarcadores() {
     if (removendo) {
       return docentesFiltrados.map((docente) => (
-        <Marcador key={`marcador${docente.id}`} />
+        <Marcador docenteId={docente.id} key={`marcador${docente.id}`} />
       ));
     }
   }
 
   function getClassesCargaHoraria(): string {
     let classes = "celula borda coluna-carga-horaria invisivel ";
-    classes += removendo ? "borda-direita " : "";
+    if (removendo && docentesFiltrados.length > 0) {
+      classes += removendo ? "borda-direita " : "";
+    }
     return classes;
   }
 

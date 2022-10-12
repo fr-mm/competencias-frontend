@@ -6,7 +6,7 @@ type IdDocente = string;
 const initialState = {
   todos: {} as InterfaceConteudoDeTabela.Docentes,
   filtrados: [] as InterfaceConteudoDeTabela.Docente[],
-  removendo: true,
+  removendo: false,
   idsARemover: [] as string[],
 };
 
@@ -61,6 +61,14 @@ const docentesSlice = createSlice({
       }
     },
 
+    excluirParaRemocao(state, action: PayloadAction<IdDocente>) {
+      const id = action.payload;
+      if (state.idsARemover.includes(id)) {
+        const index = state.idsARemover.indexOf(id);
+        state.idsARemover.splice(index);
+      }
+    },
+
     limparListaDeRemocao(state) {
       state.idsARemover = [];
     },
@@ -75,6 +83,7 @@ export const {
   ordenarPorCompetenciaDecrescente,
   setRemovendo,
   incluirParaRemocao,
+  excluirParaRemocao,
   limparListaDeRemocao,
 } = docentesSlice.actions;
 export default docentesSlice.reducer;
