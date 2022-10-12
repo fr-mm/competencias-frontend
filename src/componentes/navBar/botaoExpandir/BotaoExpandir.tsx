@@ -1,3 +1,4 @@
+import "./BotaoExpandir.css";
 import { useDispatch, useSelector } from "react-redux";
 import { reducers, RootState } from "../../../store";
 
@@ -9,14 +10,13 @@ function BotaoExpandir() {
   );
 
   return (
-    <div className="botao botao-expandir">
-      <button
-        onClick={() => {
-          dispatch(reducers.tabela.expandirContrair());
-        }}
-      >
-        {tabelaExpandida ? "esconder tabela" : "expandir tabela"}
-      </button>
+    <div
+      className="nav-bar-item botao-expandir azul"
+      onClick={() => {
+        dispatch(reducers.tabela.expandirContrair());
+      }}
+    >
+      <div>{tabelaExpandida ? "esconder" : "mostrar"}</div>
     </div>
   );
 }

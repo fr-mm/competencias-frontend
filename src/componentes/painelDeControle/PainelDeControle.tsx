@@ -1,5 +1,4 @@
 import "./PainelDeControle.css";
-import { BotaoExpandir } from "./botaoExpandir";
 import { FiltroDocentes } from "./filtroDocentes";
 import FiltroCursos from "./filtroCursos";
 import BotaoRemoverDocentes from "./botaoRemoverDocentes";
@@ -14,7 +13,6 @@ function PainelDeControle() {
         <div className="separador"></div>
 
         <BotaoRemoverDocentes />
-        <BotaoExpandir />
       </div>
     </div>
   );

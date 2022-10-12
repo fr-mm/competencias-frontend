@@ -1,5 +1,39 @@
 .app {
-  display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 50rem;
+}
+
+.margem {
+  margin: 1rem;
+}
+
+.espacador {
+  height: 4rem;
+}
+
+.azul {
+  background-color: #3a589a;
+  color: white;
+  font-weight: 600;
+}
+
+.azul-claro {
+  background-color: #e0e4f4;
+}
+
+.azul.escuro {
+  background-color: #2e467b;
+}
+
+.verde {
+  background-color: #c0f4cc;
+}
+
+.amarelo {
+  background-color: #fff49c;
+}
+
+.vermelho {
+  background-color: #ffbccc;
 }

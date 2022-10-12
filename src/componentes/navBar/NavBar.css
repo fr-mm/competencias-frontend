@@ -1,0 +1,24 @@
+.nav-bar {
+  height: 4rem;
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid black;
+  box-shadow: 0 0 0.3rem 0 black;
+}
+
+.nav-bar-item {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem 0 1rem;
+  border-right: 1px solid black;
+  user-select: none;
+  font-size: 1.05rem;
+}
+
+.nav-bar-item:hover {
+  filter: contrast(130%);
+}
