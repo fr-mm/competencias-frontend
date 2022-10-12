@@ -28,13 +28,15 @@ function PopUpRemoverDocentes() {
 
   if (popUpsVisiveis.includes(EnumPopUpNomes.REMOVER_DOCENTES)) {
     return (
-      <div className="popUp">
-        <div className="titulo">Remover docentes selecionados?</div>
-        {nomes.map((nome) => (
-          <p>{nome}</p>
-        ))}
-        <button onClick={confirmar}>remover</button>
-        <button onClick={cancelar}>cancelar</button>
+      <div className="mascara">
+        <div className="popUp">
+          <div className="titulo">Remover docentes selecionados?</div>
+          {nomes.map((nome) => (
+            <p key={nome}>{nome}</p>
+          ))}
+          <button onClick={confirmar}>remover</button>
+          <button onClick={cancelar}>cancelar</button>
+        </div>
       </div>
     );
   } else {

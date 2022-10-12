@@ -7,7 +7,7 @@ interface CompetenciaProps {
 }
 
 const corDeNivel = {
-  1: "vermelho",
+  1: "rosa",
   2: "amarelo",
   3: "verde",
   4: "",

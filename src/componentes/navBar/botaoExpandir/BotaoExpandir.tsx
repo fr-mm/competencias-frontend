@@ -9,13 +9,17 @@ function BotaoExpandir() {
   );
 
   return (
-    <div
-      className="nav-bar-item botao-expandir azul"
-      onClick={() => {
-        dispatch(reducers.tabela.expandirContrair());
-      }}
-    >
-      <div>{tabelaExpandida ? "esconder" : "mostrar"}</div>
+    <div className="botao highlight">
+      <div
+        className="nav-bar-item botao-expandir azul"
+        onClick={() => {
+          dispatch(reducers.tabela.expandirContrair());
+        }}
+      >
+        <div className="botao-texto">
+          {tabelaExpandida ? "esconder" : "mostrar"}
+        </div>
+      </div>
     </div>
   );
 }

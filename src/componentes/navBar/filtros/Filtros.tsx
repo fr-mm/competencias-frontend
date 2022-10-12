@@ -9,7 +9,7 @@ function Filtros() {
 
   if (filtrando) {
     return (
-      <div className="filtros azul">
+      <div className="filtros azul escuro">
         <FiltroDocentes />
         <FiltroCursos />
       </div>

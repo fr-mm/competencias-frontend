@@ -17,8 +17,10 @@ function BotaoFiltrar() {
   }
 
   return (
-    <div className={getClasses()} onClick={onClick}>
-      filtrar
+    <div className="botao">
+      <div className={getClasses()} onClick={onClick}>
+        <div className="botao-texto">filtrar</div>
+      </div>
     </div>
   );
 }

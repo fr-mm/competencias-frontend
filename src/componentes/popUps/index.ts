@@ -1,4 +1,3 @@
-import PopUpRemoverDocentes from "./popUpRemoverDocentes";
-import "./popUps.css";
+import PopUps from "./PopUps";
 
-export { PopUpRemoverDocentes as PopUpRemomverDocentes };
+export default PopUps;

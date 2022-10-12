@@ -9,13 +9,27 @@
 }
 
 .espacador {
-  height: 6.2rem;
+  height: 7.5rem;
+}
+
+.flex {
+  display: flex;
 }
 
 .azul {
   background-color: #3a589a;
   color: white;
   font-weight: 600;
+}
+
+.botao {
+  display: flex;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.botao:hover {
+  filter: contrast(130%);
 }
 
 .azul-claro {
@@ -34,6 +48,10 @@
   background-color: #fff49c;
 }
 
-.vermelho {
+.rosa {
   background-color: #ffbccc;
+}
+
+.vermelho {
+  background-color: red;
 }

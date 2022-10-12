@@ -1,0 +1,24 @@
+.confirmacoes {
+  position: absolute;
+  top: 7.5rem;
+}
+
+.remover-docentes {
+  display: flex;
+  width: 100%;
+}
+
+.botao.confirmar {
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  border: 1px solid black;
+}
+
+.botao.confirmar:hover {
+  filter: brightness(90%);
+}
+
+.botao.cancelar {
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  border: 1px solid black;
+  margin-left: 1rem;
+}
