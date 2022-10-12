@@ -37,6 +37,8 @@ function BotaoRemoverDocentes() {
   function removerSelecionados(): void {
     if (idsARemover.length > 0) {
       dispatch(reducers.popUps.mostrar(EnumPopUpNomes.REMOVER_DOCENTES));
+    } else {
+      botaoCancelarOnClick();
     }
   }
 
