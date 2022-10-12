@@ -1,11 +1,17 @@
+.nav-bar-container {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  flex-direction: column;
+}
+
 .nav-bar {
   height: 4rem;
   display: flex;
-  position: fixed;
-  top: 0;
   width: 100%;
   border-bottom: 1px solid black;
-  box-shadow: 0 0 0.3rem 0 black;
 }
 
 .nav-bar-item {
@@ -17,8 +23,13 @@
   border-right: 1px solid black;
   user-select: none;
   font-size: 1.05rem;
+  width: 6rem;
 }
 
 .nav-bar-item:hover {
+  filter: contrast(130%);
+}
+
+.nav-bar-item.ativo {
   filter: contrast(130%);
 }

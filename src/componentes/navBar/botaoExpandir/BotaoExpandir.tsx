@@ -1,4 +1,3 @@
-import "./BotaoExpandir.css";
 import { useDispatch, useSelector } from "react-redux";
 import { reducers, RootState } from "../../../store";
 

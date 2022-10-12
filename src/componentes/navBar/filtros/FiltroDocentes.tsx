@@ -13,14 +13,16 @@ function FiltroDocentes() {
   }
 
   return (
-    <div className="filtro-docentes">
-      <label>
-        Filtrar docentes:
+    <div className="filtro">
+      <label htmlFor="filtrarDocentes">docentes</label>
+      <div className="filtro-docentes">
         <input
+          className="azul-claro"
+          id="filtrarDocentes"
           type="text"
           onChange={(evento) => onChange(evento.target.value)}
         />
-      </label>
+      </div>
     </div>
   );
 }

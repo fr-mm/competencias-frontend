@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = {
   expandida: false,
   atualizada: false,
+  filtrando: false,
 };
 
 const tabelaSlice = createSlice({
@@ -16,8 +17,13 @@ const tabelaSlice = createSlice({
     setAtualizada(state, action: PayloadAction<boolean>) {
       state.atualizada = action.payload;
     },
+
+    setFiltrando(state, action: PayloadAction<boolean>) {
+      state.filtrando = action.payload;
+    },
   },
 });
 
-export const { expandirContrair, setAtualizada } = tabelaSlice.actions;
+export const { expandirContrair, setAtualizada, setFiltrando } =
+  tabelaSlice.actions;
 export default tabelaSlice.reducer;
