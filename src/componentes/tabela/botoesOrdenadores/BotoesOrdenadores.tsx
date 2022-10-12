@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { EnumOrdem as Ordem } from "../../../enums";
+import { EnumOrdem } from "../../../enums";
 import { RootState } from "../../../store";
 import "./BotoesOrdenadores.css";
 
@@ -12,9 +12,9 @@ function BotoesOrdenadores(props: BotoesOrdenadoresProps) {
   const seta = () => {
     if (ordenacao.idElemento === props.idElemento) {
       switch (ordenacao.ordem) {
-        case Ordem.CRESCENTE:
+        case EnumOrdem.CRESCENTE:
           return <div className="seta esquerda"></div>;
-        case Ordem.DECRESCENTE:
+        case EnumOrdem.DECRESCENTE:
           return <div className="seta direita"></div>;
         default:
           return;
@@ -26,4 +26,3 @@ function BotoesOrdenadores(props: BotoesOrdenadoresProps) {
 }
 
 export default BotoesOrdenadores;
-export { Ordem };

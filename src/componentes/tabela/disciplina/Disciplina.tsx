@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
+import { EnumOrdem } from "../../../enums";
 import { InterfaceConteudoDeTabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
-import BotoesOrdenadores, { Ordem } from "../botoesOrdenadores";
+import BotoesOrdenadores from "../botoesOrdenadores";
 import Competencia from "../competencia";
 
 interface DisciplinaProps {
@@ -18,17 +19,17 @@ function Disciplina(props: DisciplinaProps) {
   function mudarOrdem() {
     if (ordenacao.idElemento === props.disciplina.id) {
       switch (ordenacao.proximaOrdem) {
-        case Ordem.DECRESCENTE:
+        case EnumOrdem.DECRESCENTE:
           dispatch(
             reducers.docentes.ordenarPorCompetenciaDecrescente(props.disciplina)
           );
           break;
-        case Ordem.CRESCENTE:
+        case EnumOrdem.CRESCENTE:
           dispatch(
             reducers.docentes.ordenarPorCompetenciaCrescente(props.disciplina)
           );
           break;
-        case Ordem.NENHUMA:
+        case EnumOrdem.NENHUMA:
           dispatch(reducers.docentes.ordenarAlfabeticamente());
       }
       dispatch(reducers.ordenacao.alternarOrdem());

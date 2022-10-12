@@ -1,20 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Ordem } from "../../componentes/tabela/botoesOrdenadores";
+import { EnumOrdem } from "../../enums";
 
 type IdElemento = string;
 
-const proximaOrdem = new Map<Ordem, Ordem>();
-proximaOrdem.set(Ordem.NENHUMA, Ordem.DECRESCENTE);
-proximaOrdem.set(Ordem.DECRESCENTE, Ordem.CRESCENTE);
-proximaOrdem.set(Ordem.CRESCENTE, Ordem.NENHUMA);
+const proximaOrdem = new Map<EnumOrdem, EnumOrdem>();
+proximaOrdem.set(EnumOrdem.NENHUMA, EnumOrdem.DECRESCENTE);
+proximaOrdem.set(EnumOrdem.DECRESCENTE, EnumOrdem.CRESCENTE);
+proximaOrdem.set(EnumOrdem.CRESCENTE, EnumOrdem.NENHUMA);
 
-function getProximaOrdem(ordem: Ordem): Ordem {
-  return proximaOrdem.get(ordem) as Ordem;
+function getProximaOrdem(ordem: EnumOrdem): EnumOrdem {
+  return proximaOrdem.get(ordem) as EnumOrdem;
 }
 
 const initialState = {
-  ordem: Ordem.NENHUMA,
-  proximaOrdem: getProximaOrdem(Ordem.NENHUMA),
+  ordem: EnumOrdem.NENHUMA,
+  proximaOrdem: getProximaOrdem(EnumOrdem.NENHUMA),
   idElemento: "",
 };
 
@@ -24,7 +24,7 @@ const ordenacaoSlice = createSlice({
   reducers: {
     mudarElemento(state, action: PayloadAction<IdElemento>) {
       state.idElemento = action.payload;
-      state.ordem = Ordem.DECRESCENTE;
+      state.ordem = EnumOrdem.DECRESCENTE;
       state.proximaOrdem = getProximaOrdem(state.ordem);
     },
 
