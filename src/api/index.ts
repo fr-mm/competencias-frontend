@@ -1,5 +1,5 @@
-import MockAPI from "./mock/mockAPI";
+import BackendAPI from "./backend-api";
 
-const api = new MockAPI();
+const api = BackendAPI.construirAPITeste();
 
 export default api;
