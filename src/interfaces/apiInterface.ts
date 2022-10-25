@@ -1,6 +1,6 @@
-import { InterfaceConteudoDeTabela } from "../interfaces";
+import { ITabela } from "../interfaces";
 
 export default interface APIInterface {
-  getConteudoDeTabela(): Promise<InterfaceConteudoDeTabela.Tabela>;
+  getConteudoDeTabela(): Promise<ITabela.Tabela>;
   removerDocentes(ids: string[]): Promise<void>;
 }

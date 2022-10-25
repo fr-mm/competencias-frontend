@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import useCollapse from "react-collapsed";
 import { useSelector } from "react-redux";
-import { InterfaceConteudoDeTabela } from "../../../interfaces";
+import { ITabela } from "../../../interfaces";
 import { RootState } from "../../../store";
 import Disciplina from "../disciplina";
 import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
 
 interface ModuloProps {
-  modulo: InterfaceConteudoDeTabela.Modulo;
+  modulo: ITabela.Modulo;
   visivel: boolean;
 }
 
 function Modulo(props: ModuloProps) {
   const [isExpanded, setExpanded] = useState(props.visivel);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+  const cargaHoraria = useSelector((state: RootState) => state.cargaHoraria);
 
   useEffect(() => {
     setExpanded(props.visivel);
@@ -35,24 +36,28 @@ function Modulo(props: ModuloProps) {
         </div>
 
         <div className="celula azul coluna-carga-horaria borda">
-          {props.modulo.cargaHoraria}
+          {cargaHoraria.modulos[props.modulo.id]}
         </div>
 
         <div className="linha">
-          {docentes.map((docente) => (
-            <CargaHorariaPorDocente
-              key={docente.id + props.modulo.id + "ch"}
-              docente={docente}
-              colecao={props.modulo}
-              extraClassNames=""
-            />
-          ))}
+          {docentes.map((docente) => {
+            const cargaDocente =
+              cargaHoraria.docentes[docente.id].modulos[props.modulo.id];
+            return (
+              <CargaHorariaPorDocente
+                key={docente.id + props.modulo.id + "ch"}
+                horas={cargaDocente.horas}
+                porcentagem={cargaDocente.porcentagem}
+                extraClassNames=""
+              />
+            );
+          })}
         </div>
       </div>
 
       <div {...getCollapseProps()}>
         {disciplinas.map((disciplina) => (
-          <Disciplina key={disciplina.id} disciplina={disciplina} />
+          <Disciplina key={disciplina} idDisciplina={disciplina} />
         ))}
       </div>
     </div>

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { InterfaceConteudoDeTabela } from "../../interfaces";
+import { ITabela } from "../../interfaces";
 
 type IdDocente = string;
 
 const initialState = {
-  todos: {} as InterfaceConteudoDeTabela.Docentes,
-  filtrados: [] as InterfaceConteudoDeTabela.Docente[],
+  todos: {} as ITabela.Docentes,
+  filtrados: [] as ITabela.Docente[],
   removendo: false,
   idsARemover: [] as string[],
 };
@@ -32,21 +32,25 @@ const docentesSlice = createSlice({
 
     ordenarPorCompetenciaCrescente(
       state,
-      action: PayloadAction<InterfaceConteudoDeTabela.Disciplina>
+      action: PayloadAction<ITabela.IdDisciplina>
     ) {
-      const competencias = action.payload.competencias;
-      state.filtrados.sort((a, b) =>
-        competencias[a.id] > competencias[b.id] ? 1 : -1
+      state.filtrados.sort((docente1, docente2) =>
+        docente1.competencias[action.payload] >
+        docente2.competencias[action.payload]
+          ? 1
+          : -1
       );
     },
 
     ordenarPorCompetenciaDecrescente(
       state,
-      action: PayloadAction<InterfaceConteudoDeTabela.Disciplina>
+      action: PayloadAction<ITabela.IdDisciplina>
     ) {
-      const competencias = action.payload.competencias;
-      state.filtrados.sort((a, b) =>
-        competencias[a.id] < competencias[b.id] ? 1 : -1
+      state.filtrados.sort((docente1, docente2) =>
+        docente1.competencias[action.payload] <
+        docente2.competencias[action.payload]
+          ? 1
+          : -1
       );
     },
 

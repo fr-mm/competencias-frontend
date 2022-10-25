@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { InterfaceConteudoDeTabela } from "../../interfaces";
+import { ITabela } from "../../interfaces";
 
 const initialState = {
-  todos: {} as InterfaceConteudoDeTabela.Cursos,
-  filtrados: [] as InterfaceConteudoDeTabela.Curso[],
+  todos: {} as ITabela.Cursos,
+  filtrados: [] as ITabela.Curso[],
 };
 
 const cursosSlice = createSlice({

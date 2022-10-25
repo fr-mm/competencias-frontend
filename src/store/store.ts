@@ -4,6 +4,8 @@ import docentes from "./slices/docentesSlice";
 import tabela from "./slices/tabelaSlice";
 import ordenacao from "./slices/ordenacaoSlice";
 import popUps from "./slices/popUsSlice";
+import cargaHoraria from "./slices/cargaHorariaSlice";
+import disciplinas from "./slices/disciplinaSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ export const store = configureStore({
     tabela,
     ordenacao,
     popUps,
+    cargaHoraria,
+    disciplinas,
   },
 });
 

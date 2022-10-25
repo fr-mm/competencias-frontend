@@ -1,5 +1,5 @@
-import * as InterfaceConteudoDeTabela from "../interfaces/conteudoDeTabela";
+import * as ITabela from "../interfaces/ITabela";
 import APIInterface from "./apiInterface";
 
-export { InterfaceConteudoDeTabela };
+export { ITabela };
 export type { APIInterface };

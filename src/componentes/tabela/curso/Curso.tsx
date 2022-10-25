@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import useCollapse from "react-collapsed";
 import { useSelector } from "react-redux";
-import { InterfaceConteudoDeTabela } from "../../../interfaces";
+import { ITabela } from "../../../interfaces";
 import { RootState } from "../../../store";
 import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
 import Modulo from "../modulo";
 
 interface CursoProps {
-  curso: InterfaceConteudoDeTabela.Curso;
+  curso: ITabela.Curso;
   visivel: boolean;
 }
 
 function Curso(props: CursoProps) {
   const [isExpanded, setExpanded] = useState(props.visivel);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+  const cargaHoraria = useSelector((state: RootState) => state.cargaHoraria);
 
   useEffect(() => {
     setExpanded(props.visivel);
@@ -37,18 +38,22 @@ function Curso(props: CursoProps) {
         </div>
 
         <div className="celula azul escuro coluna-carga-horaria borda">
-          {props.curso.cargaHoraria}
+          {cargaHoraria.cursos[props.curso.id]}
         </div>
 
         <div className="linha">
-          {docentes.map((docente) => (
-            <CargaHorariaPorDocente
-              key={docente.id + props.curso.id}
-              docente={docente}
-              colecao={props.curso}
-              extraClassNames="escuro"
-            />
-          ))}
+          {docentes.map((docente) => {
+            const cargaDocente =
+              cargaHoraria.docentes[docente.id].cursos[props.curso.id];
+            return (
+              <CargaHorariaPorDocente
+                key={docente.id + props.curso.id}
+                horas={cargaDocente.horas}
+                porcentagem={cargaDocente.porcentagem}
+                extraClassNames="escuro"
+              />
+            );
+          })}
         </div>
       </div>
       <div {...getCollapseProps()}>

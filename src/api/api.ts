@@ -1,9 +1,9 @@
-import { APIInterface, InterfaceConteudoDeTabela } from "../interfaces";
+import { APIInterface, ITabela } from "../interfaces";
 
 export default class API implements APIInterface {
   private url = "http://localhost:4000";
 
-  public async getConteudoDeTabela(): Promise<InterfaceConteudoDeTabela.Tabela> {
+  public async getConteudoDeTabela(): Promise<ITabela.Tabela> {
     return await this.get("tabela");
   }
 

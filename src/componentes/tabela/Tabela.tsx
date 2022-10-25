@@ -6,6 +6,8 @@ import api from "../../api";
 import Cabecalho from "./cabecalho";
 import Curso from "./curso";
 import RemocaoDocentes from "./remocaoDocentes";
+import { ITabela } from "../../interfaces";
+import { CargaHorariaState } from "../../store/slices/cargaHorariaSlice";
 
 function Tabela() {
   const atualizada = useSelector((state: RootState) => state.tabela.atualizada);
@@ -21,9 +23,56 @@ function Tabela() {
       dispatch(reducers.docentes.ordenarAlfabeticamente());
       dispatch(reducers.cursos.atualizar(conteudo.cursos));
       dispatch(reducers.cursos.filtrarPorNome(""));
+      dispatch(reducers.disciplinas.atualizar(conteudo.disciplinas));
+      atualizarCargasHorarias(conteudo);
+
       dispatch(reducers.tabela.setAtualizada(true));
     }
   };
+
+  function atualizarCargasHorarias(conteudo: ITabela.Tabela): void {
+    const cargas: CargaHorariaState = {
+      modulos: {},
+      cursos: {},
+      docentes: {},
+    };
+
+    for (let docente of Object.values(conteudo.docentes)) {
+      cargas.docentes[docente.id] = { cursos: {}, modulos: {} };
+      for (let curso of Object.values(conteudo.cursos)) {
+        let cargaCurso = 0;
+        let cargaDocenteCurso = 0;
+
+        for (let modulo of Object.values(curso.modulos)) {
+          let cargaModulo = 0;
+          let cargaDocenteModulo = 0;
+
+          for (let idDisciplina of modulo.disciplinas) {
+            const cargaDisciplina =
+              conteudo.disciplinas[idDisciplina].cargaHoraria;
+            cargaModulo += cargaDisciplina;
+            if (docente.competencias[idDisciplina] > 2) {
+              cargaDocenteModulo += cargaDisciplina;
+            }
+          }
+
+          cargas.modulos[modulo.id] = cargaModulo;
+          cargaCurso += cargaModulo;
+          cargas.docentes[docente.id].modulos[modulo.id] = {
+            horas: cargaDocenteModulo,
+            porcentagem: porcentagem(cargaDocenteModulo, cargaModulo),
+          };
+          cargaDocenteCurso += cargaDocenteModulo;
+        }
+        cargas.cursos[curso.id] = cargaCurso;
+        cargas.docentes[docente.id].cursos[curso.id] = {
+          horas: cargaDocenteCurso,
+          porcentagem: porcentagem(cargaDocenteCurso, cargaCurso),
+        };
+      }
+    }
+    dispatch(reducers.cargaHoraria.atualizar(cargas));
+  }
 
   useEffect(() => {
     getConteudo();
@@ -49,6 +98,10 @@ function Tabela() {
   } catch (e) {
     return <p>carregando...</p>;
   }
+}
+
+function porcentagem(menor: number, maior: number): number {
+  return (menor / maior) * 100;
 }
 
 export default Tabela;

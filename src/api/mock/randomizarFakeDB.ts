@@ -1,184 +1,117 @@
 import * as fs from "fs";
 import * as path from "path";
-import { InterfaceConteudoDeTabela as Interface } from "../../interfaces";
+import { ITabela } from "../../interfaces";
 
 class RandomizadorDeFakeDB {
-  readonly arquivo = "./fakeDB.json";
-  readonly quantidadeDocentes = 10;
-  readonly disciplinas = [];
-  readonly cursos = {
-    "Desenvolvimento de Sistemas": {
-      1: [
-        "Logica de Programacao",
-        "Banco de Dados",
-        "Desenvolvimento Mobile",
-        "TCC",
-      ],
-      2: ["Desenvolvimento de Sistemas I", "Disciplina II", "Disciplina III"],
-    },
-    "Seguranca do Trabalho": {
-      1: ["Disciplina IV", "Disciplina V", "Disciplina VI"],
-      2: ["Disciplina VII", "Disciplina VIII", "Disciplina IX"],
-    },
-  };
+  private readonly arquivo = "./fakeDB.json";
+  private readonly quantidadeDocentes = 10;
 
   public randomizarDB(): void {
-    const conteudo = JSON.stringify(this.construirConteudo());
+    const conteudo = JSON.stringify({ tabela: this.construirConteudo() });
     this.sobrescreverArquivo(conteudo);
     console.log("DB randomizado");
   }
 
-  private sobrescreverArquivo(conteudo: string) {
+  private sobrescreverArquivo(conteudo: string): void {
     const arquivo = path.join(__dirname, this.arquivo);
     fs.writeFileSync(arquivo, conteudo, "utf8");
   }
 
-  private construirConteudo(): object {
-    const docentes = this.construirDocentes();
-    return {
-      tabela: {
-        cursos: this.construirCursos(docentes),
-        docentes: docentes,
-      },
+  private construirConteudo(): ITabela.Tabela {
+    const disciplinas = this.construirDisciplinas();
+    const conteudo = {
+      disciplinas,
+      cursos: this.construirCursos(Object.values(disciplinas)),
+      docentes: this.construirDocentes(Object.values(disciplinas)),
     };
+    return conteudo;
   }
 
-  private construirDocentes(): Interface.Docentes {
-    const docentes: Interface.Docentes = {};
-    for (let i = 0; i < this.quantidadeDocentes; i++) {
-      const docente = this.construirDocente();
+  private construirDocentes(
+    disciplinas: ITabela.Disciplina[]
+  ): ITabela.Docentes {
+    const docentes: ITabela.Docentes = {};
+    for (let i = 0; i < this.quantidadeDocentes + 1; i++) {
+      const docente = this.construirDocente(`Docente ${i}`, disciplinas);
       docentes[docente.id] = docente;
     }
     return docentes;
   }
 
-  private construirDocente(): Interface.Docente {
+  private construirDocente(
+    nome: string,
+    disciplinas: ITabela.Disciplina[]
+  ): ITabela.Docente {
     return {
       id: this.gerarId(),
-      nome: this.gerarNome(),
+      nome,
+      competencias: this.construirCompetencias(disciplinas),
     };
   }
 
-  private construirCursos(docentes: Interface.Docentes): Interface.Cursos {
-    const cursos: Interface.Cursos = {};
-    for (let nomeCurso of Object.keys(this.cursos)) {
-      const curso = this.construirCurso(nomeCurso, docentes);
+  private construirCompetencias(disciplinas: ITabela.Disciplina[]) {
+    const competencias: ITabela.Competencias = {};
+    for (let disciplina of disciplinas) {
+      competencias[disciplina.id] = this.escolher([1, 2, 3, 4])[0];
+    }
+    return competencias;
+  }
+
+  private construirCursos(disciplinas: ITabela.Disciplina[]): ITabela.Cursos {
+    const cursos: ITabela.Cursos = {};
+    for (let i = 0; i < 2; i++) {
+      const curso = this.construirCurso(
+        `Curso ${i}`,
+        this.escolher(disciplinas, 8)
+      );
       cursos[curso.id] = curso;
     }
     return cursos;
   }
 
-  private construirCurso(nome: string, docentes: Interface.Docentes) {
-    const id = this.gerarId();
-    const curso: Interface.Curso = {
-      id: id,
-      nome: nome,
-      cargaHoraria: 0,
-      cargaHorariaPorDocente: {},
-      modulos: this.construirModulos(nome, id, docentes),
+  private construirCurso(
+    nome: string,
+    disciplinas: ITabela.Disciplina[]
+  ): ITabela.Curso {
+    const disciplinasModulo1 = disciplinas.slice(0, 4);
+    const disciplinasModulo2 = disciplinas.slice(5, 8);
+    return {
+      id: this.gerarId(),
+      nome,
+      modulos: {
+        1: this.construirModulo(1, disciplinasModulo1),
+        2: this.construirModulo(2, disciplinasModulo2),
+      },
     };
-    curso.cargaHoraria = Object.values(curso.modulos).reduce(
-      (total, modulo) => total + modulo.cargaHoraria,
-      0
-    );
-    for (let docente of Object.values(docentes)) {
-      curso.cargaHorariaPorDocente[docente.id] = Object.values(
-        curso.modulos
-      ).reduce((total, modulo) => {
-        const cargaHorariaModulo = modulo.cargaHorariaPorDocente[docente.id];
-        return total + cargaHorariaModulo;
-      }, 0);
-    }
-    return curso;
-  }
-
-  private construirModulos(
-    nomeCurso: string,
-    cursoId: string,
-    docentes: Interface.Docentes
-  ): Interface.Modulos {
-    const curso = this.cursos[nomeCurso as keyof object];
-    const numerosDosModulos = Object.keys(curso);
-    const modulos: Interface.Modulos = {};
-    for (let numero of numerosDosModulos) {
-      const nomesDisciplinas = curso[numero];
-      modulos[numero as keyof object] = this.construirModulo(
-        numero,
-        cursoId,
-        nomesDisciplinas,
-        docentes
-      );
-    }
-    return modulos;
   }
 
   private construirModulo(
-    numero: string,
-    cursoId: string,
-    nomesDisciplinas: string[],
-    docentes: Interface.Docentes
-  ): Interface.Modulo {
-    const modulo: Interface.Modulo = {
-      id: this.gerarId(),
-      numero: numero,
-      cargaHoraria: 0,
-      cargaHorariaPorDocente: {},
-      cursoId: cursoId,
-      disciplinas: {},
-    };
-    for (let nome of nomesDisciplinas) {
-      const disciplina = this.construirDisciplina(
-        nome,
-        cursoId,
-        modulo.numero,
-        docentes
-      );
-      modulo.disciplinas[disciplina.id] = disciplina;
-    }
-    modulo.cargaHoraria = Object.values(modulo.disciplinas).reduce(
-      (total, disciplina) => total + disciplina.cargaHoraria,
-      0
-    );
-    for (let docente of Object.values(docentes)) {
-      modulo.cargaHorariaPorDocente[docente.id] = Object.values(
-        modulo.disciplinas
-      ).reduce((total, disciplina) => {
-        const competencia = disciplina.competencias[docente.id];
-        return total + (competencia >= 3 ? disciplina.cargaHoraria : 0);
-      }, 0);
-    }
-
-    return modulo;
-  }
-
-  private construirDisciplina(
-    nome: string,
-    cursoId: string,
-    moduloNumero: string,
-    docentes: Interface.Docentes
-  ): Interface.Disciplina {
+    numero: number,
+    disciplinas: ITabela.Disciplina[]
+  ): ITabela.Modulo {
     return {
       id: this.gerarId(),
-      nome: nome,
-      cargaHoraria: this.gerarCargaHoraria(),
-      cursoId: cursoId,
-      moduloNumero: moduloNumero,
-      competencias: this.construirCompetencias(docentes),
+      numero: numero.toString(),
+      disciplinas: disciplinas.map((disciplina) => disciplina.id),
     };
   }
 
-  private construirCompetencias(
-    docentes: Interface.Docentes
-  ): Interface.Competencias {
-    const competencias: Interface.Competencias = {};
-    for (let docente of Object.keys(docentes)) {
-      competencias[docente] = this.escolher([1, 2, 3, 4]);
+  private construirDisciplinas(): ITabela.Disciplinas {
+    const disciplinas: ITabela.Disciplinas = {};
+
+    for (let i = 1; i <= 16; i++) {
+      const disciplina = this.construirDisciplina(`Disciplina ${i}`);
+      disciplinas[disciplina.id] = disciplina;
     }
-    return competencias;
+    return disciplinas;
   }
 
-  private gerarNome(): string {
-    return Math.random().toString(36).slice(2, 7);
+  private construirDisciplina(nome: string): ITabela.Disciplina {
+    return {
+      id: this.gerarId(),
+      nome,
+      cargaHoraria: this.gerarCargaHoraria(),
+    };
   }
 
   private gerarId(): string {
@@ -196,8 +129,20 @@ class RandomizadorDeFakeDB {
     return Math.floor(Math.random() * max - min) + min;
   }
 
-  private escolher(opcoes: any[]): any {
-    return opcoes[Math.floor(Math.random() * opcoes.length)];
+  private escolher(conjunto: any[], quantidade: number = 1): any[] {
+    const conjuntoCopy = [...conjunto];
+    for (var i = conjuntoCopy.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = conjuntoCopy[i];
+      conjuntoCopy[i] = conjuntoCopy[j];
+      conjuntoCopy[j] = temp;
+    }
+
+    const resultado = [];
+    for (let i = 0; i < quantidade + 1; i++) {
+      resultado.push(conjuntoCopy.pop());
+    }
+    return resultado;
   }
 }
 

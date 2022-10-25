@@ -8,11 +8,11 @@ describe("BackendAPI", () => {
       it("ENTAO retorna conteudo esperado", async () => {
         const api = BackendAPI.construirAPITeste();
 
-        const docentes = await api.getConteudoDeTabela();
+        const conteudo = await api.getConteudoDeTabela();
 
-        const conteudoResultante = docentes;
+        const conteudoResultante = conteudo;
 
-        const conteudoEsperado = db["tabela"]["docentes"];
+        const conteudoEsperado = db["tabela"];
         expect(conteudoResultante).toBe(conteudoEsperado);
       });
     });

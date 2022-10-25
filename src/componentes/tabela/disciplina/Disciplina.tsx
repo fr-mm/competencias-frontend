@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { EnumOrdem } from "../../../enums";
-import { InterfaceConteudoDeTabela } from "../../../interfaces";
+import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
 import BotoesOrdenadores from "../botoesOrdenadores";
 import Competencia from "../competencia";
 
 interface DisciplinaProps {
-  disciplina: InterfaceConteudoDeTabela.Disciplina;
+  idDisciplina: ITabela.IdDisciplina;
 }
 
 function Disciplina(props: DisciplinaProps) {
@@ -15,18 +15,21 @@ function Disciplina(props: DisciplinaProps) {
   const docentesFiltrados = useSelector(
     (state: RootState) => state.docentes.filtrados
   );
+  const disciplina = useSelector(
+    (state: RootState) => state.disciplinas.todas[props.idDisciplina]
+  );
 
   function mudarOrdem() {
-    if (ordenacao.idElemento === props.disciplina.id) {
+    if (ordenacao.idElemento === disciplina.id) {
       switch (ordenacao.proximaOrdem) {
         case EnumOrdem.DECRESCENTE:
           dispatch(
-            reducers.docentes.ordenarPorCompetenciaDecrescente(props.disciplina)
+            reducers.docentes.ordenarPorCompetenciaDecrescente(disciplina.id)
           );
           break;
         case EnumOrdem.CRESCENTE:
           dispatch(
-            reducers.docentes.ordenarPorCompetenciaCrescente(props.disciplina)
+            reducers.docentes.ordenarPorCompetenciaCrescente(disciplina.id)
           );
           break;
         case EnumOrdem.NENHUMA:
@@ -35,9 +38,9 @@ function Disciplina(props: DisciplinaProps) {
       dispatch(reducers.ordenacao.alternarOrdem());
     } else {
       dispatch(
-        reducers.docentes.ordenarPorCompetenciaDecrescente(props.disciplina)
+        reducers.docentes.ordenarPorCompetenciaDecrescente(disciplina.id)
       );
-      dispatch(reducers.ordenacao.mudarElemento(props.disciplina.id));
+      dispatch(reducers.ordenacao.mudarElemento(disciplina.id));
     }
   }
 
@@ -48,20 +51,20 @@ function Disciplina(props: DisciplinaProps) {
           className="celula primeira-coluna texto-esquerda borda"
           onClick={mudarOrdem}
         >
-          {props.disciplina.nome}
-          <BotoesOrdenadores idElemento={props.disciplina.id} />
+          {disciplina.nome}
+          <BotoesOrdenadores idElemento={disciplina.id} />
         </div>
 
         <div className="celula azul-claro borda coluna-carga-horaria">
-          {props.disciplina.cargaHoraria}
+          {disciplina.cargaHoraria}
         </div>
 
         <div className="linha">
           {docentesFiltrados.map((docente) => (
             <Competencia
-              key={props.disciplina.id + docente.id}
+              key={disciplina.id + docente.id}
               docente={docente}
-              disciplina={props.disciplina}
+              disciplina={disciplina}
             />
           ))}
         </div>

@@ -1,9 +1,7 @@
-import { APIInterface, InterfaceConteudoDeTabela } from "../interfaces";
+import { APIInterface, ITabela } from "../interfaces";
 import db from "./mock/fakeDB.json";
 
-type ConteudoDeTabela = InterfaceConteudoDeTabela.Tabela;
-
-type FetchFunction = (url: string) => Promise<ConteudoDeTabela>;
+type FetchFunction = (url: string) => Promise<ITabela.Tabela>;
 
 export default class BackendAPI implements APIInterface {
   private metodoFetchPadrao = BackendAPI.fetchDeTeste;
@@ -13,8 +11,8 @@ export default class BackendAPI implements APIInterface {
     this.fetch = metodoFetch ? metodoFetch : this.metodoFetchPadrao;
   }
 
-  public async getConteudoDeTabela(): Promise<ConteudoDeTabela> {
-    return await this.fetch("tabela");
+  public async getConteudoDeTabela(): Promise<ITabela.Tabela> {
+    return this.fetch("tabela");
   }
 
   public async removerDocentes(ids: string[]): Promise<void> {
@@ -31,11 +29,11 @@ export default class BackendAPI implements APIInterface {
   static construirAPITeste(): BackendAPI {
     return new BackendAPI("", this.fetchDeTeste);
   }
-  private static async fetchDeTeste(url: string): Promise<ConteudoDeTabela> {
+  private static async fetchDeTeste(url: string): Promise<ITabela.Tabela> {
     return db[url as keyof object];
   }
 
-  private async fetchDeUrl(url: string): Promise<ConteudoDeTabela> {
+  private async fetchDeUrl(url: string): Promise<ITabela.Tabela> {
     const response = await fetch(`${this.urlBase}/${url}`);
     return await response.json();
   }

@@ -1,11 +1,10 @@
-import { InterfaceConteudoDeTabela } from "../../../interfaces";
+import { ITabela } from "../../../interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 
 function Cabecalho() {
   const docentesFiltrados = useSelector(
-    (state: RootState): InterfaceConteudoDeTabela.Docente[] =>
-      state.docentes.filtrados
+    (state: RootState): ITabela.Docente[] => state.docentes.filtrados
   );
   return (
     <div className="linha">
