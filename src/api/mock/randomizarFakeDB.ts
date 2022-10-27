@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { ITabela } from "../../interfaces";
+import { TiposDeContratacao } from "../../interfaces/ITabela";
 
 class RandomizadorDeFakeDB {
   private readonly arquivo = "./fakeDB.json";
@@ -19,20 +20,35 @@ class RandomizadorDeFakeDB {
 
   private construirConteudo(): ITabela.Tabela {
     const disciplinas = this.construirDisciplinas();
+    const tiposDeContratacao = this.construirTiposDeContratacao();
+    const unidadesSenai = this.construirUnidadesSenai();
     const conteudo = {
       disciplinas,
       cursos: this.construirCursos(Object.values(disciplinas)),
-      docentes: this.construirDocentes(Object.values(disciplinas)),
+      docentes: this.construirDocentes(
+        disciplinas,
+        tiposDeContratacao,
+        unidadesSenai
+      ),
+      tiposDeContratacao,
+      unidadesSenai,
     };
     return conteudo;
   }
 
   private construirDocentes(
-    disciplinas: ITabela.Disciplina[]
+    disciplinas: ITabela.Disciplinas,
+    tiposDeContratacao: ITabela.TiposDeContratacao,
+    unidadesSenai: ITabela.UnidadesSenai
   ): ITabela.Docentes {
     const docentes: ITabela.Docentes = {};
     for (let i = 0; i < this.quantidadeDocentes + 1; i++) {
-      const docente = this.construirDocente(`Docente ${i}`, disciplinas);
+      const docente = this.construirDocente(
+        `Docente ${i}`,
+        disciplinas,
+        tiposDeContratacao,
+        unidadesSenai
+      );
       docentes[docente.id] = docente;
     }
     return docentes;
@@ -40,12 +56,21 @@ class RandomizadorDeFakeDB {
 
   private construirDocente(
     nome: string,
-    disciplinas: ITabela.Disciplina[]
+    disciplinas: ITabela.Disciplinas,
+    tiposDeContratacao: ITabela.TiposDeContratacao,
+    unidadesSenai: ITabela.UnidadesSenai
   ): ITabela.Docente {
+    const tipoDeContratacao = this.escolher(
+      Object.values(tiposDeContratacao)
+    )[0];
     return {
       id: this.gerarId(),
       nome,
-      competencias: this.construirCompetencias(disciplinas),
+      email: `${nome}@email.com`,
+      telefones: ["(71)99999-9999"],
+      unidadeSenai: Object.values(unidadesSenai)[0].id,
+      tipoDeContratacao: tipoDeContratacao.id,
+      competencias: this.construirCompetencias(Object.values(disciplinas)),
     };
   }
 
@@ -112,6 +137,24 @@ class RandomizadorDeFakeDB {
       nome,
       cargaHoraria: this.gerarCargaHoraria(),
     };
+  }
+
+  private construirTiposDeContratacao(): ITabela.TiposDeContratacao {
+    const nomes = ["horista", "mensalista", "prestador de serviço"];
+    const tiposDeContratacao: TiposDeContratacao = {};
+    for (let nome of nomes) {
+      const id = this.gerarId();
+      tiposDeContratacao[id] = { id, nome };
+    }
+    return tiposDeContratacao;
+  }
+
+  private construirUnidadesSenai(): ITabela.UnidadesSenai {
+    const id = this.gerarId();
+    const unidade = { id, nome: "Lauro de Freitas" };
+    const unidadesSenai: ITabela.UnidadesSenai = {};
+    unidadesSenai[id] = unidade;
+    return unidadesSenai;
   }
 
   private gerarId(): string {

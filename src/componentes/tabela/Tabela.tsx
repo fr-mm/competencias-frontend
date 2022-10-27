@@ -24,6 +24,10 @@ function Tabela() {
       dispatch(reducers.cursos.atualizar(conteudo.cursos));
       dispatch(reducers.cursos.filtrarPorNome(""));
       dispatch(reducers.disciplinas.atualizar(conteudo.disciplinas));
+      dispatch(
+        reducers.tiposDeContratacao.atualizar(conteudo.tiposDeContratacao)
+      );
+      dispatch(reducers.unidadesSenaiSlice.atualizar(conteudo.unidadesSenai));
       atualizarCargasHorarias(conteudo);
 
       dispatch(reducers.tabela.setAtualizada(true));

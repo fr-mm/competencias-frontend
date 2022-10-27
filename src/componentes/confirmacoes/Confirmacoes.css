@@ -1,6 +1,7 @@
 .confirmacoes {
   position: absolute;
   top: 7.5rem;
+  z-index: 0;
 }
 
 .remover-docentes {

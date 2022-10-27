@@ -1,3 +1,11 @@
+label {
+  outline: none;
+}
+
+select {
+  outline: none;
+}
+
 .app {
   flex-direction: column;
   align-items: flex-start;

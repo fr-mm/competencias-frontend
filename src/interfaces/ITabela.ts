@@ -2,12 +2,30 @@ type IdDocente = string;
 type IdCurso = string;
 type IdModulo = string;
 type IdDisciplina = string;
+type IdTipoDeContratacao = string;
+type IdUnidadeSenai = string;
 
 interface Tabela {
+  tiposDeContratacao: {
+    [id: IdTipoDeContratacao]: {
+      id: IdTipoDeContratacao;
+      nome: string;
+    };
+  };
+  unidadesSenai: {
+    [id: IdUnidadeSenai]: {
+      id: IdUnidadeSenai;
+      nome: string;
+    };
+  };
   docentes: {
     [id: IdDocente]: {
       id: IdDocente;
       nome: string;
+      email: string;
+      telefones: string[];
+      tipoDeContratacao: IdTipoDeContratacao;
+      unidadeSenai: IdUnidadeSenai;
       competencias: {
         [idDisciplina: IdDisciplina]: number;
       };
@@ -44,7 +62,10 @@ type Modulo = Modulos["id"];
 type Disciplinas = Tabela["disciplinas"];
 type Disciplina = Disciplinas["id"];
 type Competencias = Docente["competencias"];
-type Competencia = Competencias["idDocente"];
+type TiposDeContratacao = Tabela["tiposDeContratacao"];
+type TipoDeContratacao = TiposDeContratacao["id"];
+type UnidadesSenai = Tabela["unidadesSenai"];
+type UnidadeSenai = UnidadesSenai["id"];
 
 export type {
   Tabela,
@@ -61,5 +82,8 @@ export type {
   Disciplinas,
   Disciplina,
   Competencias,
-  Competencia,
+  TiposDeContratacao,
+  TipoDeContratacao,
+  UnidadesSenai,
+  UnidadeSenai,
 };

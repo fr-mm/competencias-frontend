@@ -8,7 +8,11 @@ export default class MockAPI implements APIInterface {
   }
 
   public async removerDocentes(ids: string[]): Promise<void> {
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    await new Promise((resolve) => resolve);
+  }
+
+  public async adicionarDocente(ids: string): Promise<void> {
+    await new Promise((resolve) => resolve);
   }
 
   private async fetch(rota: string): Promise<any> {

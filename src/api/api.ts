@@ -11,6 +11,10 @@ export default class API implements APIInterface {
     return new Promise(() => {});
   }
 
+  public async adicionarDocente(nome: string): Promise<any> {
+    return new Promise(() => {});
+  }
+
   private async get(rota: string): Promise<any> {
     const url = this.construirURL(rota);
     const response = await fetch(url);

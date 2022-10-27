@@ -5,6 +5,7 @@
   position: fixed;
   top: 0;
   flex-direction: column;
+  z-index: 2;
 }
 
 .nav-bar {
@@ -27,6 +28,10 @@
   font-size: 1.05rem;
 }
 
+.nav-bar-item:hover {
+  cursor: pointer;
+}
+
 .dropdown:hover .nav-bar-item {
   filter: contrast(130%);
 }
@@ -39,10 +44,10 @@
   outline: 1px solid black;
   display: none;
   position: absolute;
+  flex-direction: column;
   top: 4.05rem;
   width: 12rem;
   align-items: center;
-  z-index: 2;
   flex: 1;
 }
 
@@ -56,17 +61,15 @@
 
 .menu-item {
   display: flex;
-  flex: 1;
-  height: 2em;
+  width: 100%;
   align-content: center;
+  justify-content: center;
 }
 
 .menu-item-container {
-  align-self: center;
-}
-
-.menu-item.botao {
-  padding-left: 1rem;
+  display: flex;
+  height: 2rem;
+  align-items: center;
 }
 
 .dropdown {

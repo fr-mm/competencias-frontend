@@ -19,6 +19,10 @@ export default class BackendAPI implements APIInterface {
     return new Promise(() => {});
   }
 
+  public async adicionarDocente(nome: string): Promise<void> {
+    return new Promise(() => {});
+  }
+
   static construirMockAPI(): BackendAPI {
     return new BackendAPI("http://localhost:4000");
   }

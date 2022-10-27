@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPopUpNomes } from "../../../enums";
-import { reducers, RootState } from "../../../store";
-import api from "../../../api";
+import { EnumPopUpNomes } from "../../enums";
+import { reducers, RootState } from "../../store";
+import api from "../../api";
 
 function PopUpRemoverDocentes() {
   const dispatch = useDispatch();

@@ -1,0 +1,16 @@
+.adicionar-telefone {
+  width: 5rem;
+  display: flex;
+}
+
+.telefones-adicionados {
+  display: flex;
+  width: 12rem;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.telefone-adicionado {
+  display: flex;
+  width: 100%;
+}

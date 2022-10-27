@@ -1,4 +1,3 @@
-import "./BotaoRemoverDocentes.css";
 import { useDispatch } from "react-redux";
 import { reducers } from "../../../../store";
 
