@@ -6,7 +6,10 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { regex } from "../../aux";
 
 const mensagemDeErro = {
-  telefone: "Telefone inválido",
+  telefone: "telefone inválido",
+  quantidadeTelefones: "adicione pelo menos 1 telefone",
+  nome: "nome inválido",
+  email: "email inválido",
 };
 
 function PopUpDocente() {
@@ -26,9 +29,31 @@ function PopUpDocente() {
   }
 
   function adicionar(): void {
-    dispatch(reducers.popUps.esconder(EnumPopUpNomes.ADICIONAR_DOCENTE));
-    //enviar request na api
-    dispatch(reducers.tabela.setAtualizada(false));
+    if (docenteValido()) {
+      dispatch(reducers.popUps.esconder(EnumPopUpNomes.ADICIONAR_DOCENTE));
+      //enviar request na api
+      dispatch(reducers.docente.finalizarEdicao());
+      dispatch(reducers.tabela.setAtualizada(false));
+    }
+  }
+
+  function docenteValido(): boolean {
+    const errosDeValidacao = [];
+    let valido = true;
+    if (!docente.nome.match(regex.final.nomeDePessoa)) {
+      valido = false;
+      errosDeValidacao.push(mensagemDeErro.nome);
+    }
+    if (!docente.email.match(regex.final.email)) {
+      valido = false;
+      errosDeValidacao.push(mensagemDeErro.email);
+    }
+    if (docente.telefones.length < 1) {
+      valido = false;
+      errosDeValidacao.push(mensagemDeErro.quantidadeTelefones);
+    }
+    setErros(errosDeValidacao);
+    return valido;
   }
 
   function adicionarErro(erro: string): void {
@@ -46,7 +71,7 @@ function PopUpDocente() {
   function adicionarTelefone(): void {
     let telefone = formatarTelefone(docente.telefoneEmEdicao);
 
-    if (telefone.match(regex.telefone)) {
+    if (telefone.match(regex.final.telefone)) {
       dispatch(reducers.docente.setTelefoneEmEdicao(telefone));
       dispatch(reducers.docente.adicionarTelefone());
       removerErro(mensagemDeErro.telefone);

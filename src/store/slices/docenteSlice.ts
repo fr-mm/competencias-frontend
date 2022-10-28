@@ -23,19 +23,19 @@ const docenteSlice = createSlice({
     },
 
     setNome(state, action: PayloadAction<string>) {
-      if (action.payload.match(regex.nomeDePessoa)) {
+      if (action.payload.match(regex.onChange.nomeDePessoa)) {
         state.nome = action.payload;
       }
     },
 
     setEmail(state, action: PayloadAction<string>) {
-      if (action.payload.match(regex.email)) {
+      if (action.payload.match(regex.onChange.email)) {
         state.email = action.payload;
       }
     },
 
     setTelefoneEmEdicao(state, action: PayloadAction<string>) {
-      if (action.payload.match(regex.telefoneEmEdicao)) {
+      if (action.payload.match(regex.onChange.telefone)) {
         state.telefoneEmEdicao = action.payload;
       }
     },

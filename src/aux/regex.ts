@@ -1,10 +1,21 @@
-const letrasComAcento = "A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ";
+const letrasComAcento = "A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'";
+const caracteresDeEmail = "\\w\\d!#$%&'*+-/=?^_`{|}~";
+
+const onChange = {
+  nomeDePessoa: `^([${letrasComAcento}]+[ ]?)*$`,
+  email: `^([${caracteresDeEmail}]+(@)?([\\w\\d]+)?(([.\\w\\d]+)+)?)?$`,
+  telefone: "^(\\(?(\\d{0,2})?\\)?(\\d{0,5})-?(\\d{0,4}))?$",
+};
+
+const final = {
+  nomeDePessoa: `^[${letrasComAcento}]+( [${letrasComAcento}]+)+$`,
+  email: `^[${caracteresDeEmail}]+@[\\w\\d]+(.[\\w\\d]+)?$`,
+  telefone: "^\\(\\d{2}\\)\\d{4,5}-\\d{4}$",
+};
 
 const regex = {
-  nomeDePessoa: `^([${letrasComAcento}]+[ ']?)*$`,
-  email: "^([\\w\\d!#$%&'*+-/=?^_`{|}~]+(@)?([\\w\\d]+)?(([.\\w\\d]+)+)?)?$",
-  telefoneEmEdicao: "^(\\(?(\\d{0,2})?\\)?(\\d{0,5})-?(\\d{0,4}))?$",
-  telefone: "^\\(\\d{2}\\)\\d{4,5}-\\d{4}$",
+  onChange,
+  final,
 };
 
 export default regex;
