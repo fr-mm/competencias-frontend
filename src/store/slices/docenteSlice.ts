@@ -29,7 +29,9 @@ const docenteSlice = createSlice({
     },
 
     setEmail(state, action: PayloadAction<string>) {
-      state.email = action.payload;
+      if (action.payload.match(regex.email)) {
+        state.email = action.payload;
+      }
     },
 
     setTelefoneEmEdicao(state, action: PayloadAction<string>) {
