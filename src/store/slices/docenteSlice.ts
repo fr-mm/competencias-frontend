@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { regex } from "../../aux";
 import { ITabela } from "../../interfaces";
-import regex from "../../regex";
 
 const initialState = {
   id: "",
@@ -35,7 +35,9 @@ const docenteSlice = createSlice({
     },
 
     setTelefoneEmEdicao(state, action: PayloadAction<string>) {
-      state.telefoneEmEdicao = action.payload;
+      if (action.payload.match(regex.telefoneEmEdicao)) {
+        state.telefoneEmEdicao = action.payload;
+      }
     },
 
     adicionarTelefone(state) {

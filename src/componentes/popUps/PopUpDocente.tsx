@@ -2,7 +2,12 @@ import "./PopUpDocente.css";
 import { useDispatch, useSelector } from "react-redux";
 import { EnumPopUpNomes } from "../../enums";
 import { reducers, RootState } from "../../store";
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { regex } from "../../aux";
+
+const mensagemDeErro = {
+  telefone: "Telefone inválido",
+};
 
 function PopUpDocente() {
   const dispatch = useDispatch();
@@ -13,6 +18,8 @@ function PopUpDocente() {
     (state: RootState) => state.tiposDeContratacao.todos
   );
   const docente = useSelector((state: RootState) => state.docente);
+  const [erros, setErros] = useState([] as string[]);
+
   function cancelar(): void {
     dispatch(reducers.popUps.esconder(EnumPopUpNomes.ADICIONAR_DOCENTE));
     dispatch(reducers.docente.finalizarEdicao());
@@ -24,8 +31,43 @@ function PopUpDocente() {
     dispatch(reducers.tabela.setAtualizada(false));
   }
 
+  function adicionarErro(erro: string): void {
+    if (!erros.includes(erro)) {
+      setErros([...erros, erro]);
+    }
+  }
+
+  function removerErro(erro: string): void {
+    const novoErros = [...erros];
+    novoErros.splice(erros.indexOf(erro));
+    setErros(novoErros);
+  }
+
   function adicionarTelefone(): void {
-    dispatch(reducers.docente.adicionarTelefone());
+    let telefone = formatarTelefone(docente.telefoneEmEdicao);
+
+    if (telefone.match(regex.telefone)) {
+      dispatch(reducers.docente.setTelefoneEmEdicao(telefone));
+      dispatch(reducers.docente.adicionarTelefone());
+      removerErro(mensagemDeErro.telefone);
+    } else {
+      adicionarErro(mensagemDeErro.telefone);
+    }
+  }
+
+  function formatarTelefone(telefone: string): string {
+    if (telefone.length >= 10) {
+      if (telefone[0] !== "(" && telefone[3] !== ")") {
+        telefone = `(${telefone.slice(0, 2)})${telefone.slice(2)}`;
+      }
+      if (telefone.length === 12 || telefone.length === 13) {
+        const indiceSepardor = telefone.length - 4;
+        telefone = `${telefone.slice(0, indiceSepardor)}-${telefone.slice(
+          indiceSepardor
+        )}`;
+      }
+    }
+    return telefone;
   }
 
   function removerTelefone(telefone: string): void {
@@ -78,6 +120,11 @@ function PopUpDocente() {
     <div className="mascara">
       <div className="popUp">
         <div className="titulo">Adicionar docente</div>
+        <div className="erros">
+          {erros.map((erro) => (
+            <div key={erro}>{erro}</div>
+          ))}
+        </div>
         <div className="form">
           <div className="par">
             <label htmlFor="nome">nome</label>
@@ -90,6 +137,7 @@ function PopUpDocente() {
                 onChange={nomeOnChange}
                 autoComplete="off"
                 maxLength={50}
+                placeholder="Nome Completo"
               />
             </div>
           </div>
@@ -105,6 +153,7 @@ function PopUpDocente() {
                 onChange={emailOnChange}
                 autoComplete="none"
                 maxLength={100}
+                placeholder="email@email.com"
               />
             </div>
           </div>
@@ -119,6 +168,8 @@ function PopUpDocente() {
                 type="text"
                 onChange={telefoneOnChange}
                 autoComplete="none"
+                placeholder="(00)00000-0000"
+                onFocus={() => removerErro(mensagemDeErro.telefone)}
               />
               <button
                 className="adicionar-telefone"
