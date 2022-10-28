@@ -11,6 +11,14 @@ function separarNome(nome: string): string[] {
   return nomes;
 }
 
+let proximoIid = 0;
+
+function gerarKey(docente: ITabela.Docente): string {
+  const id = docente.id + proximoIid;
+  proximoIid++;
+  return id;
+}
+
 function Cabecalho() {
   const docentesFiltrados = useSelector(
     (state: RootState): ITabela.Docente[] => state.docentes.filtrados
@@ -30,8 +38,10 @@ function Cabecalho() {
           className="celula azul borda topo nome-docente cabecalho"
           key={docente.id}
         >
-          {separarNome(docente.nome).map((n) => (
-            <div className="palavra">{n}</div>
+          {separarNome(docente.nome).map((nome) => (
+            <div key={gerarKey(docente)} className="palavra">
+              {nome}
+            </div>
           ))}
         </div>
       ))}

@@ -89,6 +89,7 @@ function PopUpDocente() {
                 value={docente.nome}
                 onChange={nomeOnChange}
                 autoComplete="off"
+                maxLength={50}
               />
             </div>
           </div>

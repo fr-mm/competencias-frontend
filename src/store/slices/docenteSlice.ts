@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ITabela } from "../../interfaces";
+import regex from "../../regex";
 
 const initialState = {
   id: "",
@@ -22,7 +23,9 @@ const docenteSlice = createSlice({
     },
 
     setNome(state, action: PayloadAction<string>) {
-      state.nome = action.payload;
+      if (action.payload.match(regex.nomeDePessoa)) {
+        state.nome = action.payload;
+      }
     },
 
     setEmail(state, action: PayloadAction<string>) {

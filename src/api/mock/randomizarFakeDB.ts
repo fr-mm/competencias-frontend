@@ -12,7 +12,7 @@ class RandomizadorDeFakeDB {
     "Thiago Haroldo Almeida Silva",
     "Inês Simone",
     "Ambrósio Natália",
-    "Carlos Paulo",
+    "Carlos Paulo de Carlos",
     "Floro Octávio",
     "Fernando Márcia",
     "Amália Ovídio",
