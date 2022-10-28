@@ -15,6 +15,7 @@ function PopUpDocente() {
   const docente = useSelector((state: RootState) => state.docente);
   function cancelar(): void {
     dispatch(reducers.popUps.esconder(EnumPopUpNomes.ADICIONAR_DOCENTE));
+    dispatch(reducers.docente.finalizarEdicao());
   }
 
   function adicionar(): void {
@@ -87,6 +88,7 @@ function PopUpDocente() {
                 type="text"
                 value={docente.nome}
                 onChange={nomeOnChange}
+                autoComplete="off"
               />
             </div>
           </div>
@@ -100,6 +102,7 @@ function PopUpDocente() {
                 type="email"
                 value={docente.email}
                 onChange={emailOnChange}
+                autoComplete="none"
               />
             </div>
           </div>
@@ -113,6 +116,7 @@ function PopUpDocente() {
                 value={docente.telefoneEmEdicao}
                 type="text"
                 onChange={telefoneOnChange}
+                autoComplete="none"
               />
               <button
                 className="adicionar-telefone"
