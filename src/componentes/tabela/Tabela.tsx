@@ -8,6 +8,7 @@ import Curso from "./curso";
 import RemocaoDocentes from "./remocaoDocentes";
 import { ITabela } from "../../interfaces";
 import { CargaHorariaState } from "../../store/slices/cargaHorariaSlice";
+import Carregando from "./carregando";
 
 function Tabela() {
   const atualizada = useSelector((state: RootState) => state.tabela.atualizada);
@@ -93,7 +94,7 @@ function Tabela() {
   );
   const visivel = useSelector((state: RootState) => state.tabela.expandida);
 
-  try {
+  if (atualizada) {
     return (
       <div className="tabela">
         <RemocaoDocentes />
@@ -105,8 +106,8 @@ function Tabela() {
         </div>
       </div>
     );
-  } catch (e) {
-    return <p>carregando...</p>;
+  } else {
+    return <Carregando />;
   }
 }
 

@@ -9,6 +9,7 @@ export default class JsonAPI implements IApi {
   public async getConteudoDeTabela(): Promise<Response> {
     const body = JSON.stringify(this.fetch("tabela"));
     const response = new Response(body);
+    await new Promise((r) => setTimeout(r, 200));
     return Promise.resolve(response);
   }
 
