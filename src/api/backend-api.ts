@@ -1,9 +1,9 @@
-import { APIInterface, ITabela } from "../interfaces";
+/*import { IApi, ITabela } from "../interfaces";
 import db from "./mock/fakeDB.json";
 
 type FetchFunction = (url: string) => Promise<ITabela.Tabela>;
 
-export default class BackendAPI implements APIInterface {
+export default class BackendAPI implements IApi {
   private metodoFetchPadrao = BackendAPI.fetchDeTeste;
   private fetch: FetchFunction;
 
@@ -42,3 +42,6 @@ export default class BackendAPI implements APIInterface {
     return await response.json();
   }
 }
+*/
+const foo = 1;
+export { foo };

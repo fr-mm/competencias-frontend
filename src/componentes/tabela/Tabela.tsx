@@ -11,12 +11,20 @@ import { CargaHorariaState } from "../../store/slices/cargaHorariaSlice";
 
 function Tabela() {
   const atualizada = useSelector((state: RootState) => state.tabela.atualizada);
-
   const dispatch = useDispatch();
 
-  const getConteudo = async () => {
+  async function atualizar(): Promise<void> {
     if (!atualizada) {
-      const conteudo = await api.getConteudoDeTabela();
+      await getConteudo();
+      dispatch(reducers.tabela.setAtualizada(true));
+    }
+  }
+
+  async function getConteudo(): Promise<void> {
+    const response = await api.getConteudoDeTabela();
+
+    if (response.status === 200) {
+      const conteudo = await response.json();
 
       dispatch(reducers.docentes.atualizar(conteudo.docentes));
       dispatch(reducers.docentes.filtrarPorNome(""));
@@ -29,10 +37,8 @@ function Tabela() {
       );
       dispatch(reducers.unidadesSenaiSlice.atualizar(conteudo.unidadesSenai));
       atualizarCargasHorarias(conteudo);
-
-      dispatch(reducers.tabela.setAtualizada(true));
     }
-  };
+  }
 
   function atualizarCargasHorarias(conteudo: ITabela.Tabela): void {
     const cargas: CargaHorariaState = {
@@ -79,7 +85,7 @@ function Tabela() {
   }
 
   useEffect(() => {
-    getConteudo();
+    atualizar();
   });
 
   const cursosFiltrados = useSelector(

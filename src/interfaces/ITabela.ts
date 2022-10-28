@@ -73,6 +73,8 @@ export type {
   IdCurso,
   IdModulo,
   IdDisciplina,
+  IdUnidadeSenai,
+  IdTipoDeContratacao,
   Docentes,
   Docente,
   Cursos,

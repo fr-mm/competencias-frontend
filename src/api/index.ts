@@ -1,5 +1,5 @@
-import BackendAPI from "./backend-api";
+import JsonAPI from "./mock/jsonAPI";
 
-const api = BackendAPI.construirAPITeste();
+const api = new JsonAPI();
 
 export default api;

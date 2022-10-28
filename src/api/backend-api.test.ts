@@ -1,3 +1,4 @@
+/*
 import db from "./mock/fakeDB.json";
 
 import BackendAPI from "./backend-api";
@@ -18,3 +19,6 @@ describe("BackendAPI", () => {
     });
   });
 });
+*/
+const foo = 1;
+export { foo };

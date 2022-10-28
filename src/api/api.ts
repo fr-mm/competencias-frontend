@@ -1,6 +1,7 @@
-import { APIInterface, ITabela } from "../interfaces";
+/*
+import { IApi, ITabela } from "../interfaces";
 
-export default class API implements APIInterface {
+export default class API implements IApi {
   private url = "http://localhost:4000";
 
   public async getConteudoDeTabela(): Promise<ITabela.Tabela> {
@@ -38,3 +39,6 @@ export default class API implements APIInterface {
     return `${this.url}/${rota}`;
   }
 }
+*/
+const foo = 1;
+export { foo };

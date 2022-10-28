@@ -3,13 +3,12 @@ import {
   AdicionarDocenteRequestPayload,
   RemoverDocentesRequestPayload,
 } from "../../interfaces/IApi";
+import db from "./fakeDB.json";
 
-export default class MockAPI implements IApi {
-  private urlBase = "http://localhost:4000";
-
+export default class JsonAPI implements IApi {
   public async getConteudoDeTabela(): Promise<Response> {
-    const body = this.fetch("tabela");
-    const response = new Response(JSON.stringify(body));
+    const body = JSON.stringify(this.fetch("tabela"));
+    const response = new Response(body);
     return Promise.resolve(response);
   }
 
@@ -25,8 +24,7 @@ export default class MockAPI implements IApi {
     return Promise.resolve(new Response());
   }
 
-  private async fetch(rota: string): Promise<any> {
-    const response = await fetch(`${this.urlBase}/${rota}`);
-    return await response.json();
+  private fetch(url: string): any {
+    return db[url as keyof object];
   }
 }

@@ -1,5 +1,5 @@
 import * as ITabela from "../interfaces/ITabela";
-import APIInterface from "./apiInterface";
+import IApi from "./IApi";
 
 export { ITabela };
-export type { APIInterface };
+export type { IApi };
