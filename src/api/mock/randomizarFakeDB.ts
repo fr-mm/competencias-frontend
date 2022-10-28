@@ -5,7 +5,18 @@ import { TiposDeContratacao } from "../../interfaces/ITabela";
 
 class RandomizadorDeFakeDB {
   private readonly arquivo = "./fakeDB.json";
-  private readonly quantidadeDocentes = 10;
+  private nomes = [
+    "Verónica Lia",
+    "Charlingtonglaevionbeecheknavare Henrique",
+    "Rebeca Estevão",
+    "Thiago Haroldo Almeida Silva",
+    "Inês Simone",
+    "Ambrósio Natália",
+    "Carlos Paulo",
+    "Floro Octávio",
+    "Fernando Márcia",
+    "Amália Ovídio",
+  ];
 
   public randomizarDB(): void {
     const conteudo = JSON.stringify({ tabela: this.construirConteudo() });
@@ -42,9 +53,9 @@ class RandomizadorDeFakeDB {
     unidadesSenai: ITabela.UnidadesSenai
   ): ITabela.Docentes {
     const docentes: ITabela.Docentes = {};
-    for (let i = 0; i < this.quantidadeDocentes + 1; i++) {
+    for (let i = 0; i < this.nomes.length; i++) {
       const docente = this.construirDocente(
-        `Docente ${i}`,
+        this.nomes[i],
         disciplinas,
         tiposDeContratacao,
         unidadesSenai

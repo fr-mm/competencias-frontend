@@ -1,0 +1,18 @@
+.cabecalho {
+  height: auto;
+}
+
+.nome-docente {
+  flex: 1;
+  flex-direction: column;
+}
+
+.palavra {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.centro {
+  align-items: center;
+}
