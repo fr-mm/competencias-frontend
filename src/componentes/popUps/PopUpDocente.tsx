@@ -275,6 +275,14 @@ function PopUpDocente() {
     }
   }
 
+  function titulo() {
+    if (docente.id === "") {
+      return "Adicionar docente";
+    } else {
+      return "Docente";
+    }
+  }
+
   useEffect(() => {
     if (docente.id === "") {
       setOpcoesPadrao();
@@ -284,7 +292,7 @@ function PopUpDocente() {
   return (
     <div className="mascara">
       <div className="popUp">
-        <div className="titulo">Adicionar docente</div>
+        <div className="titulo">{titulo()}</div>
         <div className="erros">
           {erros.map((erro) => (
             <div key={erro}>{erro}</div>
