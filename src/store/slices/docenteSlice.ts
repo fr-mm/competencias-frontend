@@ -10,7 +10,6 @@ const initialState = {
   telefoneEmEdicao: "",
   tipoDeContratacao: "",
   unidadesSenai: "",
-  competencias: {} as ITabela.Competencias,
   editando: false,
 };
 
@@ -63,13 +62,6 @@ const docenteSlice = createSlice({
       state.unidadesSenai = action.payload;
     },
 
-    setCompetencia(
-      state,
-      action: PayloadAction<{ idDisciplina: string; nivel: number }>
-    ) {
-      state.competencias[action.payload.idDisciplina] = action.payload.nivel;
-    },
-
     iniciarEdicao(state) {
       state.editando = true;
     },
@@ -81,7 +73,17 @@ const docenteSlice = createSlice({
       state.telefones = initialState.telefones;
       state.tipoDeContratacao = initialState.tipoDeContratacao;
       state.unidadesSenai = initialState.unidadesSenai;
-      state.competencias = initialState.competencias;
+      state.editando = false;
+    },
+
+    carregarDocente(state, action: PayloadAction<ITabela.Docente>) {
+      const docente = action.payload;
+      state.id = docente.id;
+      state.nome = docente.nome;
+      state.email = docente.email;
+      state.telefones = docente.telefones;
+      state.tipoDeContratacao = docente.tipoDeContratacao;
+      state.unidadesSenai = docente.unidadeSenai;
       state.editando = false;
     },
   },
@@ -96,8 +98,8 @@ export const {
   removerTelefone,
   setTipoDeContratacao,
   setUnidadeSenai,
-  setCompetencia,
   iniciarEdicao,
   finalizarEdicao,
+  carregarDocente,
 } = docenteSlice.actions;
 export default docenteSlice.reducer;

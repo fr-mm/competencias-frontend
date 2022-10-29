@@ -6,7 +6,8 @@ function BotaoAdicionarDocente() {
   const dispatch = useDispatch();
 
   function botaoAdicionarOnClick(): void {
-    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.ADICIONAR_DOCENTE));
+    dispatch(reducers.docente.iniciarEdicao());
+    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DOCENTE));
   }
 
   return (

@@ -4,6 +4,7 @@ import { EnumPopUpNomes } from "../../enums";
 import { reducers, RootState } from "../../store";
 import { ChangeEvent, useEffect, useState } from "react";
 import { regex } from "../../aux";
+import { ITabela } from "../../interfaces";
 
 const mensagemDeErro = {
   telefone: "telefone inválido",
@@ -24,13 +25,13 @@ function PopUpDocente() {
   const [erros, setErros] = useState([] as string[]);
 
   function cancelar(): void {
-    dispatch(reducers.popUps.esconder(EnumPopUpNomes.ADICIONAR_DOCENTE));
+    dispatch(reducers.popUps.esconder(EnumPopUpNomes.DOCENTE));
     dispatch(reducers.docente.finalizarEdicao());
   }
 
   function adicionar(): void {
     if (docenteValido()) {
-      dispatch(reducers.popUps.esconder(EnumPopUpNomes.ADICIONAR_DOCENTE));
+      dispatch(reducers.popUps.esconder(EnumPopUpNomes.DOCENTE));
       //enviar request na api
       dispatch(reducers.docente.finalizarEdicao());
       dispatch(reducers.tabela.setAtualizada(false));
@@ -136,9 +137,148 @@ function PopUpDocente() {
     }
   }
 
+  function campoNome() {
+    if (docente.editando) {
+      return (
+        <input
+          id="nome"
+          className="azul-claro input"
+          type="text"
+          value={docente.nome}
+          onChange={nomeOnChange}
+          autoComplete="off"
+          maxLength={50}
+          placeholder="Nome Completo"
+        />
+      );
+    } else {
+      return <div>{docente.nome}</div>;
+    }
+  }
+
+  function campoEmail() {
+    if (docente.editando) {
+      return (
+        <input
+          id="email"
+          className="azul-claro input"
+          type="email"
+          value={docente.email}
+          onChange={emailOnChange}
+          autoComplete="none"
+          maxLength={100}
+          placeholder="email@email.com"
+        />
+      );
+    } else {
+      return <div>{docente.email}</div>;
+    }
+  }
+
+  function campoAdicionarTelefone() {
+    if (docente.editando) {
+      return (
+        <div className="adicionar-telefone">
+          <input
+            id="telefone"
+            className="azul-claro"
+            value={docente.telefoneEmEdicao}
+            type="text"
+            onChange={telefoneOnChange}
+            autoComplete="none"
+            placeholder="(00)00000-0000"
+            onFocus={() => removerErro(mensagemDeErro.telefone)}
+          />
+          <button
+            className="botao-adicionar-telefone"
+            onClick={adicionarTelefone}
+          >
+            adicionar
+          </button>
+        </div>
+      );
+    }
+  }
+
+  function campoTelefone(telefone: string) {
+    return (
+      <div key={telefone} className="coluna-direita">
+        <div className="telefone-adicionado">{telefone}</div>
+        {botaoRemoverTelefone(telefone)}
+      </div>
+    );
+  }
+
+  function botaoRemoverTelefone(telefone: string) {
+    if (docente.editando) {
+      return <button onClick={() => removerTelefone(telefone)}>remover</button>;
+    }
+  }
+
+  function campoUnidadeSenai() {
+    if (docente.editando) {
+      return (
+        <select
+          id="unidadesSenai"
+          value={docente.unidadesSenai}
+          onChange={unidadeSenaiOnChange}
+        >
+          {Object.values(unidadesSenai).map((unidade) => (
+            <option value={unidade.id} key={unidade.id}>
+              {unidade.nome}
+            </option>
+          ))}
+        </select>
+      );
+    } else {
+      return <div>{unidadesSenai[docente.unidadesSenai].nome}</div>;
+    }
+  }
+
+  function campoTipoDeContratacao() {
+    if (docente.editando) {
+      return (
+        <select
+          id="tipoDeContratacao"
+          value={docente.tipoDeContratacao}
+          onChange={tipoDeContratacaoOnChange}
+        >
+          {Object.values(tiposDeContratacao).map((tipo) => (
+            <option value={tipo.id} key={tipo.id}>
+              {tipo.nome}
+            </option>
+          ))}
+        </select>
+      );
+    } else {
+      return <div>{tiposDeContratacao[docente.tipoDeContratacao].nome}</div>;
+    }
+  }
+
+  function rodape() {
+    if (docente.editando) {
+      return (
+        <div className="rodape">
+          <button onClick={adicionar}>adicionar</button>
+          <button onClick={cancelar}>cancelar</button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="rodape">
+          <button onClick={() => dispatch(reducers.docente.iniciarEdicao())}>
+            editar
+          </button>
+          <button onClick={cancelar}>sair</button>
+        </div>
+      );
+    }
+  }
+
   useEffect(() => {
-    setOpcoesPadrao();
-    dispatch(reducers.docente.iniciarEdicao());
+    if (docente.id === "") {
+      setOpcoesPadrao();
+    }
   });
 
   return (
@@ -153,111 +293,37 @@ function PopUpDocente() {
         <div className="form">
           <div className="par">
             <label htmlFor="nome">nome</label>
-            <div className="coluna-direita">
-              <input
-                id="nome"
-                className="azul-claro input"
-                type="text"
-                value={docente.nome}
-                onChange={nomeOnChange}
-                autoComplete="off"
-                maxLength={50}
-                placeholder="Nome Completo"
-              />
-            </div>
+            <div className="coluna-direita">{campoNome()}</div>
           </div>
 
           <div className="par">
             <label htmlFor="email">email</label>
-            <div className="coluna-direita">
-              <input
-                id="email"
-                className="azul-claro input"
-                type="email"
-                value={docente.email}
-                onChange={emailOnChange}
-                autoComplete="none"
-                maxLength={100}
-                placeholder="email@email.com"
-              />
-            </div>
+            <div className="coluna-direita">{campoEmail()}</div>
           </div>
 
           <div className="par">
             <label htmlFor="telefone">telefones</label>
-            <div className="coluna-direita">
-              <input
-                id="telefone"
-                className="azul-claro"
-                value={docente.telefoneEmEdicao}
-                type="text"
-                onChange={telefoneOnChange}
-                autoComplete="none"
-                placeholder="(00)00000-0000"
-                onFocus={() => removerErro(mensagemDeErro.telefone)}
-              />
-              <button
-                className="adicionar-telefone"
-                onClick={adicionarTelefone}
-              >
-                adicionar
-              </button>
-            </div>
+            <div className="coluna-direita">{campoAdicionarTelefone()}</div>
           </div>
 
           <div className="par">
             <label htmlFor=""></label>
             <div className="telefones-adicionados">
-              {docente.telefones.map((telefone) => (
-                <div key={telefone} className="coluna-direita">
-                  <div className="telefone-adicionado">{telefone}</div>
-                  <button onClick={() => removerTelefone(telefone)}>
-                    remover
-                  </button>
-                </div>
-              ))}
+              {docente.telefones.map((telefone) => campoTelefone(telefone))}
             </div>
           </div>
 
           <div className="par">
             <label htmlFor="unidadesSenai">unidade SENAI</label>
-            <div className="coluna-direita">
-              <select
-                id="unidadesSenai"
-                value={docente.unidadesSenai}
-                onChange={unidadeSenaiOnChange}
-              >
-                {Object.values(unidadesSenai).map((unidade) => (
-                  <option value={unidade.id} key={unidade.id}>
-                    {unidade.nome}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <div className="coluna-direita">{campoUnidadeSenai()}</div>
           </div>
 
           <div className="par">
             <label htmlFor="tipoDeContratacao">tipo de contratação</label>
-            <div className="coluna-direita">
-              <select
-                id="tipoDeContratacao"
-                value={docente.tipoDeContratacao}
-                onChange={tipoDeContratacaoOnChange}
-              >
-                {Object.values(tiposDeContratacao).map((tipo) => (
-                  <option value={tipo.id} key={tipo.id}>
-                    {tipo.nome}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <div className="coluna-direita">{campoTipoDeContratacao()}</div>
           </div>
         </div>
-
-        <div className="rodape">
-          <button onClick={adicionar}>adicionar</button>
-          <button onClick={cancelar}>cancelar</button>
-        </div>
+        {rodape()}
       </div>
     </div>
   );

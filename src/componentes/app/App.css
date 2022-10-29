@@ -40,6 +40,10 @@ select {
   filter: contrast(130%);
 }
 
+.highlight:hover {
+  filter: contrast(130%);
+}
+
 .azul-claro {
   background-color: #e0e4f4;
 }

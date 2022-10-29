@@ -1,7 +1,8 @@
 import "./Cabecalho.css";
 import { ITabela } from "../../../interfaces";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { reducers, RootState } from "../../../store";
+import { EnumPopUpNomes } from "../../../enums";
 
 function separarNome(nome: string): string[] {
   let nomes = nome.split(" ");
@@ -20,9 +21,32 @@ function gerarKey(docente: ITabela.Docente): string {
 }
 
 function Cabecalho() {
+  const dispatch = useDispatch();
   const docentesFiltrados = useSelector(
     (state: RootState): ITabela.Docente[] => state.docentes.filtrados
   );
+
+  function criarCelulaDocente(docente: ITabela.Docente) {
+    return (
+      <div
+        className="celula azul borda topo nome-docente cabecalho highlight"
+        key={docente.id}
+        onClick={() => abrirPopUpDocente(docente)}
+      >
+        {separarNome(docente.nome).map((nome) => (
+          <div key={gerarKey(docente)} className="palavra">
+            {nome}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  function abrirPopUpDocente(docente: ITabela.Docente): void {
+    dispatch(reducers.docente.carregarDocente(docente));
+    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DOCENTE));
+  }
+
   return (
     <div className="linha">
       <div className="celula azul borda topo primeira-coluna cabecalho centro">
@@ -32,19 +56,7 @@ function Cabecalho() {
       <div className="celula azul borda topo coluna-carga-horaria cabecalho centro">
         CH
       </div>
-
-      {docentesFiltrados.map((docente) => (
-        <div
-          className="celula azul borda topo nome-docente cabecalho"
-          key={docente.id}
-        >
-          {separarNome(docente.nome).map((nome) => (
-            <div key={gerarKey(docente)} className="palavra">
-              {nome}
-            </div>
-          ))}
-        </div>
-      ))}
+      {docentesFiltrados.map((docente) => criarCelulaDocente(docente))}
     </div>
   );
 }

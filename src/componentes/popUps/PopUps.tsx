@@ -16,7 +16,7 @@ function PopUps() {
 
   return (
     <div className="pop-up-container">
-      {popUp(EnumPopUpNomes.ADICIONAR_DOCENTE, <PopUpDocente />)}
+      {popUp(EnumPopUpNomes.DOCENTE, <PopUpDocente />)}
       {popUp(EnumPopUpNomes.REMOVER_DOCENTES, <PopUpRemoverDocentes />)}
     </div>
   );

@@ -1,6 +1,6 @@
 enum EnumPopUpNomes {
   REMOVER_DOCENTES,
-  ADICIONAR_DOCENTE,
+  DOCENTE,
 }
 
 export default EnumPopUpNomes;

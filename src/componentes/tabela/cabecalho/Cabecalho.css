@@ -5,6 +5,7 @@
 .nome-docente {
   flex: 1;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .palavra {
