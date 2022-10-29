@@ -74,10 +74,11 @@ class RandomizadorDeFakeDB {
     const tipoDeContratacao = this.escolher(
       Object.values(tiposDeContratacao)
     )[0];
+    const email = nome.split(" ")[0];
     return {
       id: this.gerarId(),
       nome,
-      email: `${nome}@email.com`,
+      email: `${email}@email.com`,
       telefones: ["(71)99999-9999"],
       unidadeSenai: Object.values(unidadesSenai)[0].id,
       tipoDeContratacao: tipoDeContratacao.id,

@@ -9,7 +9,6 @@
 
 .telefones-adicionados {
   display: flex;
-  width: 12rem;
   align-items: flex-start;
   flex-direction: column;
 }

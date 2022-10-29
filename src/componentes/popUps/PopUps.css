@@ -39,7 +39,13 @@
 
 .coluna-direita {
   display: flex;
-  width: 12rem;
+  width: 15rem;
+}
+
+.wrap {
+  display: flex;
+  text-align: left;
+  word-break: break-all;
 }
 
 .coluna-direita input {

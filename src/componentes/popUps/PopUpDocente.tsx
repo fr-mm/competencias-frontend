@@ -152,7 +152,7 @@ function PopUpDocente() {
         />
       );
     } else {
-      return <div>{docente.nome}</div>;
+      return <div className="wrap">{docente.nome}</div>;
     }
   }
 
@@ -171,7 +171,7 @@ function PopUpDocente() {
         />
       );
     } else {
-      return <div>{docente.email}</div>;
+      return <div className="wrap">{docente.email}</div>;
     }
   }
 
