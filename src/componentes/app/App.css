@@ -67,3 +67,7 @@ select {
 .vermelho {
   background-color: red;
 }
+
+.pointer {
+  cursor: pointer;
+}

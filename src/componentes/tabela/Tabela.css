@@ -45,14 +45,12 @@
   flex-direction: column;
 }
 
-.colapsavel {
-  cursor: pointer;
-}
-
-.colapsavel:hover {
-  filter: contrast(120%);
-}
-
 .texto-esquerda {
   text-align: left;
+}
+
+.texto-primeira-coluna {
+  display: flex;
+  flex: 1;
+  justify-content: center;
 }

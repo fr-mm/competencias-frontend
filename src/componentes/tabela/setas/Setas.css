@@ -9,7 +9,6 @@
   display: flex;
   width: 1.1rem;
   align-items: center;
-  cursor: pointer;
 }
 
 .seta-container:hover {
@@ -20,8 +19,16 @@
   margin-right: 0.2rem;
   width: 0;
   height: 0;
+}
+
+.seta.horizontal {
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
+}
+
+.seta.vertical {
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
 }
 
 .seta.direita {
@@ -30,6 +37,14 @@
 
 .seta.esquerda {
   border-right: 5px solid;
+}
+
+.seta.cima {
+  border-bottom: 5px solid;
+}
+
+.seta.baixo {
+  border-top: 5px solid;
 }
 
 .seta.direita.cinza {

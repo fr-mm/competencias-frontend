@@ -1,4 +1,4 @@
-import "./SetasOrdenadoras.css";
+import "./Setas.css";
 import { useDispatch, useSelector } from "react-redux";
 import { EnumOrdem } from "../../../enums";
 import { reducers, RootState } from "../../../store";
@@ -47,9 +47,9 @@ function BotoesOrdenadores(props: BotoesOrdenadoresProps) {
     }
   }
   return (
-    <div className="seta-container" onClick={mudarOrdem}>
-      <div className={"seta esquerda " + corSeta.esquerda}></div>
-      <div className={"seta direita " + corSeta.direita}></div>
+    <div className="seta-container pointer" onClick={mudarOrdem}>
+      <div className={"seta horizontal esquerda " + corSeta.esquerda}></div>
+      <div className={"seta horizontal direita " + corSeta.direita}></div>
     </div>
   );
 }

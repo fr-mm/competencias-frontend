@@ -1,4 +1,3 @@
-import "./Disciplina.css";
 import { useSelector } from "react-redux";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
@@ -22,7 +21,7 @@ function Disciplina(props: DisciplinaProps) {
       <div className="linha">
         <div className="celula primeira-coluna texto-esquerda borda celula-disciplina">
           <div className="seta-container"></div>
-          <div className="nome-disciplina">{disciplina.nome}</div>
+          <div className="texto-primeira-coluna">{disciplina.nome}</div>
           <SetasOrdenadoras
             idElemento={disciplina.id}
             ordenarCrescente={reducers.docentes.ordenarPorCompetenciaCrescente}

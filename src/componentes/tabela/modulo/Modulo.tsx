@@ -5,6 +5,8 @@ import { ITabela } from "../../../interfaces";
 import { RootState } from "../../../store";
 import Disciplina from "../disciplina";
 import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
+import { SetasOrdenadoras } from "../setas";
+import SetaExpandir from "../setas/SetaExpandir";
 
 interface ModuloProps {
   modulo: ITabela.Modulo;
@@ -13,26 +15,46 @@ interface ModuloProps {
 
 function Modulo(props: ModuloProps) {
   const [isExpanded, setExpanded] = useState(props.visivel);
-  const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+  const { getCollapseProps } = useCollapse({ isExpanded });
   const cargaHoraria = useSelector((state: RootState) => state.cargaHoraria);
+  const disciplinas = Object.values(props.modulo.disciplinas);
+  const docentes = useSelector((state: RootState) => state.docentes.filtrados);
 
   useEffect(() => {
     setExpanded(props.visivel);
   }, [setExpanded, props.visivel]);
 
-  const disciplinas = Object.values(props.modulo.disciplinas);
-  const docentes = useSelector((state: RootState) => state.docentes.filtrados);
+  function cargaHorariaDeDocente(docente: ITabela.Docente) {
+    const cargaDocente =
+      cargaHoraria.docentes[docente.id].modulos[props.modulo.id];
+    return (
+      <CargaHorariaPorDocente
+        key={docente.id + props.modulo.id + "ch"}
+        horas={cargaDocente.horas}
+        porcentagem={cargaDocente.porcentagem}
+        extraClassNames=""
+      />
+    );
+  }
 
   return (
     <div className="container">
-      <div
-        className="linha colapsavel"
-        {...getToggleProps({
-          onClick: () => setExpanded(!isExpanded),
-        })}
-      >
+      <div className="linha colapsavel">
         <div className="celula azul primeira-coluna borda">
-          Módulo {props.modulo.numero}
+          <SetaExpandir
+            expandido={isExpanded}
+            onClick={() => {
+              setExpanded(!isExpanded);
+            }}
+          />
+          <div className="texto-primeira-coluna">
+            Módulo {props.modulo.numero}
+          </div>
+          <SetasOrdenadoras
+            idElemento={props.modulo.id}
+            ordenarCrescente={() => {}}
+            ordenarDecrescente={() => {}}
+          />
         </div>
 
         <div className="celula azul coluna-carga-horaria borda">
@@ -40,18 +62,7 @@ function Modulo(props: ModuloProps) {
         </div>
 
         <div className="linha">
-          {docentes.map((docente) => {
-            const cargaDocente =
-              cargaHoraria.docentes[docente.id].modulos[props.modulo.id];
-            return (
-              <CargaHorariaPorDocente
-                key={docente.id + props.modulo.id + "ch"}
-                horas={cargaDocente.horas}
-                porcentagem={cargaDocente.porcentagem}
-                extraClassNames=""
-              />
-            );
-          })}
+          {docentes.map((docente) => cargaHorariaDeDocente(docente))}
         </div>
       </div>
 

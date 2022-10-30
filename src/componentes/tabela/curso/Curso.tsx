@@ -5,6 +5,8 @@ import { ITabela } from "../../../interfaces";
 import { RootState } from "../../../store";
 import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
 import Modulo from "../modulo";
+import { SetasOrdenadoras } from "../setas";
+import SetaExpandir from "../setas/SetaExpandir";
 
 interface CursoProps {
   curso: ITabela.Curso;
@@ -13,7 +15,7 @@ interface CursoProps {
 
 function Curso(props: CursoProps) {
   const [isExpanded, setExpanded] = useState(props.visivel);
-  const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+  const { getCollapseProps } = useCollapse({ isExpanded });
   const cargaHoraria = useSelector((state: RootState) => state.cargaHoraria);
 
   useEffect(() => {
@@ -25,16 +27,19 @@ function Curso(props: CursoProps) {
 
   return (
     <div className="container">
-      <div
-        className="linha colapsavel"
-        {...getToggleProps({
-          onClick: () => {
-            setExpanded(!isExpanded);
-          },
-        })}
-      >
+      <div className="linha colapsavel">
         <div className="celula azul escuro primeira-coluna borda">
-          {props.curso.nome}
+          <SetaExpandir
+            expandido={isExpanded}
+            onClick={() => setExpanded(!isExpanded)}
+          />
+          <div className="texto-primeira-coluna">{props.curso.nome}</div>
+
+          <SetasOrdenadoras
+            idElemento={props.curso.id}
+            ordenarCrescente={() => {}}
+            ordenarDecrescente={() => {}}
+          />
         </div>
 
         <div className="celula azul escuro coluna-carga-horaria borda">
