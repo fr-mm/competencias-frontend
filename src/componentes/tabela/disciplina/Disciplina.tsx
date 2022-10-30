@@ -1,8 +1,8 @@
+import "./Disciplina.css";
 import { useDispatch, useSelector } from "react-redux";
 import { EnumOrdem } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
-import BotoesOrdenadores from "../botoesOrdenadores";
 import Competencia from "../competencia";
 
 interface DisciplinaProps {
@@ -44,15 +44,39 @@ function Disciplina(props: DisciplinaProps) {
     }
   }
 
+  function setasOrdenadoras() {
+    const corSeta = {
+      esquerda: "cinza",
+      direita: "cinza",
+    };
+
+    if (ordenacao.idElemento === disciplina.id) {
+      switch (ordenacao.ordem) {
+        case EnumOrdem.CRESCENTE:
+          corSeta.esquerda = "preta";
+          break;
+        case EnumOrdem.DECRESCENTE:
+          corSeta.direita = "preta";
+          break;
+      }
+    }
+    return (
+      <div className="seta-container">
+        <div className={"seta esquerda " + corSeta.esquerda}></div>
+        <div className={"seta direita " + corSeta.direita}></div>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <div className="linha">
-        <div
-          className="celula primeira-coluna texto-esquerda borda"
-          onClick={mudarOrdem}
-        >
-          {disciplina.nome}
-          <BotoesOrdenadores idElemento={disciplina.id} />
+        <div className="celula primeira-coluna texto-esquerda borda celula-disciplina">
+          <div className="seta-container"></div>
+          <div className="nome-disciplina">{disciplina.nome}</div>
+          <div className="seta-container" onClick={mudarOrdem}>
+            {setasOrdenadoras()}
+          </div>
         </div>
 
         <div className="celula azul-claro borda coluna-carga-horaria">
