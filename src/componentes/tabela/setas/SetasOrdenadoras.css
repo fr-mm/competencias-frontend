@@ -5,11 +5,21 @@
   align-items: center;
 }
 
+.seta-container {
+  display: flex;
+  width: 1.1rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.seta-container:hover {
+  filter: brightness(90%);
+}
+
 .seta {
   margin-right: 0.2rem;
   width: 0;
   height: 0;
-  border-color: black;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
 }
@@ -20,4 +30,12 @@
 
 .seta.esquerda {
   border-right: 5px solid;
+}
+
+.seta.direita.cinza {
+  border-left-color: lightgray;
+}
+
+.seta.esquerda.cinza {
+  border-right-color: lightgray;
 }
