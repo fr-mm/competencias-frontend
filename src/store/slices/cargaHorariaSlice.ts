@@ -36,3 +36,4 @@ const cargaHorariaSlice = createSlice({
 export const { atualizar } = cargaHorariaSlice.actions;
 export default cargaHorariaSlice.reducer;
 export type CargaHorariaState = typeof initialState;
+export type { CHDocentes };

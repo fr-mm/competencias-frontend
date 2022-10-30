@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useCollapse from "react-collapsed";
 import { useSelector } from "react-redux";
 import { ITabela } from "../../../interfaces";
-import { RootState } from "../../../store";
+import { reducers, RootState } from "../../../store";
 import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
 import Modulo from "../modulo";
 import { SetasOrdenadoras } from "../setas";
@@ -25,6 +25,11 @@ function Curso(props: CursoProps) {
   const modulos = Object.values(props.curso.modulos);
   const docentes = useSelector((state: RootState) => state.docentes.filtrados);
 
+  const ordenacaoProps = {
+    IdCurso: props.curso.id,
+    cargas: cargaHoraria.docentes,
+  };
+
   return (
     <div className="container">
       <div className="linha colapsavel">
@@ -37,8 +42,16 @@ function Curso(props: CursoProps) {
 
           <SetasOrdenadoras
             idElemento={props.curso.id}
-            ordenarCrescente={() => {}}
-            ordenarDecrescente={() => {}}
+            ordenarCrescente={() =>
+              reducers.docentes.ordenarPorCargaHorariaEmCursoCrescente(
+                ordenacaoProps
+              )
+            }
+            ordenarDecrescente={() =>
+              reducers.docentes.ordenarPorCargaHorariaEmCursoDecrescente(
+                ordenacaoProps
+              )
+            }
           />
         </div>
 

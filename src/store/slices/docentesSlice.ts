@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ITabela } from "../../interfaces";
+import { CHDocentes } from "./cargaHorariaSlice";
 
 type IdDocente = string;
 
@@ -54,6 +55,72 @@ const docentesSlice = createSlice({
       );
     },
 
+    ordenarPorCargaHorariaEmModuloCrescente(
+      state,
+      action: PayloadAction<{
+        IdModulo: ITabela.IdModulo;
+        cargas: CHDocentes;
+      }>
+    ) {
+      state.filtrados.sort((docente1, docente2) =>
+        action.payload.cargas[docente1.id].modulos[action.payload.IdModulo]
+          .horas >
+        action.payload.cargas[docente2.id].modulos[action.payload.IdModulo]
+          .horas
+          ? 1
+          : -1
+      );
+    },
+
+    ordenarPorCargaHorariaEmModuloDecrescente(
+      state,
+      action: PayloadAction<{
+        IdModulo: ITabela.IdModulo;
+        cargas: CHDocentes;
+      }>
+    ) {
+      state.filtrados.sort((docente1, docente2) =>
+        action.payload.cargas[docente1.id].modulos[action.payload.IdModulo]
+          .horas <
+        action.payload.cargas[docente2.id].modulos[action.payload.IdModulo]
+          .horas
+          ? 1
+          : -1
+      );
+    },
+
+    ordenarPorCargaHorariaEmCursoCrescente(
+      state,
+      action: PayloadAction<{
+        IdCurso: ITabela.IdCurso;
+        cargas: CHDocentes;
+      }>
+    ) {
+      state.filtrados.sort((docente1, docente2) =>
+        action.payload.cargas[docente1.id].cursos[action.payload.IdCurso]
+          .horas >
+        action.payload.cargas[docente2.id].cursos[action.payload.IdCurso].horas
+          ? 1
+          : -1
+      );
+    },
+
+    ordenarPorCargaHorariaEmCursoDecrescente(
+      state,
+      action: PayloadAction<{
+        IdCurso: ITabela.IdCurso;
+        cargas: CHDocentes;
+      }>
+    ) {
+      state.filtrados.sort((docente1, docente2) =>
+        action.payload.cargas[docente1.id].cursos[action.payload.IdCurso]
+          .horas <
+        action.payload.cargas[docente2.id].cursos[action.payload.IdCurso].horas
+          ? 1
+          : -1
+      );
+    },
+
     setRemovendo(state, action: PayloadAction<boolean>) {
       state.removendo = action.payload;
     },
@@ -85,6 +152,10 @@ export const {
   ordenarAlfabeticamente,
   ordenarPorCompetenciaCrescente,
   ordenarPorCompetenciaDecrescente,
+  ordenarPorCargaHorariaEmModuloCrescente,
+  ordenarPorCargaHorariaEmModuloDecrescente,
+  ordenarPorCargaHorariaEmCursoCrescente,
+  ordenarPorCargaHorariaEmCursoDecrescente,
   setRemovendo,
   incluirParaRemocao,
   excluirParaRemocao,

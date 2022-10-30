@@ -47,6 +47,14 @@
   border-top: 5px solid;
 }
 
+.seta.direita.preta {
+  border-left-color: black;
+}
+
+.seta.esquerda.preta {
+  border-right-color: black;
+}
+
 .seta.direita.cinza {
   border-left-color: lightgray;
 }
