@@ -1,25 +1,20 @@
 import { ChangeEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import api from "../../api";
 import { EnumPopUpNomes } from "../../enums";
 import { reducers, RootState } from "../../store";
 
 function PopUpDisciplina() {
   const dispatch = useDispatch();
   const disciplina = useSelector((state: RootState) => state.disciplina);
+  const cursos = useSelector((state: RootState) => state.cursos.todos);
   const [erros, setErros] = useState([] as string[]);
   const mensagemDeErro = {
     nome: "Nome inválido",
     cargaHoraria: "Carga horária inválida",
   };
 
-  function titulo(): string {
-    if (disciplina.id === "") {
-      return "Adicionar disciplina";
-    }
-    return "Disciplina";
-  }
-
-  function campoNome() {
+  function CampoNome(): JSX.Element {
     if (disciplina.editando) {
       return (
         <input
@@ -38,7 +33,7 @@ function PopUpDisciplina() {
     }
   }
 
-  function campoCargaHoraria() {
+  function CampoCargaHoraria(): JSX.Element {
     if (disciplina.editando) {
       return (
         <input
@@ -57,6 +52,78 @@ function PopUpDisciplina() {
     }
   }
 
+  function Rodape(): JSX.Element {
+    if (disciplina.editando) {
+      return (
+        <div className="rodape">
+          <button onClick={adicionarOnClick}>salvar</button>
+          <button onClick={cancelarOnClick}>cancelar</button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="rodape">
+          <button onClick={() => dispatch(reducers.disciplina.iniciarEdicao())}>
+            editar
+          </button>
+          <button onClick={cancelarOnClick}>sair</button>
+        </div>
+      );
+    }
+  }
+
+  function PresenteEmCursos(): JSX.Element {
+    if (!disciplina.editando) {
+      const presenteEm = [];
+      for (let curso of Object.values(cursos)) {
+        for (let modulo of Object.values(curso.modulos)) {
+          if (Object.values(modulo.disciplinas).includes(disciplina.id)) {
+            presenteEm.push(curso.nome);
+            break;
+          }
+        }
+      }
+
+      return (
+        <div className="par">
+          <label htmlFor="">presente em</label>
+          <div className="coluna-direita coluna">
+            {presenteEm.map((curso) => (
+              <div key={"presenteEm" + curso}>{curso}</div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+    return <div></div>;
+  }
+
+  function nomeOnChange(evento: ChangeEvent<HTMLInputElement>): void {
+    dispatch(reducers.disciplina.setNome(evento.target.value));
+  }
+
+  function cargaHorariaOnChange(evento: ChangeEvent<HTMLInputElement>): void {
+    dispatch(reducers.disciplina.setCargaHoraria(+evento.target.value));
+  }
+
+  function cancelarOnClick(): void {
+    dispatch(reducers.popUps.esconder(EnumPopUpNomes.DISCIPLINA));
+    dispatch(reducers.disciplina.finalizarEdicao());
+  }
+
+  function adicionarOnClick(): void {
+    if (disciplinaValida()) {
+      dispatch(reducers.popUps.esconder(EnumPopUpNomes.DISCIPLINA));
+      //enviar request na api
+      dispatch(reducers.disciplina.finalizarEdicao());
+      dispatch(reducers.tabela.setAtualizada(false));
+    }
+  }
+
+  function getTitulo(): string {
+    return disciplina.id === "" ? "Adicionar disciplina" : "Disciplina";
+  }
+
   function disciplinaValida(): boolean {
     const errosDeValidacao = [];
     let valido = true;
@@ -72,52 +139,10 @@ function PopUpDisciplina() {
     return valido;
   }
 
-  function cancelar(): void {
-    dispatch(reducers.popUps.esconder(EnumPopUpNomes.DISCIPLINA));
-    dispatch(reducers.disciplina.finalizarEdicao());
-  }
-
-  function adicionar(): void {
-    if (disciplinaValida()) {
-      dispatch(reducers.popUps.esconder(EnumPopUpNomes.DISCIPLINA));
-      //enviar request na api
-      dispatch(reducers.disciplina.finalizarEdicao());
-      dispatch(reducers.tabela.setAtualizada(false));
-    }
-  }
-
-  function rodape() {
-    if (disciplina.editando) {
-      return (
-        <div className="rodape">
-          <button onClick={adicionar}>salvar</button>
-          <button onClick={cancelar}>cancelar</button>
-        </div>
-      );
-    } else {
-      return (
-        <div className="rodape">
-          <button onClick={() => dispatch(reducers.disciplina.iniciarEdicao())}>
-            editar
-          </button>
-          <button onClick={cancelar}>sair</button>
-        </div>
-      );
-    }
-  }
-
-  function nomeOnChange(evento: ChangeEvent<HTMLInputElement>): void {
-    dispatch(reducers.disciplina.setNome(evento.target.value));
-  }
-
-  function cargaHorariaOnChange(evento: ChangeEvent<HTMLInputElement>): void {
-    dispatch(reducers.disciplina.setCargaHoraria(+evento.target.value));
-  }
-
   return (
     <div className="mascara">
       <div className="popUp">
-        <div className="titulo">{titulo()}</div>
+        <div className="titulo">{getTitulo()}</div>
         <div className="erros">
           {erros.map((erro) => (
             <div key={erro}>{erro}</div>
@@ -127,17 +152,21 @@ function PopUpDisciplina() {
         <div className="form">
           <div className="par">
             <label htmlFor="nome">nome</label>
-            <div className="coluna-direita">{campoNome()}</div>
+            <div className="coluna-direita">
+              <CampoNome />
+            </div>
           </div>
-        </div>
 
-        <div className="form">
           <div className="par">
             <label htmlFor="cargaHoraria">carga horária</label>
-            <div className="coluna-direita">{campoCargaHoraria()}</div>
+            <div className="coluna-direita">
+              <CampoCargaHoraria />
+            </div>
           </div>
+
+          <PresenteEmCursos />
         </div>
-        {rodape()}
+        <Rodape />
       </div>
     </div>
   );

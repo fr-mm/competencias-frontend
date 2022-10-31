@@ -40,6 +40,8 @@
 .coluna-direita {
   display: flex;
   width: 15rem;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .wrap {
