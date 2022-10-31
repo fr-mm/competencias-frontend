@@ -17,7 +17,7 @@ const docenteSlice = createSlice({
   name: "docente",
   initialState,
   reducers: {
-    setId(state, action: PayloadAction<string>) {
+    setId(state, action: PayloadAction<ITabela.IdDocente>) {
       state.id = action.payload;
     },
 
@@ -76,7 +76,7 @@ const docenteSlice = createSlice({
       state.editando = false;
     },
 
-    carregarDocente(state, action: PayloadAction<ITabela.Docente>) {
+    carregar(state, action: PayloadAction<ITabela.Docente>) {
       const docente = action.payload;
       state.id = docente.id;
       state.nome = docente.nome;
@@ -100,6 +100,6 @@ export const {
   setUnidadeSenai,
   iniciarEdicao,
   finalizarEdicao,
-  carregarDocente,
+  carregar,
 } = docenteSlice.actions;
 export default docenteSlice.reducer;

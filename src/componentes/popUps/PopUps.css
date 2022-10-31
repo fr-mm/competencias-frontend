@@ -65,3 +65,7 @@
   pointer-events: painted;
   z-index: 99;
 }
+
+.erros {
+  color: red;
+}

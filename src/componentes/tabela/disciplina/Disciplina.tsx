@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { EnumPopUpNomes } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
 import Competencia from "../competencia";
@@ -9,6 +10,7 @@ interface DisciplinaProps {
 }
 
 function Disciplina(props: DisciplinaProps) {
+  const dispatch = useDispatch();
   const docentesFiltrados = useSelector(
     (state: RootState) => state.docentes.filtrados
   );
@@ -16,12 +18,22 @@ function Disciplina(props: DisciplinaProps) {
     (state: RootState) => state.disciplinas.todas[props.idDisciplina]
   );
 
+  function onClick() {
+    dispatch(reducers.disciplina.carregar(disciplina));
+    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DISCIPLINA));
+  }
+
   return (
     <div className="container">
       <div className="linha">
         <div className="celula primeira-coluna texto-esquerda borda celula-disciplina">
           <div className="seta-container"></div>
-          <div className="texto-primeira-coluna">{disciplina.nome}</div>
+          <div
+            className="texto-primeira-coluna pointer lowlight"
+            onClick={onClick}
+          >
+            {disciplina.nome}
+          </div>
           <SetasOrdenadoras
             idElemento={disciplina.id}
             ordenarCrescente={reducers.docentes.ordenarPorCompetenciaCrescente}

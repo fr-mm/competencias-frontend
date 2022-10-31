@@ -44,6 +44,10 @@ select {
   filter: contrast(130%);
 }
 
+.lowlight:hover {
+  text-shadow: 0px 0px 10px gray;
+}
+
 .azul-claro {
   background-color: #e0e4f4;
 }

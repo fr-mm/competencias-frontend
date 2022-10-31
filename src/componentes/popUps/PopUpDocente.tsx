@@ -4,7 +4,6 @@ import { EnumPopUpNomes } from "../../enums";
 import { reducers, RootState } from "../../store";
 import { ChangeEvent, useEffect, useState } from "react";
 import { regex } from "../../aux";
-import { ITabela } from "../../interfaces";
 
 const mensagemDeErro = {
   telefone: "telefone inválido",

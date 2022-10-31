@@ -6,9 +6,10 @@ import tabela from "./slices/tabelaSlice";
 import ordenacao from "./slices/ordenacaoSlice";
 import popUps from "./slices/popUsSlice";
 import cargaHoraria from "./slices/cargaHorariaSlice";
-import disciplinas from "./slices/disciplinaSlice";
+import disciplinas from "./slices/disciplinasSlice";
 import tiposDeContratacao from "./slices/tiposDeContratacaoSlice";
 import unidadesSenai from "./slices/unidadesSenaiSlice";
+import disciplina from "./slices/disciplinaSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     popUps,
     cargaHoraria,
     disciplinas,
+    disciplina,
     tiposDeContratacao,
     unidadesSenai,
   },

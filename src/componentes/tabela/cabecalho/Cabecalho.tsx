@@ -43,7 +43,7 @@ function Cabecalho() {
   }
 
   function abrirPopUpDocente(docente: ITabela.Docente): void {
-    dispatch(reducers.docente.carregarDocente(docente));
+    dispatch(reducers.docente.carregar(docente));
     dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DOCENTE));
   }
 
