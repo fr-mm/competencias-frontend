@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { EnumPopUpNomes } from "../../enums";
 import { RootState } from "../../store";
-import PopUpDisciplina from "./PopUpDisciplina";
+import Disciplina from "./popUps/Disciplina";
 import PopUpDocente from "./PopUpDocente";
 import PopUpRemoverDocentes from "./PopUpRemoverDocentes";
 import "./PopUps.css";
@@ -19,7 +19,7 @@ function PopUps() {
     <div className="pop-up-container">
       {popUp(EnumPopUpNomes.DOCENTE, <PopUpDocente />)}
       {popUp(EnumPopUpNomes.REMOVER_DOCENTES, <PopUpRemoverDocentes />)}
-      {popUp(EnumPopUpNomes.DISCIPLINA, <PopUpDisciplina />)}
+      <Disciplina />
     </div>
   );
 }

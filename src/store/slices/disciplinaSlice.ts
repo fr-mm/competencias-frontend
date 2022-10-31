@@ -7,6 +7,8 @@ const initialState = {
   nome: "",
   cargaHoraria: 0,
   editando: false,
+  valida: false,
+  erros: [] as string[],
 };
 
 const disciplinasSlice = createSlice({
@@ -29,6 +31,10 @@ const disciplinasSlice = createSlice({
       }
     },
 
+    setErros(state, action: PayloadAction<string[]>) {
+      state.erros = action.payload;
+    },
+
     iniciarEdicao(state) {
       state.editando = true;
     },
@@ -37,13 +43,16 @@ const disciplinasSlice = createSlice({
       state.id = initialState.id;
       state.nome = initialState.nome;
       state.cargaHoraria = initialState.cargaHoraria;
-      state.editando = false;
+      state.editando = initialState.editando;
+      state.valida = initialState.valida;
+      state.erros = initialState.erros;
     },
 
     carregar(state, action: PayloadAction<ITabela.Disciplina>) {
       state.id = action.payload.id;
       state.nome = action.payload.nome;
       state.cargaHoraria = action.payload.cargaHoraria;
+      state.valida = true;
     },
   },
 });
@@ -52,6 +61,7 @@ export const {
   setId,
   setNome,
   setCargaHoraria,
+  setErros,
   iniciarEdicao,
   finalizarEdicao,
   carregar,
