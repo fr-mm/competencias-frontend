@@ -50,7 +50,9 @@
 }
 
 .texto-primeira-coluna {
-  display: flex;
+  display: flexbox;
   flex: 1;
-  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
