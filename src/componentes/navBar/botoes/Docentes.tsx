@@ -1,35 +1,26 @@
 import { useDispatch } from "react-redux";
 import { EnumPopUpNomes } from "../../../enums";
 import { reducers } from "../../../store";
-import { BotaoDeMenu, Menu, MenuDeNavBar } from "../base";
+import { BotaoDeMenu, MenuDeNavBar } from "../base";
 
 function Docentes() {
   const dispatch = useDispatch();
 
-  function Adicionar() {
-    function onClick(): void {
-      dispatch(reducers.docente.iniciarEdicao());
-      dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DOCENTE));
-    }
-
-    return (
-      <BotaoDeMenu key="adicionarDocente" texto="adicionar" onClick={onClick} />
-    );
+  function adicionar(): void {
+    dispatch(reducers.docente.iniciarEdicao());
+    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DOCENTE));
   }
 
-  function Remover() {
-    function onClick(): void {
-      dispatch(reducers.docentes.setRemovendo(true));
-    }
-
-    return (
-      <BotaoDeMenu key="removerDocente" texto="remover" onClick={onClick} />
-    );
+  function remover(): void {
+    dispatch(reducers.docentes.setRemovendo(true));
   }
 
-  const menu = <Menu itens={[Adicionar(), Remover()]} />;
-
-  return <MenuDeNavBar texto="docentes" menu={menu} />;
+  return (
+    <MenuDeNavBar texto="docentes">
+      <BotaoDeMenu texto="adicionar" onClick={adicionar} />
+      <BotaoDeMenu texto="remover" onClick={remover} />
+    </MenuDeNavBar>
+  );
 }
 
 export default Docentes;

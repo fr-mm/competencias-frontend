@@ -1,28 +1,24 @@
 import { useDispatch } from "react-redux";
 import { EnumPopUpNomes } from "../../../enums";
 import { reducers } from "../../../store";
-import { BotaoDeMenu, Menu, MenuDeNavBar } from "../base";
+import { BotaoDeMenu, MenuDeNavBar } from "../base";
 
 function Disciplinas() {
   const dispatch = useDispatch();
 
-  function Adicionar() {
-    function onClick(): void {
-      dispatch(reducers.disciplina.iniciarEdicao());
-      dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DISCIPLINA));
-    }
-    return (
-      <BotaoDeMenu
-        key="adicionarDisciplina"
-        texto="adicionar"
-        onClick={onClick}
-      />
-    );
+  function adicionar(): void {
+    dispatch(reducers.disciplina.iniciarEdicao());
+    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DISCIPLINA));
   }
 
-  const menu = <Menu itens={[Adicionar()]} />;
+  function remover(): void {}
 
-  return <MenuDeNavBar texto="disciplinas" menu={menu} />;
+  return (
+    <MenuDeNavBar texto="disciplinas">
+      <BotaoDeMenu texto="adicionar" onClick={adicionar} />
+      <BotaoDeMenu texto="remover" onClick={remover} />
+    </MenuDeNavBar>
+  );
 }
 
 export default Disciplinas;
