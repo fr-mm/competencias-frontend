@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import api from "../../../api";
 import { regex } from "../../../aux";
 import { EnumPopUpNomes } from "../../../enums";
 import { reducers, RootState } from "../../../store";
@@ -50,8 +51,16 @@ function Docente(): JSX.Element {
 
   function salvar(): void {
     if (valido()) {
+      api.salvarDocente({
+        id: docente.id,
+        nome: docente.nome,
+        email: docente.email,
+        telefones: docente.telefones,
+        tipoDeContratacao: docente.tipoDeContratacao,
+        unidadeSenai: docente.unidadeSenai,
+        competencias: docente.competencias,
+      });
       dispatch(reducers.popUps.esconder(EnumPopUpNomes.DOCENTE));
-      //enviar request na api
       dispatch(reducers.docente.finalizarEdicao());
       dispatch(reducers.tabela.setAtualizada(false));
     }
@@ -168,7 +177,7 @@ function Docente(): JSX.Element {
         label="unidade SENAI"
         id={docente.id + "-unidade-senai"}
         itens={unidadesSenai}
-        value={docente.unidadesSenai}
+        value={docente.unidadeSenai}
         onChange={unidadeSenaiOnChange}
         editando={docente.editando}
       />

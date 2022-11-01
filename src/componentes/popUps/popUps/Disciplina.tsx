@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import api from "../../../api";
 import { EnumPopUpNomes } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import { Erros, Input, PopUp, RodapeEntidade } from "../base";
@@ -28,7 +29,11 @@ function Disciplina(): JSX.Element {
   function salvar(): void {
     if (valida()) {
       dispatch(reducers.popUps.esconder(EnumPopUpNomes.DISCIPLINA));
-      //enviar request na api
+      api.salvarDisciplina({
+        id: disciplina.id,
+        nome: disciplina.nome,
+        cargaHoraria: disciplina.cargaHoraria,
+      });
       dispatch(reducers.disciplina.finalizarEdicao());
       dispatch(reducers.tabela.setAtualizada(false));
     }

@@ -1,18 +1,9 @@
 import { ITabela } from ".";
 
-type RemoverDocentesRequestPayload = ITabela.IdDocente[];
-type AdicionarDocenteRequestPayload = {
-  nome: string;
-  email: string;
-  telefones: string[];
-  tipoDeContratacao: ITabela.IdTipoDeContratacao;
-  unidadeSenai: ITabela.IdTipoDeContratacao;
-};
-
 export default interface IApi {
   getConteudoDeTabela(): Promise<Response>;
-  removerDocentes(ids: RemoverDocentesRequestPayload): Promise<Response>;
-  adicionarDocente(docente: AdicionarDocenteRequestPayload): Promise<Response>;
+  removerDocentes(ids: ITabela.IdDocente[]): Promise<Response>;
+  salvarDocente(docente: ITabela.Docente): Promise<Response>;
+  removerDisciplinas(ids: ITabela.IdDisciplina[]): Promise<Response>;
+  salvarDisciplina(disciplina: ITabela.Disciplina): Promise<Response>;
 }
-
-export type { RemoverDocentesRequestPayload, AdicionarDocenteRequestPayload };

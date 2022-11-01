@@ -1,8 +1,4 @@
-import { IApi } from "../../interfaces";
-import {
-  AdicionarDocenteRequestPayload,
-  RemoverDocentesRequestPayload,
-} from "../../interfaces/IApi";
+import { IApi, ITabela } from "../../interfaces";
 import db from "./fakeDB.json";
 
 export default class JsonAPI implements IApi {
@@ -13,14 +9,22 @@ export default class JsonAPI implements IApi {
     return Promise.resolve(response);
   }
 
-  public async removerDocentes(
-    ids: RemoverDocentesRequestPayload
+  public async removerDocentes(ids: ITabela.IdDocente[]): Promise<Response> {
+    return Promise.resolve(new Response());
+  }
+
+  public async salvarDocente(docente: ITabela.Docente): Promise<Response> {
+    return Promise.resolve(new Response());
+  }
+
+  public async removerDisciplinas(
+    ids: ITabela.IdDisciplina[]
   ): Promise<Response> {
     return Promise.resolve(new Response());
   }
 
-  public async adicionarDocente(
-    docente: AdicionarDocenteRequestPayload
+  public async salvarDisciplina(
+    docente: ITabela.Disciplina
   ): Promise<Response> {
     return Promise.resolve(new Response());
   }

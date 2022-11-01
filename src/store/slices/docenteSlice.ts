@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { regex } from "../../aux";
+import { EnumNivelDeCompetencia } from "../../enums";
 import { ITabela } from "../../interfaces";
 
 const initialState = {
@@ -9,7 +10,8 @@ const initialState = {
   telefones: [] as string[],
   telefoneEmEdicao: "",
   tipoDeContratacao: "",
-  unidadesSenai: "",
+  unidadeSenai: "",
+  competencias: {} as ITabela.Competencias,
   editando: false,
   erros: [] as string[],
 };
@@ -60,7 +62,17 @@ const docenteSlice = createSlice({
     },
 
     setUnidadeSenai(state, action: PayloadAction<string>) {
-      state.unidadesSenai = action.payload;
+      state.unidadeSenai = action.payload;
+    },
+
+    setCompetencia(
+      state,
+      action: PayloadAction<{
+        idDisciplina: ITabela.IdDisciplina;
+        nivel: EnumNivelDeCompetencia;
+      }>
+    ) {
+      state.competencias[action.payload.idDisciplina] = action.payload.nivel;
     },
 
     setErros(state, action: PayloadAction<string[]>) {
@@ -83,7 +95,7 @@ const docenteSlice = createSlice({
       state.email = initialState.email;
       state.telefones = initialState.telefones;
       state.tipoDeContratacao = initialState.tipoDeContratacao;
-      state.unidadesSenai = initialState.unidadesSenai;
+      state.unidadeSenai = initialState.unidadeSenai;
       state.editando = false;
     },
 
@@ -94,7 +106,8 @@ const docenteSlice = createSlice({
       state.email = docente.email;
       state.telefones = docente.telefones;
       state.tipoDeContratacao = docente.tipoDeContratacao;
-      state.unidadesSenai = docente.unidadeSenai;
+      state.unidadeSenai = docente.unidadeSenai;
+      state.competencias = docente.competencias;
       state.editando = false;
     },
   },
@@ -105,12 +118,13 @@ export const {
   setNome,
   setEmail,
   setTelefoneEmEdicao,
+  setTipoDeContratacao,
+  setUnidadeSenai,
+  setCompetencia,
   setErros,
   removerErro,
   adicionarTelefone,
   removerTelefone,
-  setTipoDeContratacao,
-  setUnidadeSenai,
   iniciarEdicao,
   finalizarEdicao,
   carregar,
