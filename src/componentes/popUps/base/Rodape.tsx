@@ -1,6 +1,4 @@
 import { MouseEventHandler } from "react";
-import { useDispatch } from "react-redux";
-import { reducers } from "../../../store";
 
 interface RodapeProps {
   editando: boolean;
@@ -10,8 +8,6 @@ interface RodapeProps {
 }
 
 function Rodape(props: RodapeProps): JSX.Element {
-  const dispatch = useDispatch();
-
   if (props.editando) {
     return (
       <div className="rodape">
@@ -22,9 +18,7 @@ function Rodape(props: RodapeProps): JSX.Element {
   } else {
     return (
       <div className="rodape">
-        <button onClick={() => dispatch(reducers.disciplina.iniciarEdicao())}>
-          editar
-        </button>
+        <button onClick={props.editar}>editar</button>
         <button onClick={props.cancelar}>sair</button>
       </div>
     );

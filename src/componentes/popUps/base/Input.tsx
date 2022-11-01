@@ -1,5 +1,5 @@
-import { ChangeEventHandler } from "react";
-import Atributo from "./Campo";
+import { ChangeEventHandler, PropsWithChildren } from "react";
+import Atributo from "./Atributo";
 
 interface InputProps {
   id: string;
@@ -11,28 +11,35 @@ interface InputProps {
   editando: boolean;
 }
 
-function Input(props: InputProps): JSX.Element {
-  function Valor(): JSX.Element {
-    if (props.editando) {
-      return (
+interface ValorProps {
+  super: InputProps;
+}
+
+function Valor(props: PropsWithChildren<ValorProps>): JSX.Element {
+  if (props.super.editando) {
+    return (
+      <div className="input-container">
         <input
           className="azul-claro input"
           type="text"
           autoComplete="off"
-          id={props.id}
-          value={props.value}
-          onChange={props.onChange}
-          maxLength={props.maxLength}
-          placeholder={props.placeholder}
+          id={props.super.id}
+          value={props.super.value}
+          onChange={props.super.onChange}
+          maxLength={props.super.maxLength}
+          placeholder={props.super.placeholder}
         />
-      );
-    }
-    return <div>{props.value}</div>;
+        {props.children}
+      </div>
+    );
   }
+  return <div>{props.super.value}</div>;
+}
 
+function Input(props: PropsWithChildren<InputProps>): JSX.Element {
   return (
     <Atributo id={props.id} label={props.label} editando={props.editando}>
-      <Valor />
+      <Valor super={props}>{props.children}</Valor>
     </Atributo>
   );
 }

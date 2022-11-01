@@ -11,6 +11,7 @@ const initialState = {
   tipoDeContratacao: "",
   unidadesSenai: "",
   editando: false,
+  erros: [] as string[],
 };
 
 const docenteSlice = createSlice({
@@ -62,6 +63,16 @@ const docenteSlice = createSlice({
       state.unidadesSenai = action.payload;
     },
 
+    setErros(state, action: PayloadAction<string[]>) {
+      state.erros = action.payload;
+    },
+
+    removerErro(state, action: PayloadAction<string>) {
+      if (state.erros.includes(action.payload)) {
+        state.erros.splice(state.erros.indexOf(action.payload));
+      }
+    },
+
     iniciarEdicao(state) {
       state.editando = true;
     },
@@ -94,6 +105,8 @@ export const {
   setNome,
   setEmail,
   setTelefoneEmEdicao,
+  setErros,
+  removerErro,
   adicionarTelefone,
   removerTelefone,
   setTipoDeContratacao,

@@ -7,7 +7,6 @@ const initialState = {
   nome: "",
   cargaHoraria: 0,
   editando: false,
-  valida: false,
   erros: [] as string[],
 };
 
@@ -44,7 +43,6 @@ const disciplinasSlice = createSlice({
       state.nome = initialState.nome;
       state.cargaHoraria = initialState.cargaHoraria;
       state.editando = initialState.editando;
-      state.valida = initialState.valida;
       state.erros = initialState.erros;
     },
 
@@ -52,7 +50,6 @@ const disciplinasSlice = createSlice({
       state.id = action.payload.id;
       state.nome = action.payload.nome;
       state.cargaHoraria = action.payload.cargaHoraria;
-      state.valida = true;
     },
   },
 });

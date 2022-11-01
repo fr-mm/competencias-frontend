@@ -120,6 +120,7 @@ function PopUpDocente() {
   ): void {
     dispatch(reducers.docente.setTipoDeContratacao(evento.target.value));
   }
+
   function setOpcoesPadrao(): void {
     if (docente.tipoDeContratacao === "") {
       dispatch(
