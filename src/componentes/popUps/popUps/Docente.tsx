@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { regex } from "../../../aux";
 import { EnumPopUpNomes } from "../../../enums";
 import { reducers, RootState } from "../../../store";
-import { Erros, Input, PopUp, Rodape } from "../base";
-import Lista from "../base/Lista";
+import { Erros, Input, PopUp, Rodape, Lista, Combobox } from "../base";
 
 function Docente(): JSX.Element {
   const dispatch = useDispatch();
   const docente = useSelector((state: RootState) => state.docente);
   const tiposDeContratacao = useSelector(
     (state: RootState) => state.tiposDeContratacao.todos
+  );
+  const unidadesSenai = useSelector(
+    (state: RootState) => state.unidadesSenai.todas
   );
   const mensagemDeErro = {
     telefone: "telefone inválido",
@@ -161,6 +163,22 @@ function Docente(): JSX.Element {
         itens={docente.telefones}
         editando={docente.editando}
         remover={removerTelefone}
+      />
+      <Combobox
+        label="unidade SENAI"
+        id={docente.id + "-unidade-senai"}
+        itens={unidadesSenai}
+        value={docente.unidadesSenai}
+        onChange={unidadeSenaiOnChange}
+        editando={docente.editando}
+      />
+      <Combobox
+        label="tipo de contratação"
+        id={docente.id + "-tipo-de-contratacao"}
+        itens={tiposDeContratacao}
+        value={docente.tipoDeContratacao}
+        onChange={tipoDeContratacaoOnChange}
+        editando={docente.editando}
       />
       <Rodape
         editando={docente.editando}
