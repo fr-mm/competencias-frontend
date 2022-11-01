@@ -5,7 +5,7 @@ import { RootState, reducers } from "../../store";
 import api from "../../api";
 import Cabecalho from "./cabecalho";
 import Curso from "./curso";
-import RemocaoDocentes from "./remocaoDocentes";
+import RemocaoDocentes from "./remocao";
 import { ITabela } from "../../interfaces";
 import { CargaHorariaState } from "../../store/slices/cargaHorariaSlice";
 import Carregando from "./carregando";

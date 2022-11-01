@@ -1,18 +1,37 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
-import Marcador from "./marcador";
-import "./RemocaoDocentes.css";
+import { useDispatch, useSelector } from "react-redux";
+import { ITabela } from "../../../interfaces";
+import { reducers, RootState } from "../../../store";
+import Marcador from "./Marcador";
+import "./Remocao.css";
 
 function RemocaoDocentes() {
+  const dispatch = useDispatch();
   const docentesFiltrados = useSelector(
     (state: RootState) => state.docentes.filtrados
   );
   const removendo = useSelector((state: RootState) => state.docentes.removendo);
+  const idsARemover = useSelector(
+    (state: RootState) => state.docentes.idsARemover
+  );
+
+  function incluirParaRemocao(id: ITabela.IdDocente): void {
+    dispatch(reducers.docentes.incluirParaRemocao(id));
+  }
+
+  function excluirParaRemocao(id: ITabela.IdDocente): void {
+    dispatch(reducers.docentes.excluirParaRemocao(id));
+  }
 
   function getMarcadores() {
     if (removendo) {
       return docentesFiltrados.map((docente) => (
-        <Marcador docenteId={docente.id} key={`marcador${docente.id}`} />
+        <Marcador
+          key={"marcador-" + docente.id}
+          idItem={docente.id}
+          idsARemover={idsARemover}
+          incluirParaRemocao={incluirParaRemocao}
+          excluirParaRemocao={excluirParaRemocao}
+        />
       ));
     }
   }
