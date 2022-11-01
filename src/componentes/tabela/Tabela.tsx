@@ -33,6 +33,7 @@ function Tabela(): JSX.Element {
       dispatch(reducers.cursos.atualizar(conteudo.cursos));
       dispatch(reducers.cursos.filtrarPorNome(""));
       dispatch(reducers.disciplinas.atualizar(conteudo.disciplinas));
+      dispatch(reducers.disciplinas.filtrarPorNome(""));
       dispatch(
         reducers.tiposDeContratacao.atualizar(conteudo.tiposDeContratacao)
       );

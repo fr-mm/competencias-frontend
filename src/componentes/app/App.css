@@ -1,4 +1,4 @@
-label {
+input:focus {
   outline: none;
 }
 

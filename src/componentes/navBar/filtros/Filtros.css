@@ -8,12 +8,12 @@
   padding-left: 2rem;
 }
 
-.filtro {
+.filtro-container {
   display: flex;
   margin-right: 6rem;
 }
 
-.filtro label {
+.filtro-container label {
   display: flex;
   margin-right: 1rem;
   align-items: center;

@@ -13,12 +13,15 @@ interface ModuloProps {
   visivel: boolean;
 }
 
-function Modulo(props: ModuloProps) {
+function Modulo(props: ModuloProps): JSX.Element {
   const [isExpanded, setExpanded] = useState(props.visivel);
   const { getCollapseProps } = useCollapse({ isExpanded });
   const cargaHoraria = useSelector((state: RootState) => state.cargaHoraria);
   const disciplinas = Object.values(props.modulo.disciplinas);
   const docentes = useSelector((state: RootState) => state.docentes.filtrados);
+  const disciplinasFiltradas = useSelector(
+    (state: RootState) => state.disciplinas.idsFiltradas
+  );
 
   useEffect(() => {
     setExpanded(props.visivel);
@@ -42,50 +45,59 @@ function Modulo(props: ModuloProps) {
     cargas: cargaHoraria.docentes,
   };
 
-  return (
-    <div className="container">
-      <div className="linha colapsavel">
-        <div className="celula azul primeira-coluna borda">
-          <SetaExpandir
-            expandido={isExpanded}
-            onClick={() => {
-              setExpanded(!isExpanded);
-            }}
-          />
-          <div className="texto-primeira-coluna">
-            Módulo {props.modulo.numero}
+  function contemDisciplinasFiltradas(): boolean {
+    return disciplinas.some((disciplina) =>
+      disciplinasFiltradas.includes(disciplina)
+    );
+  }
+
+  if (contemDisciplinasFiltradas()) {
+    return (
+      <div className="container">
+        <div className="linha colapsavel">
+          <div className="celula azul primeira-coluna borda">
+            <SetaExpandir
+              expandido={isExpanded}
+              onClick={() => {
+                setExpanded(!isExpanded);
+              }}
+            />
+            <div className="texto-primeira-coluna">
+              Módulo {props.modulo.numero}
+            </div>
+            <SetasOrdenadoras
+              idElemento={props.modulo.id}
+              ordenarCrescente={() =>
+                reducers.docentes.ordenarPorCargaHorariaEmModuloCrescente(
+                  ordenacaoProps
+                )
+              }
+              ordenarDecrescente={() =>
+                reducers.docentes.ordenarPorCargaHorariaEmModuloDecrescente(
+                  ordenacaoProps
+                )
+              }
+            />
           </div>
-          <SetasOrdenadoras
-            idElemento={props.modulo.id}
-            ordenarCrescente={() =>
-              reducers.docentes.ordenarPorCargaHorariaEmModuloCrescente(
-                ordenacaoProps
-              )
-            }
-            ordenarDecrescente={() =>
-              reducers.docentes.ordenarPorCargaHorariaEmModuloDecrescente(
-                ordenacaoProps
-              )
-            }
-          />
+
+          <div className="celula azul coluna-carga-horaria borda">
+            {cargaHoraria.modulos[props.modulo.id]}
+          </div>
+
+          <div className="linha">
+            {docentes.map((docente) => cargaHorariaDeDocente(docente))}
+          </div>
         </div>
 
-        <div className="celula azul coluna-carga-horaria borda">
-          {cargaHoraria.modulos[props.modulo.id]}
-        </div>
-
-        <div className="linha">
-          {docentes.map((docente) => cargaHorariaDeDocente(docente))}
+        <div {...getCollapseProps()}>
+          {disciplinas.map((disciplina) => (
+            <Disciplina key={disciplina} idDisciplina={disciplina} />
+          ))}
         </div>
       </div>
-
-      <div {...getCollapseProps()}>
-        {disciplinas.map((disciplina) => (
-          <Disciplina key={disciplina} idDisciplina={disciplina} />
-        ))}
-      </div>
-    </div>
-  );
+    );
+  }
+  return <></>;
 }
 
 export default Modulo;

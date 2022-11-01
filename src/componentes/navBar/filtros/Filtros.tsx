@@ -1,21 +1,46 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
-import FiltroCursos from "./FiltroCursos";
-import FiltroDocentes from "./FiltroDocentes";
 import "./Filtros.css";
+import { useDispatch, useSelector } from "react-redux";
+import { reducers, RootState } from "../../../store";
+import { Filtro } from "./base";
 
-function Filtros() {
+function Filtros(): JSX.Element {
+  const dispatch = useDispatch();
   const filtrando = useSelector((state: RootState) => state.tabela.filtrando);
+
+  function docentesOnChange(nome: string): void {
+    nome = nome.trim();
+    dispatch(reducers.docentes.filtrarPorNome(nome));
+    if (nome === "") {
+      dispatch(reducers.docentes.ordenarAlfabeticamente());
+    }
+  }
+
+  function cursosOnChange(nome: string): void {
+    dispatch(reducers.cursos.filtrarPorNome(nome.trim()));
+  }
+
+  function disciplinasOnChange(nome: string): void {
+    dispatch(reducers.disciplinas.filtrarPorNome(nome.trim()));
+  }
 
   if (filtrando) {
     return (
       <div className="filtros azul escuro">
-        <FiltroDocentes />
-        <FiltroCursos />
+        <Filtro
+          id="filtro-docentes"
+          label="docentes"
+          onChange={docentesOnChange}
+        />
+        <Filtro id="filtro-cursos" label="cursos" onChange={cursosOnChange} />
+        <Filtro
+          id="filtro-disciplinas"
+          label="disciplinas"
+          onChange={disciplinasOnChange}
+        />
       </div>
     );
   } else {
-    return <div></div>;
+    return <></>;
   }
 }
 

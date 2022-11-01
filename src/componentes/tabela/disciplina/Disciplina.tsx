@@ -17,48 +17,56 @@ function Disciplina(props: DisciplinaProps) {
   const disciplina = useSelector(
     (state: RootState) => state.disciplinas.todas[props.idDisciplina]
   );
+  const filtradas = useSelector(
+    (state: RootState) => state.disciplinas.idsFiltradas
+  );
 
   function onClick() {
     dispatch(reducers.disciplina.carregar(disciplina));
     dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DISCIPLINA));
   }
 
-  return (
-    <div className="container">
-      <div className="linha">
-        <div className="celula primeira-coluna texto-esquerda borda celula-disciplina">
-          <div className="seta-container"></div>
-          <div
-            className="texto-primeira-coluna pointer lowlight"
-            onClick={onClick}
-          >
-            {disciplina.nome}
-          </div>
-          <SetasOrdenadoras
-            idElemento={disciplina.id}
-            ordenarCrescente={reducers.docentes.ordenarPorCompetenciaCrescente}
-            ordenarDecrescente={
-              reducers.docentes.ordenarPorCompetenciaDecrescente
-            }
-          />
-        </div>
-
-        <div className="celula azul-claro borda coluna-carga-horaria">
-          {disciplina.cargaHoraria}
-        </div>
-
+  if (filtradas.includes(disciplina.id)) {
+    return (
+      <div className="container">
         <div className="linha">
-          {docentesFiltrados.map((docente) => (
-            <Competencia
-              key={disciplina.id + docente.id}
-              docente={docente}
-              disciplina={disciplina}
+          <div className="celula primeira-coluna texto-esquerda borda celula-disciplina">
+            <div className="seta-container"></div>
+            <div
+              className="texto-primeira-coluna pointer lowlight"
+              onClick={onClick}
+            >
+              {disciplina.nome}
+            </div>
+            <SetasOrdenadoras
+              idElemento={disciplina.id}
+              ordenarCrescente={
+                reducers.docentes.ordenarPorCompetenciaCrescente
+              }
+              ordenarDecrescente={
+                reducers.docentes.ordenarPorCompetenciaDecrescente
+              }
             />
-          ))}
+          </div>
+
+          <div className="celula azul-claro borda coluna-carga-horaria">
+            {disciplina.cargaHoraria}
+          </div>
+
+          <div className="linha">
+            {docentesFiltrados.map((docente) => (
+              <Competencia
+                key={disciplina.id + docente.id}
+                docente={docente}
+                disciplina={disciplina}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return <></>;
 }
 
 export default Disciplina;
