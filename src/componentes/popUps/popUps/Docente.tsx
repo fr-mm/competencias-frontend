@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { regex } from "../../../aux";
 import { EnumPopUpNomes } from "../../../enums";
 import { reducers, RootState } from "../../../store";
-import { Erros, Input, PopUp, Rodape, Lista, Combobox } from "../base";
+import { Erros, Input, PopUp, RodapeEntidade, Lista, Combobox } from "../base";
 
 function Docente(): JSX.Element {
   const dispatch = useDispatch();
@@ -180,7 +180,7 @@ function Docente(): JSX.Element {
         onChange={tipoDeContratacaoOnChange}
         editando={docente.editando}
       />
-      <Rodape
+      <RodapeEntidade
         editando={docente.editando}
         editar={editar}
         salvar={salvar}

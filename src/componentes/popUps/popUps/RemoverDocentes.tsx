@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPopUpNomes } from "../../enums";
-import { reducers, RootState } from "../../store";
-import api from "../../api";
+import { EnumPopUpNomes } from "../../../enums";
+import { reducers, RootState } from "../../../store";
+import api from "../../../api";
+import { PopUp, RodapeConfirmacao } from "../base";
 
-function PopUpRemoverDocentes() {
+function RemoverDocentes(): JSX.Element {
   const dispatch = useDispatch();
   const popUpsVisiveis = useSelector(
     (state: RootState) => state.popUps.visiveis
@@ -28,20 +29,16 @@ function PopUpRemoverDocentes() {
 
   if (popUpsVisiveis.includes(EnumPopUpNomes.REMOVER_DOCENTES)) {
     return (
-      <div className="mascara">
-        <div className="popUp">
-          <div className="titulo">Remover docentes selecionados?</div>
-          {nomes.map((nome) => (
-            <p key={nome}>{nome}</p>
-          ))}
-          <button onClick={confirmar}>remover</button>
-          <button onClick={cancelar}>cancelar</button>
-        </div>
-      </div>
+      <PopUp nome={EnumPopUpNomes.REMOVER_DOCENTES} titulo="Remover docentes">
+        {nomes.map((nome) => (
+          <p key={nome}>{nome}</p>
+        ))}
+        <RodapeConfirmacao confirmar={confirmar} cancelar={cancelar} />
+      </PopUp>
     );
   } else {
-    return <div></div>;
+    return <></>;
   }
 }
 
-export default PopUpRemoverDocentes;
+export default RemoverDocentes;

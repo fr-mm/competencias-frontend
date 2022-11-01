@@ -3,6 +3,15 @@ import Erros from "./Erros";
 import Input from "./Input";
 import Lista from "./Lista";
 import PopUp from "./PopUp";
-import Rodape from "./Rodape";
+import RodapeConfirmacao from "./RodapeConfirmacao";
+import RodapeEntidade from "./RodapeEntidade";
 
-export { PopUp, Input, Rodape, Erros, Lista, Combobox };
+export {
+  PopUp,
+  Input,
+  RodapeEntidade,
+  Erros,
+  Lista,
+  Combobox,
+  RodapeConfirmacao,
+};

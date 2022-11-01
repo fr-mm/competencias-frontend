@@ -1,13 +1,13 @@
 import { MouseEventHandler } from "react";
 
-interface RodapeProps {
+interface RodapeEntidadeProps {
   editando: boolean;
   editar: MouseEventHandler<HTMLButtonElement>;
   salvar: MouseEventHandler<HTMLButtonElement>;
   cancelar: MouseEventHandler<HTMLButtonElement>;
 }
 
-function Rodape(props: RodapeProps): JSX.Element {
+function RodapeEntidade(props: RodapeEntidadeProps): JSX.Element {
   if (props.editando) {
     return (
       <div className="rodape">
@@ -25,4 +25,4 @@ function Rodape(props: RodapeProps): JSX.Element {
   }
 }
 
-export default Rodape;
+export default RodapeEntidade;

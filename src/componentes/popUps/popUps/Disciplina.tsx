@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { EnumPopUpNomes } from "../../../enums";
 import { reducers, RootState } from "../../../store";
-import { Erros, Input, PopUp, Rodape } from "../base";
+import { Erros, Input, PopUp, RodapeEntidade } from "../base";
 
 function Disciplina(): JSX.Element {
   const dispatch = useDispatch();
@@ -75,7 +75,7 @@ function Disciplina(): JSX.Element {
         maxLength={4}
         editando={disciplina.editando}
       />
-      <Rodape
+      <RodapeEntidade
         editando={disciplina.editando}
         editar={editar}
         salvar={salvar}
