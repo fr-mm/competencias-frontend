@@ -74,7 +74,13 @@ class RandomizadorDeFakeDB {
     const tipoDeContratacao = this.escolher(
       Object.values(tiposDeContratacao)
     )[0];
-    const email = nome.split(" ")[0];
+    const primeiroNome = nome.split(" ")[0].toLowerCase();
+    let email = "";
+    for (let letra of primeiroNome) {
+      if ("qwertyuiopasdfghjklzxcvbnm".includes(letra)) {
+        email += letra;
+      }
+    }
     return {
       id: this.gerarId(),
       nome,
