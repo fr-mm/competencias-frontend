@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useCollapse from "react-collapsed";
 import { useSelector } from "react-redux";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
@@ -14,18 +13,17 @@ interface ModuloProps {
 }
 
 function Modulo(props: ModuloProps): JSX.Element {
-  const [isExpanded, setExpanded] = useState(props.visivel);
-  const { getCollapseProps } = useCollapse({ isExpanded });
+  const [visivel, setVisivel] = useState(props.visivel);
   const cargaHoraria = useSelector((state: RootState) => state.cargaHoraria);
-  const disciplinas = Object.values(props.modulo.disciplinas);
+  const idsDisciplinas = Object.values(props.modulo.disciplinas);
   const docentes = useSelector((state: RootState) => state.docentes.filtrados);
   const disciplinasFiltradas = useSelector(
     (state: RootState) => state.disciplinas.idsFiltradas
   );
 
   useEffect(() => {
-    setExpanded(props.visivel);
-  }, [setExpanded, props.visivel]);
+    setVisivel(props.visivel);
+  }, [setVisivel, props.visivel]);
 
   function cargaHorariaDeDocente(docente: ITabela.Docente) {
     const cargaDocente =
@@ -46,7 +44,7 @@ function Modulo(props: ModuloProps): JSX.Element {
   };
 
   function contemDisciplinasFiltradas(): boolean {
-    return disciplinas.some((disciplina) =>
+    return idsDisciplinas.some((disciplina) =>
       disciplinasFiltradas.includes(disciplina)
     );
   }
@@ -57,9 +55,9 @@ function Modulo(props: ModuloProps): JSX.Element {
         <div className="linha colapsavel">
           <div className="celula azul primeira-coluna borda">
             <SetaExpandir
-              expandido={isExpanded}
+              expandido={visivel}
               onClick={() => {
-                setExpanded(!isExpanded);
+                setVisivel(!visivel);
               }}
             />
             <div className="texto-primeira-coluna">
@@ -89,11 +87,25 @@ function Modulo(props: ModuloProps): JSX.Element {
           </div>
         </div>
 
-        <div {...getCollapseProps()}>
-          {disciplinas.map((disciplina) => (
-            <Disciplina key={disciplina} idDisciplina={disciplina} />
-          ))}
-        </div>
+        <Disciplinas idsDisciplinas={idsDisciplinas} visivel={visivel} />
+      </div>
+    );
+  }
+  return <></>;
+}
+
+interface DisciplinasProps {
+  idsDisciplinas: ITabela.IdDisciplina[];
+  visivel: boolean;
+}
+
+function Disciplinas(props: DisciplinasProps): JSX.Element {
+  if (props.visivel) {
+    return (
+      <div>
+        {props.idsDisciplinas.map((id) => (
+          <Disciplina key={id} idDisciplina={id} />
+        ))}
       </div>
     );
   }

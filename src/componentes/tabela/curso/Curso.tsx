@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useCollapse from "react-collapsed";
 import { useSelector } from "react-redux";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
@@ -14,8 +13,7 @@ interface CursoProps {
 }
 
 function Curso(props: CursoProps): JSX.Element {
-  const [isExpanded, setExpanded] = useState(props.visivel);
-  const { getCollapseProps } = useCollapse({ isExpanded });
+  const [visivel, setVisivel] = useState(props.visivel);
   const cargaHoraria = useSelector((state: RootState) => state.cargaHoraria);
   const docentes = useSelector((state: RootState) => state.docentes.filtrados);
   const disciplinasFiltradas = useSelector(
@@ -23,8 +21,8 @@ function Curso(props: CursoProps): JSX.Element {
   );
 
   useEffect(() => {
-    setExpanded(props.visivel);
-  }, [setExpanded, props.visivel]);
+    setVisivel(props.visivel);
+  }, [setVisivel, props.visivel]);
 
   const modulos = Object.values(props.curso.modulos);
 
@@ -47,8 +45,8 @@ function Curso(props: CursoProps): JSX.Element {
         <div className="linha colapsavel">
           <div className="celula azul escuro primeira-coluna borda">
             <SetaExpandir
-              expandido={isExpanded}
-              onClick={() => setExpanded(!isExpanded)}
+              expandido={visivel}
+              onClick={() => setVisivel(!visivel)}
             />
             <div className="texto-primeira-coluna">{props.curso.nome}</div>
 
@@ -66,7 +64,6 @@ function Curso(props: CursoProps): JSX.Element {
               }
             />
           </div>
-
           <div className="celula azul escuro coluna-carga-horaria borda">
             {cargaHoraria.cursos[props.curso.id]}
           </div>
@@ -86,15 +83,30 @@ function Curso(props: CursoProps): JSX.Element {
             })}
           </div>
         </div>
-        <div {...getCollapseProps()}>
-          {modulos.map((modulo) => (
-            <Modulo
-              key={props.curso.id + modulo.numero}
-              modulo={modulo}
-              visivel={isExpanded}
-            />
-          ))}
-        </div>
+        <Modulos modulos={modulos} idCurso={props.curso.id} visivel={visivel} />
+      </div>
+    );
+  }
+  return <></>;
+}
+
+interface ModulosProps {
+  modulos: ITabela.Modulo[];
+  idCurso: ITabela.IdCurso;
+  visivel: boolean;
+}
+
+function Modulos(props: ModulosProps): JSX.Element {
+  if (props.visivel) {
+    return (
+      <div>
+        {props.modulos.map((modulo) => (
+          <Modulo
+            key={props.idCurso + modulo.numero}
+            modulo={modulo}
+            visivel={props.visivel}
+          />
+        ))}
       </div>
     );
   }
