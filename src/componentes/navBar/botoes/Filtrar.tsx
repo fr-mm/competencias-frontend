@@ -7,6 +7,11 @@ function Filtrar() {
   const filtrando = useSelector((state: RootState) => state.tabela.filtrando);
 
   function onClick() {
+    if (filtrando) {
+      dispatch(reducers.disciplinas.filtrarPorNome(""));
+      dispatch(reducers.docentes.filtrarPorNome(""));
+      dispatch(reducers.cursos.filtrarPorNome(""));
+    }
     dispatch(reducers.tabela.setFiltrando(!filtrando));
   }
   function className() {
