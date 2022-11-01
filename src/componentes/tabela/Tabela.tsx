@@ -10,7 +10,7 @@ import { ITabela } from "../../interfaces";
 import { CargaHorariaState } from "../../store/slices/cargaHorariaSlice";
 import Carregando from "./carregando";
 
-function Tabela() {
+function Tabela(): JSX.Element {
   const atualizada = useSelector((state: RootState) => state.tabela.atualizada);
   const dispatch = useDispatch();
 
