@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  expandida: false,
+  expandida: true,
   atualizada: false,
   filtrando: false,
 };

@@ -1,14 +1,22 @@
-.confirmacoes {
+.menu-de-quina {
   position: absolute;
-  top: 7.5rem;
+  top: 7rem;
   z-index: 0;
-}
-
-.remover-docentes {
   display: flex;
-  width: 100%;
+  width: 24rem;
+  flex-direction: column;
 }
 
+.menu-de-quina-corpo {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-de-quina-titulo {
+  display: flex;
+  font-size: 1rem;
+  padding-bottom: 0.7rem;
+}
 .botao.confirmar {
   padding: 0.3rem 1rem 0.3rem 1rem;
   border: 1px solid black;

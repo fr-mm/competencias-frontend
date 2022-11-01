@@ -7,7 +7,6 @@ type IdDocente = string;
 const initialState = {
   todos: {} as ITabela.Docentes,
   filtrados: [] as ITabela.Docente[],
-  removendo: false,
   idsARemover: [] as string[],
 };
 
@@ -121,10 +120,6 @@ const docentesSlice = createSlice({
       );
     },
 
-    setRemovendo(state, action: PayloadAction<boolean>) {
-      state.removendo = action.payload;
-    },
-
     incluirParaRemocao(state, action: PayloadAction<IdDocente>) {
       const id = action.payload;
       if (!state.idsARemover.includes(id)) {
@@ -156,7 +151,6 @@ export const {
   ordenarPorCargaHorariaEmModuloDecrescente,
   ordenarPorCargaHorariaEmCursoCrescente,
   ordenarPorCargaHorariaEmCursoDecrescente,
-  setRemovendo,
   incluirParaRemocao,
   excluirParaRemocao,
   limparListaDeRemocao,

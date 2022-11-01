@@ -1,18 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
+import { EnumMenuDeQuina } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
 import Marcador from "./Marcador";
 import "./Remocao.css";
 
-function RemocaoDocentes() {
+function RemocaoDocentes(): JSX.Element {
   const dispatch = useDispatch();
   const docentesFiltrados = useSelector(
     (state: RootState) => state.docentes.filtrados
   );
-  const removendo = useSelector((state: RootState) => state.docentes.removendo);
+  const menuDeQuinaVisivel = useSelector(
+    (state: RootState) => state.menuDeQuina.visivel
+  );
   const idsARemover = useSelector(
     (state: RootState) => state.docentes.idsARemover
   );
+  const removendo = menuDeQuinaVisivel === EnumMenuDeQuina.REMOVER_DOCENTES;
 
   function incluirParaRemocao(id: ITabela.IdDocente): void {
     dispatch(reducers.docentes.incluirParaRemocao(id));

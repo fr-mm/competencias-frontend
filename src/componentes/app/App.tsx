@@ -1,9 +1,8 @@
 import "./App.css";
-import React from "react";
 import Tabela from "../tabela/Tabela";
 import NavBar from "../navBar";
-import Confirmacoes from "../confirmacoes";
 import PopUps from "../popUps";
+import MenuDeQuina from "../menuDeQuina";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
       <NavBar />
       <PopUps />
       <div className="margem">
-        <Confirmacoes />
+        <MenuDeQuina />
         <Tabela />
       </div>
     </div>
