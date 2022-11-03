@@ -1,6 +1,6 @@
 import "./NavBar.css";
 import Filtros from "./filtros";
-import { Disciplinas, Docentes, Expandir, Filtrar } from "./botoes";
+import { Disciplinas, Docentes, Expandir } from "./botoes";
 
 function NavBar() {
   return (
@@ -8,7 +8,6 @@ function NavBar() {
       <div className="nav-bar azul">
         <Docentes />
         <Disciplinas />
-        <Filtrar />
         <Expandir />
       </div>
       <Filtros />
