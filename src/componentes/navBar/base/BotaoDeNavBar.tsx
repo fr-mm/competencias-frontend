@@ -10,10 +10,10 @@ function BotaoDeNavBar(props: BotaoDeNavBarProps) {
   return (
     <div className="botao">
       <div
-        className={"nav-bar-item azul " + props.className}
+        className={"nav-bar-item azul" + props.className}
         onClick={props.onClick}
       >
-        <div className="botao-texto">{props.texto}</div>
+        <div className="botao-texto fonte-forte">{props.texto}</div>
       </div>
     </div>
   );

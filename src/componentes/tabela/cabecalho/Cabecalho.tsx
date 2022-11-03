@@ -29,7 +29,7 @@ function Cabecalho() {
   function criarCelulaDocente(docente: ITabela.Docente) {
     return (
       <div
-        className="celula azul borda topo nome-docente cabecalho highlight"
+        className="celula azul fonte-forte borda topo nome-docente cabecalho highlight"
         key={docente.id}
         onClick={() => abrirPopUpDocente(docente)}
       >
@@ -49,11 +49,11 @@ function Cabecalho() {
 
   return (
     <div className="linha">
-      <div className="celula azul borda topo primeira-coluna cabecalho centro">
+      <div className="celula azul fonte-forte borda topo primeira-coluna cabecalho centro">
         Unidades Curriculares
       </div>
 
-      <div className="celula azul borda topo coluna-carga-horaria cabecalho centro">
+      <div className="celula azul fonte-forte borda topo coluna-carga-horaria cabecalho centro">
         CH
       </div>
       {docentesFiltrados.map((docente) => criarCelulaDocente(docente))}

@@ -23,7 +23,7 @@ function Filtros(): JSX.Element {
   }
 
   return (
-    <div className="filtros azul escuro">
+    <div className="filtros azul-escuro fonte-forte">
       <Filtro
         id="filtro-docentes"
         label="Docentes"

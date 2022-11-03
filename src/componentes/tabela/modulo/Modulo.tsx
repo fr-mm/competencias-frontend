@@ -53,7 +53,7 @@ function Modulo(props: ModuloProps): JSX.Element {
     return (
       <div className="container">
         <div className="linha colapsavel">
-          <div className="celula azul primeira-coluna borda">
+          <div className="celula azul fonte-forte primeira-coluna borda">
             <SetaExpandir
               expandido={visivel}
               onClick={() => {
@@ -78,7 +78,7 @@ function Modulo(props: ModuloProps): JSX.Element {
             />
           </div>
 
-          <div className="celula azul coluna-carga-horaria borda">
+          <div className="celula azul fonte-forte coluna-carga-horaria borda">
             {cargaHoraria.modulos[props.modulo.id]}
           </div>
 

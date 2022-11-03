@@ -10,7 +10,7 @@ function formatarPorcentagem(porcentagem: number): string {
 
 function CargaHorariaPorDocente(props: CargaHorariaPorDocenteProps) {
   return (
-    <div className={"celula azul borda " + props.extraClassNames}>
+    <div className={"celula azul fonte-forte borda " + props.extraClassNames}>
       <div className="carga-horaria-docente">{props.horas}</div>
       <div className="porcentagem">
         ({formatarPorcentagem(props.porcentagem)})

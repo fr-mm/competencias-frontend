@@ -43,7 +43,7 @@ function Curso(props: CursoProps): JSX.Element {
     return (
       <div className="container">
         <div className="linha colapsavel">
-          <div className="celula azul escuro primeira-coluna borda">
+          <div className="celula azul-escuro fonte-forte primeira-coluna borda">
             <SetaExpandir
               expandido={visivel}
               onClick={() => setVisivel(!visivel)}
@@ -64,7 +64,7 @@ function Curso(props: CursoProps): JSX.Element {
               }
             />
           </div>
-          <div className="celula azul escuro coluna-carga-horaria borda">
+          <div className="celula azul-escuro fonte-forte coluna-carga-horaria borda">
             {cargaHoraria.cursos[props.curso.id]}
           </div>
 
@@ -77,7 +77,7 @@ function Curso(props: CursoProps): JSX.Element {
                   key={docente.id + props.curso.id}
                   horas={cargaDocente.horas}
                   porcentagem={cargaDocente.porcentagem}
-                  extraClassNames="escuro"
+                  extraClassNames="azul-escuro"
                 />
               );
             })}

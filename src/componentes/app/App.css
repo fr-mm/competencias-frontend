@@ -17,17 +17,11 @@ select {
 }
 
 .espacador {
-  height: 6rem;
+  height: 7rem;
 }
 
 .flex {
   display: flex;
-}
-
-.azul {
-  background-color: #3a589a;
-  color: white;
-  font-weight: 600;
 }
 
 .botao {
@@ -48,11 +42,20 @@ select {
   text-shadow: 0px 0px 10px gray;
 }
 
+.fonte-forte {
+  color: white;
+  font-weight: 600;
+}
+
+.azul {
+  background-color: #3a589a;
+}
+
 .azul-claro {
   background-color: #e0e4f4;
 }
 
-.azul.escuro {
+.azul-escuro {
   background-color: #2e467b;
 }
 
@@ -70,6 +73,10 @@ select {
 
 .vermelho {
   background-color: red;
+}
+
+.branco {
+  background-color: white;
 }
 
 .pointer {

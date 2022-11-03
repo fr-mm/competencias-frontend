@@ -79,3 +79,18 @@
 .dropdown:hover .menu {
   display: flex;
 }
+
+.legendas {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  margin-right: auto;
+  border-bottom: 1px solid black;
+}
+
+.legenda {
+  border-right: 1px solid black;
+  display: flex;
+  width: fit-content;
+  padding: 0.3rem;
+}
