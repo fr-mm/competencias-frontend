@@ -3,6 +3,7 @@ import Tabela from "../tabela/Tabela";
 import NavBar from "../navBar";
 import PopUps from "../popUps";
 import MenuDeQuina from "../menuDeQuina";
+import Legendas from "../legendas";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <PopUps />
       <div className="margem">
         <MenuDeQuina />
+        <Legendas />
         <Tabela />
       </div>
     </div>
