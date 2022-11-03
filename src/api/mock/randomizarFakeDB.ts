@@ -5,7 +5,7 @@ import { TiposDeContratacao } from "../../interfaces/ITabela";
 
 class RandomizadorDeFakeDB {
   private readonly arquivo = "./fakeDB.json";
-  private cursos = 10;
+  private cursos = 13;
   private disciplinas = 13;
   private disciplinasPorCurso = 8;
   private nomes = [

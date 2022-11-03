@@ -21,7 +21,7 @@ function Docente(): JSX.Element {
     nome: "nome inválido",
     email: "email inválido",
   };
-  const titulo = docente.id === "" ? "Adicionar docente" : "Disciplina";
+  const titulo = docente.id === "" ? "Adicionar docente" : "Docente";
 
   function nomeOnChange(evento: ChangeEvent<HTMLInputElement>): void {
     dispatch(reducers.docente.setNome(evento.target.value));
