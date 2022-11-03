@@ -1,13 +1,14 @@
 .popUp {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  width: 30rem;
+  z-index: 100;
   background-color: white;
   border: 1px solid black;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30rem;
   padding: 2rem;
-  margin-top: 10rem;
   box-shadow: 0 0 30px;
-  z-index: 100;
 }
 
 .popUp button {
@@ -64,7 +65,7 @@
 }
 
 .mascara {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
