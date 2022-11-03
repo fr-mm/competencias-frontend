@@ -30,7 +30,7 @@ function Disciplina(props: DisciplinaProps) {
     return (
       <div className="container">
         <div className="linha">
-          <div className="celula primeira-coluna texto-esquerda borda celula-disciplina">
+          <div className="celula primeira-coluna texto-esquerda borda celula-disciplina branco">
             <div className="seta-container"></div>
             <div
               className="texto-primeira-coluna pointer lowlight"

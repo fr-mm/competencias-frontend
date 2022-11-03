@@ -27,17 +27,15 @@ function RemocaoDocentes(): JSX.Element {
   }
 
   function getMarcadores() {
-    if (removendo) {
-      return docentesFiltrados.map((docente) => (
-        <Marcador
-          key={"marcador-" + docente.id}
-          idItem={docente.id}
-          idsARemover={idsARemover}
-          incluirParaRemocao={incluirParaRemocao}
-          excluirParaRemocao={excluirParaRemocao}
-        />
-      ));
-    }
+    return docentesFiltrados.map((docente) => (
+      <Marcador
+        key={"marcador-" + docente.id}
+        idItem={docente.id}
+        idsARemover={idsARemover}
+        incluirParaRemocao={incluirParaRemocao}
+        excluirParaRemocao={excluirParaRemocao}
+      />
+    ));
   }
 
   function getClassesCargaHoraria(): string {
@@ -48,13 +46,16 @@ function RemocaoDocentes(): JSX.Element {
     return classes;
   }
 
-  return (
-    <div className="linha">
-      <div className="celula primeira-coluna borda borda-esquerda invisivel"></div>
-      <div className={getClassesCargaHoraria()}></div>
-      {getMarcadores()}
-    </div>
-  );
+  if (removendo) {
+    return (
+      <div className="linha">
+        <div className="celula primeira-coluna borda borda-esquerda invisivel"></div>
+        <div className={getClassesCargaHoraria()}></div>
+        {getMarcadores()}
+      </div>
+    );
+  }
+  return <></>;
 }
 
 export default RemocaoDocentes;

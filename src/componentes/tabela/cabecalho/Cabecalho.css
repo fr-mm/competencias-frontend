@@ -2,6 +2,12 @@
   height: auto;
 }
 
+.linha-cabecalho {
+  top: 0;
+  position: sticky;
+  z-index: 1;
+}
+
 .nome-docente {
   flex: 1;
   flex-direction: column;

@@ -48,7 +48,7 @@ function Cabecalho() {
   }
 
   return (
-    <div className="linha">
+    <div className="linha linha-cabecalho">
       <div className="celula azul fonte-forte borda topo primeira-coluna cabecalho centro">
         Unidades Curriculares
       </div>

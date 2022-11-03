@@ -5,6 +5,9 @@ import { TiposDeContratacao } from "../../interfaces/ITabela";
 
 class RandomizadorDeFakeDB {
   private readonly arquivo = "./fakeDB.json";
+  private cursos = 10;
+  private disciplinas = 13;
+  private disciplinasPorCurso = 8;
   private nomes = [
     "Verónica Lia",
     "Charlingtonglaevionbeecheknavare Henrique",
@@ -16,6 +19,27 @@ class RandomizadorDeFakeDB {
     "Floro Octávio",
     "Fernando Márcia",
     "Amália Ovídio",
+    "Lorena Nilda",
+    "Augusto Balduíno",
+    "Augusto Balduíno",
+    "Aloísio Lula",
+    "Victor Clementina",
+    "André Leandra",
+    "Onofre Tito",
+    "Balduíno Severino",
+    "Micael Estevão",
+    "Feliciano José Manuel",
+    "Nela Luiza",
+    "Fúlvio Messias",
+    "Teodósio Oscar",
+    "Nando Camilo",
+    "Cândido Sebastiana",
+    "Miguela Fábio",
+    "Norberto Pedro",
+    "Tito Florência",
+    "Apolônia Galvão",
+    "Apolónia Gláucio",
+    "Otília Cruz",
   ];
 
   public randomizarDB(): void {
@@ -102,10 +126,10 @@ class RandomizadorDeFakeDB {
 
   private construirCursos(disciplinas: ITabela.Disciplina[]): ITabela.Cursos {
     const cursos: ITabela.Cursos = {};
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < this.cursos; i++) {
       const curso = this.construirCurso(
         `Curso ${i}`,
-        this.escolher(disciplinas, 8)
+        this.escolher(disciplinas, this.disciplinasPorCurso)
       );
       cursos[curso.id] = curso;
     }
@@ -142,7 +166,7 @@ class RandomizadorDeFakeDB {
   private construirDisciplinas(): ITabela.Disciplinas {
     const disciplinas: ITabela.Disciplinas = {};
 
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= this.disciplinas; i++) {
       const disciplina = this.construirDisciplina(`Disciplina ${i}`);
       disciplinas[disciplina.id] = disciplina;
     }
