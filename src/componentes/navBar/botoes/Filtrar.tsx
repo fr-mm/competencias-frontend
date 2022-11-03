@@ -18,7 +18,7 @@ function Filtrar() {
     return filtrando ? "ativo" : "";
   }
   return (
-    <BotaoDeNavBar texto="filtrar" onClick={onClick} className={className()} />
+    <BotaoDeNavBar texto="Filtrar" onClick={onClick} className={className()} />
   );
 }
 

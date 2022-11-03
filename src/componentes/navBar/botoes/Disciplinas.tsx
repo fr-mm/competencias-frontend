@@ -14,9 +14,9 @@ function Disciplinas() {
   function remover(): void {}
 
   return (
-    <MenuDeNavBar texto="disciplinas">
-      <BotaoDeMenu texto="adicionar" onClick={adicionar} />
-      <BotaoDeMenu texto="remover" onClick={remover} />
+    <MenuDeNavBar texto="Disciplinas">
+      <BotaoDeMenu texto="Adicionar" onClick={adicionar} />
+      <BotaoDeMenu texto="Remover" onClick={remover} />
     </MenuDeNavBar>
   );
 }

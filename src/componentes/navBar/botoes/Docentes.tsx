@@ -16,9 +16,9 @@ function Docentes() {
   }
 
   return (
-    <MenuDeNavBar texto="docentes">
-      <BotaoDeMenu texto="adicionar" onClick={adicionar} />
-      <BotaoDeMenu texto="remover" onClick={remover} />
+    <MenuDeNavBar texto="Docentes">
+      <BotaoDeMenu texto="Adicionar" onClick={adicionar} />
+      <BotaoDeMenu texto="Remover" onClick={remover} />
     </MenuDeNavBar>
   );
 }

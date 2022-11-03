@@ -63,7 +63,7 @@ function Disciplina(): JSX.Element {
     <PopUp nome={EnumPopUpNomes.DISCIPLINA} titulo={titulo}>
       <Erros erros={disciplina.erros} />
       <Input
-        label="nome"
+        label="Nome"
         id={disciplina.nome + "-nome"}
         value={disciplina.nome}
         placeholder="Nome"
@@ -72,7 +72,7 @@ function Disciplina(): JSX.Element {
         editando={disciplina.editando}
       />
       <Input
-        label="carga horaria"
+        label="Carga horaria"
         id={disciplina.nome + "-ch"}
         value={disciplina.cargaHoraria}
         placeholder="0"

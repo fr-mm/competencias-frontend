@@ -140,7 +140,7 @@ function Docente(): JSX.Element {
     <PopUp nome={EnumPopUpNomes.DOCENTE} titulo={titulo}>
       <Erros erros={docente.erros} />
       <Input
-        label="nome"
+        label="Nome"
         id={docente.id + "-nome"}
         value={docente.nome}
         placeholder="Nome Completo"
@@ -149,7 +149,7 @@ function Docente(): JSX.Element {
         editando={docente.editando}
       />
       <Input
-        label="email"
+        label="E-mail"
         id={docente.id + "-email"}
         value={docente.email}
         placeholder="email@email.com"
@@ -158,7 +158,7 @@ function Docente(): JSX.Element {
         editando={docente.editando}
       />
       <Input
-        label="telefones"
+        label="Telefones"
         id={docente.id + "-adicionar-telefone"}
         value={docente.telefoneEmEdicao}
         placeholder="(00)00000-0000"
@@ -174,7 +174,7 @@ function Docente(): JSX.Element {
         remover={removerTelefone}
       />
       <Combobox
-        label="unidade SENAI"
+        label="Unidade SENAI"
         id={docente.id + "-unidade-senai"}
         itens={unidadesSenai}
         value={docente.unidadeSenai}
@@ -182,7 +182,7 @@ function Docente(): JSX.Element {
         editando={docente.editando}
       />
       <Combobox
-        label="tipo de contratação"
+        label="Tipo de contratação"
         id={docente.id + "-tipo-de-contratacao"}
         itens={tiposDeContratacao}
         value={docente.tipoDeContratacao}

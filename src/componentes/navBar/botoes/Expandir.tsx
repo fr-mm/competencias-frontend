@@ -11,7 +11,7 @@ function Expandir() {
     dispatch(reducers.tabela.expandirContrair());
   }
   function texto() {
-    return tabelaExpandida ? "esconder" : "mostrar";
+    return tabelaExpandida ? "Esconder" : "Mostrar";
   }
   return <BotaoDeNavBar texto={texto()} onClick={onClick} />;
 }

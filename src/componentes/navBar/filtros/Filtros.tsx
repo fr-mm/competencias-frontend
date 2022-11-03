@@ -28,15 +28,15 @@ function Filtros(): JSX.Element {
       <div className="filtros azul escuro">
         <Filtro
           id="filtro-docentes"
-          label="docentes"
+          label="Docentes"
           onChange={docentesOnChange}
         />
         <Filtro
           id="filtro-disciplinas"
-          label="disciplinas"
+          label="Disciplinas"
           onChange={disciplinasOnChange}
         />
-        <Filtro id="filtro-cursos" label="cursos" onChange={cursosOnChange} />
+        <Filtro id="filtro-cursos" label="Cursos" onChange={cursosOnChange} />
       </div>
     );
   } else {
