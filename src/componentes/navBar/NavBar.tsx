@@ -6,10 +6,10 @@ function NavBar() {
   return (
     <div className="nav-bar-container">
       <div className="nav-bar azul">
-        <Expandir />
-        <Filtrar />
         <Docentes />
         <Disciplinas />
+        <Filtrar />
+        <Expandir />
       </div>
       <Filtros />
     </div>

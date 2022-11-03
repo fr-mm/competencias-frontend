@@ -31,12 +31,12 @@ function Filtros(): JSX.Element {
           label="docentes"
           onChange={docentesOnChange}
         />
-        <Filtro id="filtro-cursos" label="cursos" onChange={cursosOnChange} />
         <Filtro
           id="filtro-disciplinas"
           label="disciplinas"
           onChange={disciplinasOnChange}
         />
+        <Filtro id="filtro-cursos" label="cursos" onChange={cursosOnChange} />
       </div>
     );
   } else {
