@@ -5,10 +5,10 @@ import { RootState, reducers } from "../../store";
 import api from "../../api";
 import Cabecalho from "./cabecalho";
 import Curso from "./curso";
-import RemocaoDocentes from "./remocao";
 import { ITabela } from "../../interfaces";
 import { CargaHorariaState } from "../../store/slices/cargaHorariaSlice";
 import Carregando from "./carregando";
+import { MarcadoresDocentes } from "./marcadores";
 
 function Tabela(): JSX.Element {
   const atualizada = useSelector((state: RootState) => state.tabela.atualizada);
@@ -98,7 +98,7 @@ function Tabela(): JSX.Element {
   if (atualizada) {
     return (
       <div className="tabela">
-        <RemocaoDocentes />
+        <MarcadoresDocentes />
         <Cabecalho />
         <div>
           {Object.values(cursosFiltrados).map((curso) => (

@@ -135,6 +135,10 @@ const docentesSlice = createSlice({
       }
     },
 
+    setIdsARemover(state, action: PayloadAction<IdDocente[]>) {
+      state.idsARemover = action.payload;
+    },
+
     limparListaDeRemocao(state) {
       state.idsARemover = [];
     },
@@ -153,6 +157,7 @@ export const {
   ordenarPorCargaHorariaEmCursoDecrescente,
   incluirParaRemocao,
   excluirParaRemocao,
+  setIdsARemover,
   limparListaDeRemocao,
 } = docentesSlice.actions;
 export default docentesSlice.reducer;

@@ -1,3 +1,4 @@
+/*
 import "./MenuDeQuina.css";
 import { PropsWithChildren } from "react";
 import { RemocaoDocentes } from "./menus";
@@ -11,3 +12,5 @@ function MenuDeQuina(props: PropsWithChildren): JSX.Element {
 }
 
 export default MenuDeQuina;
+ */
+export {};

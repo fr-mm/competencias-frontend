@@ -1,7 +1,7 @@
-enum EnumMenuDeQuina {
+enum EnumPainel {
   REMOVER_DOCENTES,
   REMOVER_DISCIPLINAS,
   NENHUM,
 }
 
-export default EnumMenuDeQuina;
+export default EnumPainel;

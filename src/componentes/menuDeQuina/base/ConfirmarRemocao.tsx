@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+/*import { MouseEventHandler } from "react";
 import { EnumMenuDeQuina } from "../../../enums";
 import Menu from "./Menu";
 
@@ -22,3 +22,5 @@ function ConfirmarRemocao(props: ConfirmarRemocaoProps): JSX.Element {
   );
 }
 export default ConfirmarRemocao;
+ */
+export {};

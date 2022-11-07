@@ -1,17 +1,15 @@
 import { PropsWithChildren } from "react";
 import { useSelector } from "react-redux";
-import { EnumMenuDeQuina } from "../../../enums";
+import { EnumPainel } from "../../../enums";
 import { RootState } from "../../../store";
 
 interface MenuProps {
-  flag: EnumMenuDeQuina;
+  flag: EnumPainel;
   titulo: string;
 }
 
 function Menu(props: PropsWithChildren<MenuProps>): JSX.Element {
-  const menuVisivel = useSelector(
-    (state: RootState) => state.menuDeQuina.visivel
-  );
+  const menuVisivel = useSelector((state: RootState) => state.painel.visivel);
   if (props.flag === menuVisivel) {
     return (
       <div className="menu-de-quina">

@@ -21,7 +21,7 @@ function RemoverDocentes(): JSX.Element {
 
   function confirmar(): void {
     api.removerDocentes(idsARemover);
-    dispatch(reducers.menuDeQuina.esconder());
+    dispatch(reducers.painel.esconder());
     dispatch(reducers.docentes.limparListaDeRemocao());
     dispatch(reducers.popUps.esconder(EnumPopUpNomes.REMOVER_DOCENTES));
     dispatch(reducers.tabela.setAtualizada(false));

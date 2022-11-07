@@ -20,7 +20,7 @@ function Marcador(props: MarcadorProps): JSX.Element {
     <div className="celula marcador azul-claro">
       <input
         type="checkbox"
-        defaultChecked={checked()}
+        checked={checked()}
         onClick={onClick}
         className="checkbox"
       />

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { EnumMenuDeQuina, EnumPopUpNomes } from "../../../enums";
+import { EnumPainel, EnumPopUpNomes } from "../../../enums";
 import { reducers } from "../../../store";
 import { BotaoDeMenu, MenuDeNavBar } from "../base";
 
@@ -12,7 +12,7 @@ function Docentes() {
   }
 
   function remover(): void {
-    dispatch(reducers.menuDeQuina.mostrar(EnumMenuDeQuina.REMOVER_DOCENTES));
+    dispatch(reducers.painel.mostrar(EnumPainel.REMOVER_DOCENTES));
   }
 
   return (

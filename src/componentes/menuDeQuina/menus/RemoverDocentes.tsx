@@ -1,3 +1,4 @@
+/*
 import { useDispatch, useSelector } from "react-redux";
 import { EnumMenuDeQuina, EnumPopUpNomes } from "../../../enums";
 import { reducers, RootState } from "../../../store";
@@ -32,3 +33,5 @@ function RemocaoDocentes(): JSX.Element {
   );
 }
 export default RemocaoDocentes;
+ */
+export {};

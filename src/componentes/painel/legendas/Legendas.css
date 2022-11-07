@@ -1,10 +1,11 @@
 .legendas {
-  position: sticky;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
   width: fit-content;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .legenda {

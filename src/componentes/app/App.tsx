@@ -2,8 +2,7 @@ import "./App.css";
 import Tabela from "../tabela/Tabela";
 import NavBar from "../navBar";
 import PopUps from "../popUps";
-import MenuDeQuina from "../menuDeQuina";
-import Legendas from "../legendas";
+import Painel from "../painel";
 
 function App() {
   return (
@@ -12,8 +11,7 @@ function App() {
       <NavBar />
       <PopUps />
       <div className="margem">
-        <MenuDeQuina />
-        <Legendas />
+        <Painel />
         <Tabela />
       </div>
     </div>

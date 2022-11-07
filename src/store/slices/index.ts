@@ -9,7 +9,7 @@ import * as unidadesSenaiSlice from "./unidadesSenaiSlice";
 import * as tabela from "./tabelaSlice";
 import * as ordenacao from "./ordenacaoSlice";
 import * as popUps from "./popUsSlice";
-import * as menuDeQuina from "./menuDeQuinaSlice";
+import * as painel from "./painelSlice";
 
 export {
   docentes,
@@ -23,5 +23,5 @@ export {
   tabela,
   ordenacao,
   popUps,
-  menuDeQuina,
+  painel,
 };
