@@ -30,9 +30,11 @@ function RemoverDocentes(): JSX.Element {
   if (popUpsVisiveis.includes(EnumPopUpNomes.REMOVER_DOCENTES)) {
     return (
       <PopUp nome={EnumPopUpNomes.REMOVER_DOCENTES} titulo="Remover docentes">
-        {nomes.map((nome) => (
-          <p key={nome}>{nome}</p>
-        ))}
+        <div className="lista-em-popup">
+          {nomes.map((nome) => (
+            <p key={nome}>{nome}</p>
+          ))}
+        </div>
         <RodapeConfirmacao confirmar={confirmar} cancelar={cancelar} />
       </PopUp>
     );

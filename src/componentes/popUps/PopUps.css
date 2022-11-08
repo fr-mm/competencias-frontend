@@ -20,6 +20,11 @@
   margin: 1rem 1rem 0rem 1rem;
 }
 
+.lista-em-popup {
+  max-height: 20rem;
+  overflow-y: scroll;
+}
+
 .titulo {
   font-size: 1.3rem;
   margin-bottom: 2rem;
