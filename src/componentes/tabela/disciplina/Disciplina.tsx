@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPopUpNomes } from "../../../enums";
+import { EnumPopUp } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
 import Competencia from "../competencia";
@@ -23,7 +23,7 @@ function Disciplina(props: DisciplinaProps) {
 
   function onClick() {
     dispatch(reducers.disciplina.carregar(disciplina));
-    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DISCIPLINA));
+    dispatch(reducers.popUps.mostrar(EnumPopUp.DISCIPLINA));
   }
 
   if (filtradas.includes(disciplina.id)) {

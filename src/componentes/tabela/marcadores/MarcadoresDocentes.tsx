@@ -28,13 +28,15 @@ function MarcadoresDocentes(): JSX.Element {
 
   function getMarcadores() {
     return docentesFiltrados.map((docente) => (
-      <Marcador
-        key={"marcador-" + docente.id}
-        idItem={docente.id}
-        idsARemover={idsARemover}
-        incluirParaRemocao={incluirParaRemocao}
-        excluirParaRemocao={excluirParaRemocao}
-      />
+      <div className="celula marcador-docente azul-claro">
+        <Marcador
+          key={"marcador-" + docente.id}
+          idItem={docente.id}
+          idsARemover={idsARemover}
+          incluirParaRemocao={incluirParaRemocao}
+          excluirParaRemocao={excluirParaRemocao}
+        />
+      </div>
     ));
   }
 

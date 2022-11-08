@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPainel, EnumPopUpNomes } from "../../../enums";
+import { EnumPainel, EnumPopUp } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import ConfirmarRemocao from "./base/ConfirmarRemocao";
 
@@ -19,7 +19,7 @@ function ConfirmarRemocaoDocentes(): JSX.Element {
 
   function confirmar(): void {
     if (idsARemover.length > 0) {
-      dispatch(reducers.popUps.mostrar(EnumPopUpNomes.REMOVER_DOCENTES));
+      dispatch(reducers.popUps.mostrar(EnumPopUp.REMOVER_DOCENTES));
     } else {
       dispatch(reducers.painel.esconder());
     }

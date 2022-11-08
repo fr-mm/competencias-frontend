@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import api from "../../../api";
-import { EnumPopUpNomes } from "../../../enums";
+import { EnumPopUp } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import { Erros, Input, PopUp, RodapeEntidade } from "../base";
 
@@ -28,7 +28,7 @@ function Disciplina(): JSX.Element {
 
   function salvar(): void {
     if (valida()) {
-      dispatch(reducers.popUps.esconder(EnumPopUpNomes.DISCIPLINA));
+      dispatch(reducers.popUps.esconder(EnumPopUp.DISCIPLINA));
       api.salvarDisciplina({
         id: disciplina.id,
         nome: disciplina.nome,
@@ -40,7 +40,7 @@ function Disciplina(): JSX.Element {
   }
 
   function cancelar(): void {
-    dispatch(reducers.popUps.esconder(EnumPopUpNomes.DISCIPLINA));
+    dispatch(reducers.popUps.esconder(EnumPopUp.DISCIPLINA));
     dispatch(reducers.disciplina.finalizarEdicao());
   }
 
@@ -60,7 +60,7 @@ function Disciplina(): JSX.Element {
   }
 
   return (
-    <PopUp nome={EnumPopUpNomes.DISCIPLINA} titulo={titulo}>
+    <PopUp nome={EnumPopUp.DISCIPLINA} titulo={titulo}>
       <Erros erros={disciplina.erros} />
       <Input
         label="Nome"

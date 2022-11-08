@@ -17,14 +17,12 @@ function Marcador(props: MarcadorProps): JSX.Element {
   }
 
   return (
-    <div className="celula marcador azul-claro">
-      <input
-        type="checkbox"
-        checked={checked()}
-        onClick={onClick}
-        className="checkbox"
-      />
-    </div>
+    <input
+      type="checkbox"
+      checked={checked()}
+      onClick={onClick}
+      className="checkbox"
+    />
   );
 }
 export default Marcador;

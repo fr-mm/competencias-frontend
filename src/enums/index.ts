@@ -1,6 +1,6 @@
 import EnumPainel from "./enumPainel";
 import EnumNivelDeCompetencia from "./enumNivelDeCompetencia";
 import EnumOrdem from "./enumOrdem";
-import EnumPopUpNomes from "./enumPopUpNomes";
+import EnumPopUp from "./enumPopUp";
 
-export { EnumNivelDeCompetencia, EnumOrdem, EnumPopUpNomes, EnumPainel };
+export { EnumNivelDeCompetencia, EnumOrdem, EnumPopUp, EnumPainel };

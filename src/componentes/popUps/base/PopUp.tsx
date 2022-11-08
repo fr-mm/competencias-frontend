@@ -1,10 +1,10 @@
 import { PropsWithChildren } from "react";
 import { useSelector } from "react-redux";
-import { EnumPopUpNomes } from "../../../enums";
+import { EnumPopUp } from "../../../enums";
 import { RootState } from "../../../store";
 
 interface PopUpProps {
-  nome: EnumPopUpNomes;
+  nome: EnumPopUp;
   titulo: string;
 }
 

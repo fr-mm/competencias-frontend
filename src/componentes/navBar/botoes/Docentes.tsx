@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { EnumPainel, EnumPopUpNomes } from "../../../enums";
+import { EnumPainel, EnumPopUp } from "../../../enums";
 import { reducers } from "../../../store";
 import { BotaoDeMenu, MenuDeNavBar } from "../base";
 
@@ -8,7 +8,7 @@ function Docentes() {
 
   function adicionar(): void {
     dispatch(reducers.docente.iniciarEdicao());
-    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DOCENTE));
+    dispatch(reducers.popUps.mostrar(EnumPopUp.DOCENTE));
   }
 
   function remover(): void {

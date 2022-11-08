@@ -2,7 +2,7 @@ import "./Cabecalho.css";
 import { ITabela } from "../../../interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { reducers, RootState } from "../../../store";
-import { EnumPopUpNomes } from "../../../enums";
+import { EnumPopUp } from "../../../enums";
 
 function separarNome(nome: string): string[] {
   let nomes = nome.split(" ");
@@ -44,7 +44,7 @@ function Cabecalho() {
 
   function abrirPopUpDocente(docente: ITabela.Docente): void {
     dispatch(reducers.docente.carregar(docente));
-    dispatch(reducers.popUps.mostrar(EnumPopUpNomes.DOCENTE));
+    dispatch(reducers.popUps.mostrar(EnumPopUp.DOCENTE));
   }
 
   return (

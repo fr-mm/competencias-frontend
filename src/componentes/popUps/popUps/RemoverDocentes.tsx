@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPopUpNomes } from "../../../enums";
+import { EnumPopUp } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import api from "../../../api";
 import { PopUp, RodapeConfirmacao } from "../base";
@@ -16,20 +16,20 @@ function RemoverDocentes(): JSX.Element {
   const nomes = idsARemover.map((id) => docentes[id].nome);
 
   function cancelar(): void {
-    dispatch(reducers.popUps.esconder(EnumPopUpNomes.REMOVER_DOCENTES));
+    dispatch(reducers.popUps.esconder(EnumPopUp.REMOVER_DOCENTES));
   }
 
   function confirmar(): void {
     api.removerDocentes(idsARemover);
     dispatch(reducers.painel.esconder());
     dispatch(reducers.docentes.limparListaDeRemocao());
-    dispatch(reducers.popUps.esconder(EnumPopUpNomes.REMOVER_DOCENTES));
+    dispatch(reducers.popUps.esconder(EnumPopUp.REMOVER_DOCENTES));
     dispatch(reducers.tabela.setAtualizada(false));
   }
 
-  if (popUpsVisiveis.includes(EnumPopUpNomes.REMOVER_DOCENTES)) {
+  if (popUpsVisiveis.includes(EnumPopUp.REMOVER_DOCENTES)) {
     return (
-      <PopUp nome={EnumPopUpNomes.REMOVER_DOCENTES} titulo="Remover docentes">
+      <PopUp nome={EnumPopUp.REMOVER_DOCENTES} titulo="Remover docentes">
         <div className="lista-em-popup">
           {nomes.map((nome) => (
             <p key={nome}>{nome}</p>
