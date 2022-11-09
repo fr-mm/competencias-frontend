@@ -16,7 +16,7 @@ function ConfirmarRemocao(props: ConfirmarRemocaoProps): JSX.Element {
   const [todosSelecionados, setTodosSelecionados] = useState(false);
 
   function textoSelecionarTodos(): string {
-    return todosSelecionados ? "Desselecionar todos" : "Selecionar todos";
+    return todosSelecionados ? "desselecionar todos" : "selecionar todos";
   }
 
   function selecionarTodosOnClick(): void {
@@ -34,11 +34,6 @@ function ConfirmarRemocao(props: ConfirmarRemocaoProps): JSX.Element {
         <button className="botao-confirmar" onClick={props.confirmar}>
           remover selecionados
         </button>
-        <button className="botao-cancelar" onClick={props.cancelar}>
-          cancelar
-        </button>
-      </div>
-      <div className="botoes">
         <button
           className="selecionar-todos"
           onClick={() => {
@@ -46,6 +41,9 @@ function ConfirmarRemocao(props: ConfirmarRemocaoProps): JSX.Element {
           }}
         >
           {textoSelecionarTodos()}
+        </button>
+        <button className="botao-cancelar" onClick={props.cancelar}>
+          cancelar
         </button>
       </div>
     </Menu>

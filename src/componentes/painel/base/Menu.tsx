@@ -14,8 +14,8 @@ function Menu(props: PropsWithChildren<MenuProps>): JSX.Element {
   if (props.flag === menuVisivel) {
     return (
       <div className="menu-painel">
-        <div className="menu-de-quina-titulo">{props.titulo}</div>
-        <div className="menu-de-quina-corpo">{props.children}</div>
+        <div className="menu-painel-titulo">{props.titulo}</div>
+        <div>{props.children}</div>
       </div>
     );
   }

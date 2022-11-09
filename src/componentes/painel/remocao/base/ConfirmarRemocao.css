@@ -1,9 +1,9 @@
 .botoes {
   display: flex;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  flex-direction: column;
 }
 
-.botao-confirmar {
-  margin-right: 1rem;
+.botoes button {
+  margin-bottom: 0.3rem;
 }

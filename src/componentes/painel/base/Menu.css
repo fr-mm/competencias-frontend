@@ -1,3 +1,10 @@
 .menu-painel {
   display: flex;
+  border: 1px solid black;
+  padding: 0.5rem;
+  flex-direction: column;
+}
+
+.menu-painel-titulo {
+  font-weight: bold;
 }
