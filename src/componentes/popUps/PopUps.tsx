@@ -1,5 +1,5 @@
 import "./PopUps.css";
-import { Disciplina, Docente, RemoverDocentes } from "./popUps";
+import { Disciplina, Docente, GerandoPDF, RemoverDocentes } from "./popUps";
 import { Disciplinas } from "./popUps";
 
 function PopUps() {
@@ -9,6 +9,7 @@ function PopUps() {
       <Disciplinas />
       <Disciplina />
       <RemoverDocentes />
+      <GerandoPDF />
     </div>
   );
 }

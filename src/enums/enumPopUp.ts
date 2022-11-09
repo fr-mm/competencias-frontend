@@ -4,6 +4,7 @@ enum EnumPopUp {
   DISCIPLINA,
   DISCIPLINAS,
   CURSO,
+  GERANDO_PDF,
 }
 
 export default EnumPopUp;

@@ -1,6 +1,9 @@
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { RefObject } from "react";
+import { useDispatch } from "react-redux";
+import { EnumPopUp } from "../../../enums";
+import { reducers } from "../../../store";
 import { BotaoDeNavBar } from "../base";
 
 interface BaixarPDFProps {
@@ -8,7 +11,9 @@ interface BaixarPDFProps {
 }
 
 function BaixarPDF(props: BaixarPDFProps): JSX.Element {
+  const dispatch = useDispatch();
   function onClick(): void {
+    dispatch(reducers.popUps.mostrar(EnumPopUp.GERANDO_PDF));
     const input = props.tabelaReferencia.current;
     html2canvas(input as HTMLElement).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
@@ -20,7 +25,8 @@ function BaixarPDF(props: BaixarPDFProps): JSX.Element {
         ],
       });
       pdf.addImage(imgData, "JPEG", 0, 0, 0, 0);
-      pdf.save("tabela.pdf");
+      pdf.save("competencias.pdf");
+      dispatch(reducers.popUps.esconder(EnumPopUp.GERANDO_PDF));
     });
   }
 
