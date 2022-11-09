@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPopUp } from "../../../enums";
+import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
 import { Marcador } from "../../tabela/marcadores/base";
@@ -16,7 +16,11 @@ function Disciplinas(): JSX.Element {
   }
 
   return (
-    <PopUp nome={EnumPopUp.DISCIPLINAS} titulo="Disciplinas">
+    <PopUp
+      flag={EnumPopUp.DISCIPLINAS}
+      titulo="Disciplinas"
+      tamanho={EnumTamanhoPopUp.GRANDE}
+    >
       <div className="lista-em-popup">
         <table className="tabela-disciplinas">
           <th className="coluna-marcador"></th>

@@ -1,3 +1,4 @@
+import "./Menu.css";
 import { PropsWithChildren } from "react";
 import { useSelector } from "react-redux";
 import { EnumPainel } from "../../../enums";

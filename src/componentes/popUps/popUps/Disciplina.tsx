@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import api from "../../../api";
-import { EnumPopUp } from "../../../enums";
+import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import { Erros, Input, PopUp, RodapeEntidade } from "../base";
 
@@ -60,7 +60,11 @@ function Disciplina(): JSX.Element {
   }
 
   return (
-    <PopUp nome={EnumPopUp.DISCIPLINA} titulo={titulo}>
+    <PopUp
+      flag={EnumPopUp.DISCIPLINA}
+      titulo={titulo}
+      tamanho={EnumTamanhoPopUp.MEDIO}
+    >
       <Erros erros={disciplina.erros} />
       <Input
         label="Nome"

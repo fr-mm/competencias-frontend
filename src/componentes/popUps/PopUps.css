@@ -3,12 +3,23 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -90%);
-  width: 40rem;
   z-index: 100;
   background-color: white;
   border: 1px solid black;
   padding: 2rem;
   box-shadow: 0 0 30px;
+}
+
+.popUp.grande {
+  width: 40rem;
+}
+
+.popUp.medio {
+  width: 30rem;
+}
+
+.popUp.pequeno {
+  width: 15rem;
 }
 
 .rodape button {

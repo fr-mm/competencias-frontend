@@ -1,8 +1,14 @@
-import { EnumPopUp } from "../../../enums";
+import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { PopUp } from "../base";
 
 function GerandoPDF(): JSX.Element {
-  return <PopUp nome={EnumPopUp.GERANDO_PDF} titulo="Gerando PDF..." />;
+  return (
+    <PopUp
+      flag={EnumPopUp.GERANDO_PDF}
+      titulo="Gerando PDF..."
+      tamanho={EnumTamanhoPopUp.PEQUENO}
+    />
+  );
 }
 
 export default GerandoPDF;

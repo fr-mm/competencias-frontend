@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPopUp } from "../../../enums";
+import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import api from "../../../api";
 import { PopUp, RodapeConfirmacao } from "../base";
@@ -29,7 +29,11 @@ function RemoverDocentes(): JSX.Element {
 
   if (popUpsVisiveis.includes(EnumPopUp.REMOVER_DOCENTES)) {
     return (
-      <PopUp nome={EnumPopUp.REMOVER_DOCENTES} titulo="Remover docentes">
+      <PopUp
+        flag={EnumPopUp.REMOVER_DOCENTES}
+        titulo="Remover docentes"
+        tamanho={EnumTamanhoPopUp.MEDIO}
+      >
         <div className="lista-em-popup">
           {nomes.map((nome) => (
             <p key={nome}>{nome}</p>

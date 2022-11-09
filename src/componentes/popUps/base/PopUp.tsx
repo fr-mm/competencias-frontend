@@ -1,11 +1,12 @@
 import { PropsWithChildren } from "react";
 import { useSelector } from "react-redux";
-import { EnumPopUp } from "../../../enums";
+import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { RootState } from "../../../store";
 
 interface PopUpProps {
-  nome: EnumPopUp;
+  flag: EnumPopUp;
   titulo: string;
+  tamanho: EnumTamanhoPopUp;
 }
 
 function PopUp(props: PropsWithChildren<PopUpProps>): JSX.Element {
@@ -13,10 +14,10 @@ function PopUp(props: PropsWithChildren<PopUpProps>): JSX.Element {
     (state: RootState) => state.popUps.visiveis
   );
 
-  if (popUpsVisiveis.includes(props.nome)) {
+  if (popUpsVisiveis.includes(props.flag)) {
     return (
       <div className="mascara">
-        <div className="popUp">
+        <div className={"popUp " + props.tamanho}>
           <div className="titulo">{props.titulo}</div>
           {props.children}
         </div>

@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import api from "../../../api";
 import { regex } from "../../../aux";
-import { EnumPopUp } from "../../../enums";
+import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import { Erros, Input, PopUp, RodapeEntidade, Lista, Combobox } from "../base";
 
@@ -137,7 +137,11 @@ function Docente(): JSX.Element {
   }
 
   return (
-    <PopUp nome={EnumPopUp.DOCENTE} titulo={titulo}>
+    <PopUp
+      flag={EnumPopUp.DOCENTE}
+      titulo={titulo}
+      tamanho={EnumTamanhoPopUp.MEDIO}
+    >
       <Erros erros={docente.erros} />
       <Input
         label="Nome"
