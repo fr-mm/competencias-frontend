@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
-import { Marcador } from "../../tabela/marcadores/base";
+import { Marcador } from "../../marcadores/base";
 import { PopUp } from "../base";
 
 function Disciplinas(): JSX.Element {

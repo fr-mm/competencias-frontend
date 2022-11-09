@@ -1,8 +1,8 @@
 import "./Marcadores.css";
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPainel } from "../../../enums";
-import { ITabela } from "../../../interfaces";
-import { reducers, RootState } from "../../../store";
+import { EnumPainel } from "../../enums";
+import { ITabela } from "../../interfaces";
+import { reducers, RootState } from "../../store";
 import Marcador from "./base/Marcador";
 
 function MarcadoresDocentes(): JSX.Element {
@@ -28,9 +28,11 @@ function MarcadoresDocentes(): JSX.Element {
 
   function getMarcadores() {
     return docentesFiltrados.map((docente) => (
-      <div className="celula marcador-docente azul-claro">
+      <div
+        className="celula marcador-docente azul-claro"
+        key={"marcador" + docente.id}
+      >
         <Marcador
-          key={"marcador-" + docente.id}
           idItem={docente.id}
           idsARemover={idsARemover}
           incluirParaRemocao={incluirParaRemocao}

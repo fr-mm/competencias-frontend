@@ -20,7 +20,7 @@ function Marcador(props: MarcadorProps): JSX.Element {
     <input
       type="checkbox"
       checked={checked()}
-      onClick={onClick}
+      onChange={onClick}
       className="checkbox"
     />
   );

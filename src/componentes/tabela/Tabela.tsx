@@ -1,5 +1,5 @@
 import "./Tabela.css";
-import React, { RefObject, useEffect, useRef } from "react";
+import React, { RefObject, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, reducers } from "../../store";
 import api from "../../api";
@@ -8,7 +8,7 @@ import Curso from "./curso";
 import { ITabela } from "../../interfaces";
 import { CargaHorariaState } from "../../store/slices/cargaHorariaSlice";
 import Carregando from "./carregando";
-import { MarcadoresDocentes } from "./marcadores";
+import { MarcadoresDocentes } from "../marcadores";
 
 interface TabelaProps {
   referencia: RefObject<HTMLDivElement>;
