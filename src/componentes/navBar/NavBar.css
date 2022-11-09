@@ -28,14 +28,6 @@
   font-size: 1.05rem;
 }
 
-.nav-bar-item:hover {
-  cursor: pointer;
-}
-
-.dropdown:hover .nav-bar-item {
-  filter: contrast(130%);
-}
-
 .ativo {
   filter: contrast(130%);
 }
@@ -49,6 +41,12 @@
   width: 12rem;
   align-items: center;
   flex: 1;
+}
+
+.nao-clicavel {
+  cursor: not-allowed;
+  filter: contrast(50%);
+  pointer-events: none;
 }
 
 .botao-texto {
@@ -76,7 +74,7 @@
   display: flex;
 }
 
-.dropdown:hover .menu {
+.dropdown-ativo:hover .menu {
   display: flex;
 }
 

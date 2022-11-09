@@ -7,7 +7,7 @@ interface BotaoDeMenuProps {
 
 function BotaoDeMenu(props: BotaoDeMenuProps) {
   return (
-    <div className="menu-item botao azul" onClick={props.onClick}>
+    <div className="menu-item botao azul highlight" onClick={props.onClick}>
       <div className="menu-item-container">{props.texto}</div>
     </div>
   );

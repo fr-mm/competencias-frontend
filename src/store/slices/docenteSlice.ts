@@ -14,6 +14,7 @@ const initialState = {
   competencias: {} as ITabela.Competencias,
   editando: false,
   erros: [] as string[],
+  atribuindoCompetencias: false,
 };
 
 const docenteSlice = createSlice({
@@ -110,6 +111,14 @@ const docenteSlice = createSlice({
       state.competencias = docente.competencias;
       state.editando = false;
     },
+
+    atribuirCompetencias(state) {
+      state.atribuindoCompetencias = true;
+    },
+
+    finalizarAtribuicaoCompetencias(state) {
+      state.atribuindoCompetencias = false;
+    },
   },
 });
 
@@ -128,5 +137,7 @@ export const {
   iniciarEdicao,
   finalizarEdicao,
   carregar,
+  atribuirCompetencias,
+  finalizarAtribuicaoCompetencias,
 } = docenteSlice.actions;
 export default docenteSlice.reducer;

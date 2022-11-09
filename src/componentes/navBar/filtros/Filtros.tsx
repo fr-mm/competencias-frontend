@@ -1,10 +1,13 @@
 import "./Filtros.css";
-import { useDispatch } from "react-redux";
-import { reducers } from "../../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { reducers, RootState } from "../../../store";
 import { Filtro } from "./base";
 
 function Filtros(): JSX.Element {
   const dispatch = useDispatch();
+  const atribuindoCompetencias = useSelector(
+    (state: RootState) => state.docente.atribuindoCompetencias
+  );
 
   function docentesOnChange(nome: string): void {
     nome = nome.trim();
@@ -28,6 +31,7 @@ function Filtros(): JSX.Element {
         id="filtro-docentes"
         label="Docentes"
         onChange={docentesOnChange}
+        ativo={!atribuindoCompetencias}
       />
       <Filtro
         id="filtro-disciplinas"

@@ -1,0 +1,10 @@
+.atribuir-competencias-botao-container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.atribuir-competencias-botao-container button {
+  margin: 0 0.5rem 0 0.5rem;
+}

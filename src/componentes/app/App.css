@@ -25,12 +25,7 @@ select {
 
 .botao {
   display: flex;
-  cursor: pointer;
   font-weight: 600;
-}
-
-.botao:hover {
-  filter: contrast(130%);
 }
 
 .highlight:hover {

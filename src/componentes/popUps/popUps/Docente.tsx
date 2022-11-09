@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import api from "../../../api";
 import { regex } from "../../../aux";
-import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
+import { EnumPainel, EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import { Erros, Input, PopUp, RodapeEntidade, Lista, Combobox } from "../base";
 
@@ -136,6 +136,17 @@ function Docente(): JSX.Element {
     dispatch(reducers.docente.removerTelefone(telefone));
   }
 
+  function atribuirCompetenciasOnclick(): void {
+    dispatch(reducers.popUps.esconder(EnumPopUp.DOCENTE));
+    dispatch(reducers.docentes.filtrarPorNome(docente.nome));
+    dispatch(reducers.docente.atribuirCompetencias());
+    dispatch(reducers.painel.mostrar(EnumPainel.ATRIBUIR_COMPETENCIAS));
+    //mostrar menu
+    //travar navbar
+    //travar filtro de docente
+    //ativar edição competencias
+  }
+
   return (
     <PopUp
       flag={EnumPopUp.DOCENTE}
@@ -198,7 +209,11 @@ function Docente(): JSX.Element {
         editar={editar}
         salvar={salvar}
         cancelar={cancelar}
-      />
+      >
+        <button onClick={atribuirCompetenciasOnclick}>
+          atribuir competências
+        </button>
+      </RodapeEntidade>
     </PopUp>
   );
 }
