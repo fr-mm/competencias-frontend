@@ -23,13 +23,22 @@ function Disciplinas(): JSX.Element {
     >
       <div className="lista-em-popup">
         <table className="tabela-disciplinas">
-          <th className="coluna-marcador"></th>
-          <th className="coluna-nome-disciplina">Nome</th>
-          <th className="coluna-ch-disciplina">Carga horária</th>
-          <th className="coluna-presente-em">Presente em</th>
-          {Object.values(disciplinas).map((disciplina) => (
-            <LinhaDisciplina disciplina={disciplina} />
-          ))}
+          <thead>
+            <tr>
+              <th className="coluna-marcador"></th>
+              <th className="coluna-nome-disciplina">Nome</th>
+              <th className="coluna-ch-disciplina">Carga horária</th>
+              <th className="coluna-presente-em">Presente em</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.values(disciplinas).map((disciplina) => (
+              <LinhaDisciplina
+                key={"detalhes" + disciplina.id}
+                disciplina={disciplina}
+              />
+            ))}
+          </tbody>
         </table>
       </div>
       <BotaoSelecionarTodos />
@@ -81,7 +90,7 @@ function LinhaDisciplina(props: LinhaDisciplinaProps): JSX.Element {
   }
 
   return (
-    <tr key={"detalhes" + props.disciplina.id}>
+    <tr>
       <td>
         <Marcador
           idItem={props.disciplina.id}
@@ -96,7 +105,7 @@ function LinhaDisciplina(props: LinhaDisciplinaProps): JSX.Element {
       <td>{props.disciplina.cargaHoraria}</td>
       <td>
         {cursosPresente.map((curso) => (
-          <div>{curso.nome}</div>
+          <div key={curso.id + "lista-disciplinas"}>{curso.nome}</div>
         ))}
       </td>
     </tr>

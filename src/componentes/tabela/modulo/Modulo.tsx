@@ -87,7 +87,11 @@ function Modulo(props: ModuloProps): JSX.Element {
           </div>
         </div>
 
-        <Disciplinas idsDisciplinas={idsDisciplinas} visivel={visivel} />
+        <Disciplinas
+          idModulo={props.modulo.id}
+          idsDisciplinas={idsDisciplinas}
+          visivel={visivel}
+        />
       </div>
     );
   }
@@ -96,6 +100,7 @@ function Modulo(props: ModuloProps): JSX.Element {
 
 interface DisciplinasProps {
   idsDisciplinas: ITabela.IdDisciplina[];
+  idModulo: ITabela.IdModulo;
   visivel: boolean;
 }
 
@@ -104,7 +109,7 @@ function Disciplinas(props: DisciplinasProps): JSX.Element {
     return (
       <div>
         {props.idsDisciplinas.map((id) => (
-          <Disciplina key={id} idDisciplina={id} />
+          <Disciplina key={props.idModulo + id} idDisciplina={id} />
         ))}
       </div>
     );
