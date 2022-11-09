@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   width: 5rem;
-  min-width: 5rem;
+  max-width: 5rem;
   height: 1rem;
   padding: 0.3rem;
 }
