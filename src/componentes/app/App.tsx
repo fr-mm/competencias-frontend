@@ -3,16 +3,18 @@ import Tabela from "../tabela/Tabela";
 import NavBar from "../navBar";
 import PopUps from "../popUps";
 import Painel from "../painel";
+import { useRef } from "react";
 
 function App() {
+  const tabelaRef = useRef(null);
   return (
     <div className="app">
       <div className="espacador"></div>
-      <NavBar />
+      <NavBar tabelaReferencia={tabelaRef} />
       <PopUps />
       <div className="margem">
         <Painel />
-        <Tabela />
+        <Tabela referencia={tabelaRef} />
       </div>
     </div>
   );

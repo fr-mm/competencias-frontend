@@ -5,8 +5,8 @@ import { ConfirmarRemocaoDocentes } from "./remocao";
 function Painel(): JSX.Element {
   return (
     <div className="painel">
-      <ConfirmarRemocaoDocentes />
       <Legendas />
+      <ConfirmarRemocaoDocentes />
     </div>
   );
 }

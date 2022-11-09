@@ -12,7 +12,7 @@ function Menu(props: PropsWithChildren<MenuProps>): JSX.Element {
   const menuVisivel = useSelector((state: RootState) => state.painel.visivel);
   if (props.flag === menuVisivel) {
     return (
-      <div className="menu-de-quina">
+      <div className="menu-painel">
         <div className="menu-de-quina-titulo">{props.titulo}</div>
         <div className="menu-de-quina-corpo">{props.children}</div>
       </div>

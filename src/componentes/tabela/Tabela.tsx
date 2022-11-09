@@ -1,5 +1,5 @@
 import "./Tabela.css";
-import React, { useEffect } from "react";
+import React, { RefObject, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, reducers } from "../../store";
 import api from "../../api";
@@ -10,7 +10,11 @@ import { CargaHorariaState } from "../../store/slices/cargaHorariaSlice";
 import Carregando from "./carregando";
 import { MarcadoresDocentes } from "./marcadores";
 
-function Tabela(): JSX.Element {
+interface TabelaProps {
+  referencia: RefObject<HTMLDivElement>;
+}
+
+function Tabela(props: TabelaProps): JSX.Element {
   const atualizada = useSelector((state: RootState) => state.tabela.atualizada);
   const dispatch = useDispatch();
 
@@ -97,7 +101,7 @@ function Tabela(): JSX.Element {
 
   if (atualizada) {
     return (
-      <div className="tabela">
+      <div className="tabela" ref={props.referencia}>
         <MarcadoresDocentes />
         <Cabecalho />
         <div>
