@@ -6,6 +6,7 @@ const onChange = {
   email: `^([${caracteresDeEmail}]+(@)?([\\w\\d]+)?(([.\\w\\d]+)+)?)?$`,
   telefone: "^(\\(?(\\d{0,2})?\\)?(\\d{0,5})-?(\\d{0,4}))?$",
   nomeDeDisciplinaOuCurso: `^([${letrasComAcento}\\d]+[ ]?)*$`,
+  nivelDeCompetencia: `^[1234]?$`,
 };
 
 const final = {

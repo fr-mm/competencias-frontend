@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { regex } from "../../aux";
 import { EnumNivelDeCompetencia } from "../../enums";
 import { ITabela } from "../../interfaces";
+import { IdDisciplina } from "../../interfaces/ITabela";
 
 const initialState = {
   id: "",
@@ -15,6 +16,7 @@ const initialState = {
   editando: false,
   erros: [] as string[],
   atribuindoCompetencias: false,
+  competenciaEditando: "" as ITabela.IdDisciplina,
 };
 
 const docenteSlice = createSlice({
@@ -119,6 +121,14 @@ const docenteSlice = createSlice({
     finalizarAtribuicaoCompetencias(state) {
       state.atribuindoCompetencias = false;
     },
+
+    setCompetenciaEditando(state, action: PayloadAction<IdDisciplina>) {
+      state.competenciaEditando = action.payload;
+    },
+
+    limparCompetenciaEditando(state) {
+      state.competenciaEditando = "";
+    },
   },
 });
 
@@ -139,5 +149,7 @@ export const {
   carregar,
   atribuirCompetencias,
   finalizarAtribuicaoCompetencias,
+  setCompetenciaEditando,
+  limparCompetenciaEditando,
 } = docenteSlice.actions;
 export default docenteSlice.reducer;

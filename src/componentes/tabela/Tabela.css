@@ -45,6 +45,13 @@
   min-width: 3rem;
 }
 
+.input input {
+  width: 100%;
+  border: 0px;
+  text-align: center;
+  background-color: transparent;
+}
+
 .contaianer {
   display: flex;
   flex-direction: column;
