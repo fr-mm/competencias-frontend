@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/competencias-frontend/static/css/main.085b49ac.css",
-    "main.js": "/competencias-frontend/static/js/main.e0d47002.js",
+    "main.css": "/competencias-frontend/static/css/main.6f50589f.css",
+    "main.js": "/competencias-frontend/static/js/main.4ba0906f.js",
     "static/js/703.d90bf15b.chunk.js": "/competencias-frontend/static/js/703.d90bf15b.chunk.js",
     "static/js/631.347c15bd.chunk.js": "/competencias-frontend/static/js/631.347c15bd.chunk.js",
     "static/js/787.f6245e21.chunk.js": "/competencias-frontend/static/js/787.f6245e21.chunk.js",
     "index.html": "/competencias-frontend/index.html",
-    "main.085b49ac.css.map": "/competencias-frontend/static/css/main.085b49ac.css.map",
-    "main.e0d47002.js.map": "/competencias-frontend/static/js/main.e0d47002.js.map",
+    "main.6f50589f.css.map": "/competencias-frontend/static/css/main.6f50589f.css.map",
+    "main.4ba0906f.js.map": "/competencias-frontend/static/js/main.4ba0906f.js.map",
     "703.d90bf15b.chunk.js.map": "/competencias-frontend/static/js/703.d90bf15b.chunk.js.map",
     "631.347c15bd.chunk.js.map": "/competencias-frontend/static/js/631.347c15bd.chunk.js.map",
     "787.f6245e21.chunk.js.map": "/competencias-frontend/static/js/787.f6245e21.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.085b49ac.css",
-    "static/js/main.e0d47002.js"
+    "static/css/main.6f50589f.css",
+    "static/js/main.4ba0906f.js"
   ]
 }
