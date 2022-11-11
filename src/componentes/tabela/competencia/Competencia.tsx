@@ -1,4 +1,5 @@
-import { ChangeEvent, useState } from "react";
+import "./Competencia.css";
+import { ChangeEvent, FocusEventHandler, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { regex } from "../../../aux";
 import { EnumNivelDeCompetencia } from "../../../enums";
@@ -78,9 +79,8 @@ function Competencia(props: CompetenciaProps): JSX.Element {
   if (atribuindoCompetencias) {
     if (editando) {
       return (
-        <div className={getCor(nivel) + " pointer input"}>
+        <div className={getCor(nivel) + " pointer input competencia-editando"}>
           <input
-            id="ehue"
             type="text"
             value={valor}
             onChange={onChange}
@@ -90,8 +90,16 @@ function Competencia(props: CompetenciaProps): JSX.Element {
         </div>
       );
     } else {
+      const corEditado =
+        docenteEditando.competencias[props.disciplina.id] ===
+        props.docente.competencias[props.disciplina.id]
+          ? ""
+          : " competencia-alterada";
       return (
-        <div className={getCor(nivel) + " pointer"} onClick={ativarEdicao}>
+        <div
+          className={getCor(nivel) + corEditado + " pointer"}
+          onClick={ativarEdicao}
+        >
           {getNivel()}
         </div>
       );

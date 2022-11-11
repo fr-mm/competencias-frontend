@@ -1,0 +1,8 @@
+.competencia-editando {
+  box-shadow: inset 0 0 5px;
+}
+
+.competencia-alterada {
+  color: red;
+  font-weight: bold;
+}
