@@ -3,7 +3,7 @@ import { EnumPainel, EnumPopUp } from "../../../enums";
 import { reducers } from "../../../store";
 import { BotaoDeMenu, MenuDeNavBar } from "../base";
 
-function Docentes() {
+function Docentes(): JSX.Element {
   const dispatch = useDispatch();
 
   function adicionar(): void {

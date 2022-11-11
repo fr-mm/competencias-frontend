@@ -1,6 +1,6 @@
 import "./NavBar.css";
 import Filtros from "./filtros";
-import { Disciplinas, Docentes, Expandir } from "./botoes";
+import { Cursos, Disciplinas, Docentes, Expandir } from "./botoes";
 import BaixarPDF from "./botoes/BaixarPDF";
 import { RefObject } from "react";
 
@@ -14,6 +14,7 @@ function NavBar(props: NavBarProps): JSX.Element {
       <div className="nav-bar azul">
         <Docentes />
         <Disciplinas />
+        <Cursos />
         <Expandir />
         <BaixarPDF tabelaReferencia={props.tabelaReferencia} />
       </div>
