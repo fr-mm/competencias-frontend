@@ -1,6 +1,6 @@
 import "./AtribuirCompetencias.css";
 import { useDispatch, useSelector } from "react-redux";
-import { EnumPainel } from "../../../enums";
+import { EnumPainel, EnumPopUp } from "../../../enums";
 import { reducers, RootState } from "../../../store";
 import Menu from "../base/Menu";
 
@@ -9,12 +9,14 @@ function AtribuirCompetencias(): JSX.Element {
   const docente = useSelector((state: RootState) => state.docente);
 
   function salvar(): void {
-    cancelar();
+    dispatch(reducers.popUps.mostrar(EnumPopUp.ALTERAR_COMPETENCIAS));
   }
   function cancelar(): void {
-    dispatch(reducers.docente.finalizarAtribuicaoCompetencias());
-    dispatch(reducers.docentes.filtrarPorNome(""));
-    dispatch(reducers.painel.esconder());
+    dispatch(
+      reducers.popUps.mostrar(
+        EnumPopUp.CONFIRMAR_CANCELAMENTO_DE_ATRIBUICAO_DE_COMPETENCIAS
+      )
+    );
   }
 
   return (

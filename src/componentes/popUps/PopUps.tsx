@@ -1,6 +1,13 @@
 import "./PopUps.css";
-import { Disciplina, Docente, GerandoPDF, RemoverDocentes } from "./popUps";
+import {
+  AlterarCompetencias,
+  Disciplina,
+  Docente,
+  GerandoPDF,
+  RemoverDocentes,
+} from "./popUps";
 import { Disciplinas } from "./popUps";
+import ConfirmarCancelamentoDeAtribuicaoDeCompetencias from "./popUps/ConfirmarCancelamentoDeAtribuicaoDeCompetencias";
 
 function PopUps() {
   return (
@@ -10,6 +17,8 @@ function PopUps() {
       <Disciplina />
       <RemoverDocentes />
       <GerandoPDF />
+      <AlterarCompetencias />
+      <ConfirmarCancelamentoDeAtribuicaoDeCompetencias />
     </div>
   );
 }

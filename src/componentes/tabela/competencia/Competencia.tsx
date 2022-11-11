@@ -105,7 +105,7 @@ function Competencia(props: CompetenciaProps): JSX.Element {
       );
     }
   } else {
-    return <div className={getCor(nivel)}>{nivel}</div>;
+    return <div className={getCor(+nivelAntigo)}>{nivelAntigo}</div>;
   }
 }
 

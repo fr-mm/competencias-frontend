@@ -178,3 +178,27 @@ th {
 .botao-rodape {
   margin: 0 1rem 0 1rem;
 }
+
+.competencias-alteradas {
+  display: flex;
+  flex-direction: column;
+  max-height: 20rem;
+  overflow-y: scroll;
+}
+
+.linha-competencia-alterada {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.nome-competencia-alterada {
+  width: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+.niveis-competencia-alterada {
+  text-align: left;
+}
