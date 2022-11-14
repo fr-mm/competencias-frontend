@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
+import { MarcadorCurso } from "../../marcadores";
 import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
 import Modulo from "../modulo";
 import { SetasOrdenadoras } from "../setas";
@@ -13,6 +14,7 @@ interface CursoProps {
 }
 
 function Curso(props: CursoProps): JSX.Element {
+  const dispatch = useDispatch();
   const [visivel, setVisivel] = useState(props.visivel);
   const cargaHoraria = useSelector((state: RootState) => state.cargaHoraria);
   const docentes = useSelector((state: RootState) => state.docentes.filtrados);
@@ -43,6 +45,7 @@ function Curso(props: CursoProps): JSX.Element {
     return (
       <div className="container">
         <div className="linha colapsavel">
+          <MarcadorCurso idCurso={props.curso.id} />
           <div className="celula azul-escuro fonte-forte primeira-coluna borda">
             <SetaExpandir
               expandido={visivel}

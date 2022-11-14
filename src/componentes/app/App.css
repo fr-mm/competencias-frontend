@@ -76,3 +76,16 @@ select {
 .pointer {
   cursor: pointer;
 }
+
+.borda-direita {
+  border-right: 1px solid black;
+}
+.borda-esquerda {
+  border-left: 1px solid black;
+}
+.borda-cima {
+  border-top: 1px solid black;
+}
+.borda-baixo {
+  border-bottom: 1px solid black;
+}

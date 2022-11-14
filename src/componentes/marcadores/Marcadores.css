@@ -14,3 +14,14 @@
 .borda-direita {
   border-right: 1px solid black;
 }
+
+.marcador-curso-container {
+  display: flex;
+  width: 1.8rem;
+  justify-content: center;
+  border-bottom: 1px solid black;
+}
+
+.borda-esquerda-transparente {
+  border-left: 1px solid transparent;
+}

@@ -3,6 +3,7 @@ import { ITabela } from "../../../interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { reducers, RootState } from "../../../store";
 import { EnumPopUp } from "../../../enums";
+import { MarcadorCursoContainer } from "../../marcadores";
 
 function separarNome(nome: string): string[] {
   let nomes = nome.split(" ");
@@ -49,6 +50,7 @@ function Cabecalho() {
 
   return (
     <div className="linha linha-cabecalho">
+      <MarcadorCursoContainer cabecalho={true} />
       <div className="celula azul fonte-forte borda topo primeira-coluna cabecalho centro">
         Unidades Curriculares
       </div>

@@ -6,6 +6,7 @@ import Disciplina from "../disciplina";
 import CargaHorariaPorDocente from "../cargaHorariaPorDocente";
 import { SetasOrdenadoras } from "../setas";
 import SetaExpandir from "../setas/SetaExpandir";
+import { MarcadorCursoContainer } from "../../marcadores";
 
 interface ModuloProps {
   modulo: ITabela.Modulo;
@@ -53,6 +54,7 @@ function Modulo(props: ModuloProps): JSX.Element {
     return (
       <div className="container">
         <div className="linha colapsavel">
+          <MarcadorCursoContainer />
           <div className="celula azul fonte-forte primeira-coluna borda">
             <SetaExpandir
               expandido={visivel}

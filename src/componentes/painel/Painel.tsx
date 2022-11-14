@@ -1,6 +1,6 @@
 import "./Painel.css";
 import Legendas from "./legendas";
-import { ConfirmarRemocaoDocentes } from "./remocao";
+import { ConfirmarRemocaoCursos, ConfirmarRemocaoDocentes } from "./remocao";
 import AtribuirCompetencias from "./atribuirCompetencias";
 
 function Painel(): JSX.Element {
@@ -8,6 +8,7 @@ function Painel(): JSX.Element {
     <div className="painel">
       <Legendas />
       <ConfirmarRemocaoDocentes />
+      <ConfirmarRemocaoCursos />
       <AtribuirCompetencias />
     </div>
   );

@@ -34,7 +34,7 @@
 }
 
 .lista-em-popup {
-  max-height: 20rem;
+  max-height: 40rem;
   overflow-y: scroll;
   margin-bottom: 2rem;
 }

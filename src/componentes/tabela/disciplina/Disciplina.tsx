@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { EnumPopUp } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
+import { MarcadorCursoContainer } from "../../marcadores";
 import Competencia from "../competencia";
 import { SetasOrdenadoras } from "../setas";
 
@@ -30,6 +31,7 @@ function Disciplina(props: DisciplinaProps) {
     return (
       <div className="container">
         <div className="linha">
+          <MarcadorCursoContainer />
           <div className="celula primeira-coluna texto-esquerda borda celula-disciplina branco">
             <div className="seta-container"></div>
             <div
