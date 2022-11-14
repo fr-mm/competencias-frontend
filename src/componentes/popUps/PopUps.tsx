@@ -4,6 +4,7 @@ import {
   Disciplina,
   Docente,
   GerandoPDF,
+  RemoverCursos,
   RemoverDocentes,
 } from "./popUps";
 import { Disciplinas } from "./popUps";
@@ -16,6 +17,7 @@ function PopUps() {
       <Disciplinas />
       <Disciplina />
       <RemoverDocentes />
+      <RemoverCursos />
       <GerandoPDF />
       <AlterarCompetencias />
       <ConfirmarCancelamentoDeAtribuicaoDeCompetencias />

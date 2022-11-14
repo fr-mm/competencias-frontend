@@ -3,6 +3,7 @@ import Disciplina from "./Disciplina";
 import Disciplinas from "./Disciplinas";
 import Docente from "./Docente";
 import GerandoPDF from "./GerandoPDF";
+import RemoverCursos from "./RemoverCursos";
 import RemoverDocentes from "./RemoverDocentes";
 
 export {
@@ -12,4 +13,5 @@ export {
   Disciplinas,
   GerandoPDF,
   AlterarCompetencias,
+  RemoverCursos,
 };
