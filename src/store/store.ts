@@ -11,6 +11,7 @@ import tiposDeContratacao from "./slices/tiposDeContratacaoSlice";
 import unidadesSenai from "./slices/unidadesSenaiSlice";
 import disciplina from "./slices/disciplinaSlice";
 import painel from "./slices/painelSlice";
+import curso from "./slices/cursoSlice";
 
 export const store = configureStore({
   reducer: {
@@ -26,6 +27,7 @@ export const store = configureStore({
     tiposDeContratacao,
     unidadesSenai,
     painel,
+    curso,
   },
 });
 

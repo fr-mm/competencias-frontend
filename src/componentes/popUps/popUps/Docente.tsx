@@ -141,10 +141,6 @@ function Docente(): JSX.Element {
     dispatch(reducers.docentes.filtrarPorNome(docente.nome));
     dispatch(reducers.docente.atribuirCompetencias());
     dispatch(reducers.painel.mostrar(EnumPainel.ATRIBUIR_COMPETENCIAS));
-    //mostrar menu
-    //travar navbar
-    //travar filtro de docente
-    //ativar edição competencias
   }
 
   return (

@@ -10,6 +10,7 @@ import * as tabela from "./tabelaSlice";
 import * as ordenacao from "./ordenacaoSlice";
 import * as popUps from "./popUsSlice";
 import * as painel from "./painelSlice";
+import * as curso from "./cursoSlice";
 
 export {
   docentes,
@@ -24,4 +25,5 @@ export {
   ordenacao,
   popUps,
   painel,
+  curso,
 };

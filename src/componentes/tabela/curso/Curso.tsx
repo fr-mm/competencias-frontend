@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { EnumPopUp } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
 import { MarcadorCurso } from "../../marcadores";
@@ -41,17 +42,24 @@ function Curso(props: CursoProps): JSX.Element {
     );
   }
 
+  function onClick() {
+    dispatch(reducers.curso.carregar(props.curso));
+    dispatch(reducers.popUps.mostrar(EnumPopUp.CURSO));
+  }
+
   if (contemDisciplinasFiltradas()) {
     return (
       <div className="container">
         <div className="linha colapsavel">
           <MarcadorCurso idCurso={props.curso.id} />
-          <div className="celula azul-escuro fonte-forte primeira-coluna borda">
+          <div className="celula azul-escuro fonte-forte primeira-coluna borda highlight">
             <SetaExpandir
               expandido={visivel}
               onClick={() => setVisivel(!visivel)}
             />
-            <div className="texto-primeira-coluna">{props.curso.nome}</div>
+            <div className="texto-primeira-coluna pointer" onClick={onClick}>
+              {props.curso.nome}
+            </div>
 
             <SetasOrdenadoras
               idElemento={props.curso.id}

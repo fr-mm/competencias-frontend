@@ -46,3 +46,4 @@ function Combobox(props: ComboboxProps): JSX.Element {
   );
 }
 export default Combobox;
+export type { Item };

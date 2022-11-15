@@ -1,4 +1,5 @@
 import AlterarCompetencias from "./AlterarCompetencias";
+import Curso from "./Curso";
 import Disciplina from "./Disciplina";
 import Disciplinas from "./Disciplinas";
 import Docente from "./Docente";
@@ -14,4 +15,5 @@ export {
   GerandoPDF,
   AlterarCompetencias,
   RemoverCursos,
+  Curso,
 };

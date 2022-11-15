@@ -3,10 +3,12 @@ const caracteresDeEmail = "\\w\\d!#$%&'*+-/=?^_`{|}~";
 
 const onChange = {
   nomeDePessoa: `^([${letrasComAcento}]+[ ]?)*$`,
+  nomeDeCurso: `^([${letrasComAcento}\\d]+[ ]?)*$`,
   email: `^([${caracteresDeEmail}]+(@)?([\\w\\d]+)?(([.\\w\\d]+)+)?)?$`,
   telefone: "^(\\(?(\\d{0,2})?\\)?(\\d{0,5})-?(\\d{0,4}))?$",
   nomeDeDisciplinaOuCurso: `^([${letrasComAcento}\\d]+[ ]?)*$`,
   nivelDeCompetencia: `^[1234]?$`,
+  quantidadeModulos: `^?[123456789]?$`,
 };
 
 const final = {

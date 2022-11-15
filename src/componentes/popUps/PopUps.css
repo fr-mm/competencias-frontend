@@ -209,3 +209,10 @@ th {
 .niveis-competencia-alterada {
   text-align: left;
 }
+
+.tabela-curso.modulo {
+  width: 7rem;
+}
+.tabela-curso.ch {
+  width: 7rem;
+}

@@ -1,6 +1,7 @@
 import "./PopUps.css";
 import {
   AlterarCompetencias,
+  Curso,
   Disciplina,
   Docente,
   GerandoPDF,
@@ -16,6 +17,7 @@ function PopUps() {
       <Docente />
       <Disciplinas />
       <Disciplina />
+      <Curso />
       <RemoverDocentes />
       <RemoverCursos />
       <GerandoPDF />
