@@ -1,5 +1,8 @@
 import AlterarCompetencias from "./AlterarCompetencias";
 import Curso from "./Curso";
+import DescartarAlteracoesCurso from "./DescartarAlteracoesCurso";
+import DescartarAlteracoesDisciplina from "./DescartarAlteracoesDisciplina";
+import DescartarAlteracoesDocente from "./DescartarAlteracoesDocente";
 import Disciplina from "./Disciplina";
 import Disciplinas from "./Disciplinas";
 import Docente from "./Docente";
@@ -16,4 +19,7 @@ export {
   AlterarCompetencias,
   RemoverCursos,
   Curso,
+  DescartarAlteracoesCurso,
+  DescartarAlteracoesDocente,
+  DescartarAlteracoesDisciplina,
 };

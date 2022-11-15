@@ -4,7 +4,8 @@ interface RodapeEntidadeProps {
   editando: boolean;
   editar: MouseEventHandler<HTMLButtonElement>;
   salvar: MouseEventHandler<HTMLButtonElement>;
-  cancelar: MouseEventHandler<HTMLButtonElement>;
+  descartarAlteracoes: MouseEventHandler<HTMLButtonElement>;
+  sair: MouseEventHandler<HTMLButtonElement>;
 }
 
 function RodapeEntidade(
@@ -14,7 +15,7 @@ function RodapeEntidade(
     return (
       <div className="rodape">
         <button onClick={props.salvar}>salvar</button>
-        <button onClick={props.cancelar}>cancelar</button>
+        <button onClick={props.descartarAlteracoes}>cancelar</button>
       </div>
     );
   } else {
@@ -22,7 +23,7 @@ function RodapeEntidade(
       <div className="rodape">
         {props.children}
         <button onClick={props.editar}>editar</button>
-        <button onClick={props.cancelar}>sair</button>
+        <button onClick={props.sair}>sair</button>
       </div>
     );
   }

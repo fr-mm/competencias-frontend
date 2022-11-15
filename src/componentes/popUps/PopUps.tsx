@@ -2,6 +2,9 @@ import "./PopUps.css";
 import {
   AlterarCompetencias,
   Curso,
+  DescartarAlteracoesCurso,
+  DescartarAlteracoesDisciplina,
+  DescartarAlteracoesDocente,
   Disciplina,
   Docente,
   GerandoPDF,
@@ -10,6 +13,7 @@ import {
 } from "./popUps";
 import { Disciplinas } from "./popUps";
 import ConfirmarCancelamentoDeAtribuicaoDeCompetencias from "./popUps/ConfirmarCancelamentoDeAtribuicaoDeCompetencias";
+import ConfirmarAlteracoesCurso from "./popUps/ConfirmarAlteracoesCurso";
 
 function PopUps() {
   return (
@@ -23,6 +27,10 @@ function PopUps() {
       <GerandoPDF />
       <AlterarCompetencias />
       <ConfirmarCancelamentoDeAtribuicaoDeCompetencias />
+      <ConfirmarAlteracoesCurso />
+      <DescartarAlteracoesCurso />
+      <DescartarAlteracoesDocente />
+      <DescartarAlteracoesDisciplina />
     </div>
   );
 }

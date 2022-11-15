@@ -5,6 +5,7 @@ import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
 import {
   Combobox,
+  Erros,
   Input,
   ListaDisciplinas,
   PopUp,
@@ -19,6 +20,9 @@ function Curso(): JSX.Element {
   const disciplinas = useSelector(
     (state: RootState) => state.disciplinas.todas
   );
+  const modulosOrdenados = Object.values(curso.modulos).sort(
+    (a, b) => +a.numero - +b.numero
+  );
 
   interface Quantidades {
     [quantidade: string]: Item;
@@ -26,7 +30,7 @@ function Curso(): JSX.Element {
 
   function getQuantidadesModulosPossiveis(): Quantidades {
     const quantidades = {} as Quantidades;
-    for (let i = 1; i <= 9; i++) {
+    for (let i = 1; i <= curso.quantidadeMaximaDeModulos; i++) {
       const quantidade = i.toString();
       quantidades[quantidade] = { id: quantidade, nome: quantidade };
     }
@@ -36,10 +40,26 @@ function Curso(): JSX.Element {
   function editar(): void {
     dispatch(reducers.curso.iniciarEdicao());
   }
-  function salvar(): void {}
+  function salvar(): void {
+    const erros = [];
+    for (let i = 0; i < curso.quantidadeModulos; i++) {
+      const modulo = modulosOrdenados[i];
+      if (modulo.disciplinas.length === 0) {
+        erros.push(`Módulo ${modulo.numero} tem 0 disciplinas`);
+      }
+    }
+    if (erros.length > 0) {
+      dispatch(reducers.curso.setErros(erros));
+    } else {
+      dispatch(reducers.popUps.mostrar(EnumPopUp.CONFIRMAR_ALTERACOES_CURSO));
+    }
+  }
   function cancelar(): void {
+    dispatch(reducers.popUps.mostrar(EnumPopUp.DESCARTAR_ALTERACOES_CURSO));
+  }
+
+  function sair(): void {
     dispatch(reducers.popUps.esconder(EnumPopUp.CURSO));
-    dispatch(reducers.curso.finalizarEdicao());
   }
 
   function nomeOnChange(evento: ChangeEvent<HTMLInputElement>): void {
@@ -54,7 +74,11 @@ function Curso(): JSX.Element {
 
   function getCargaHorariaCurso(): number {
     let ch = 0;
-    for (let modulo of Object.values(curso.modulos)) {
+    if (modulosOrdenados.length === 0) {
+      return 0;
+    }
+    for (let i = 0; i < curso.quantidadeModulos; i++) {
+      const modulo = modulosOrdenados[i];
       ch += getCargaHorariaModulo(modulo);
     }
     return ch;
@@ -74,6 +98,7 @@ function Curso(): JSX.Element {
       titulo={titulo}
       tamanho={EnumTamanhoPopUp.GRANDE}
     >
+      <Erros erros={curso.erros} />
       <Input
         label="Nome"
         id={curso.nome + "-nome"}
@@ -100,12 +125,18 @@ function Curso(): JSX.Element {
         maxLength={10}
         editando={false}
       />
-      <Modulos curso={curso} editando={curso.editando} />
+      <Modulos
+        curso={curso}
+        modulosOrdenados={modulosOrdenados}
+        mostrarQuantidade={curso.quantidadeModulos}
+        editando={curso.editando}
+      />
       <RodapeEntidade
         editando={curso.editando}
         editar={editar}
         salvar={salvar}
-        cancelar={cancelar}
+        sair={sair}
+        descartarAlteracoes={cancelar}
       />
     </PopUp>
   );
@@ -113,10 +144,16 @@ function Curso(): JSX.Element {
 
 interface ModulosProps {
   curso: ITabela.Curso;
+  modulosOrdenados: ITabela.Modulo[];
+  mostrarQuantidade: number;
   editando: boolean;
 }
 
 function Modulos(props: ModulosProps): JSX.Element {
+  const modulos = [];
+  for (let i = 0; i < props.mostrarQuantidade; i++) {
+    modulos.push(props.modulosOrdenados[i]);
+  }
   return (
     <div className="lista-em-popup">
       <table className="tabela-disciplinas">
@@ -128,7 +165,7 @@ function Modulos(props: ModulosProps): JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {Object.values(props.curso.modulos).map((modulo) => (
+          {modulos.map((modulo) => (
             <Modulo key={modulo.id} modulo={modulo} editando={props.editando} />
           ))}
         </tbody>

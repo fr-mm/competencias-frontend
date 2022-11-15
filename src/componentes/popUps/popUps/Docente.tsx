@@ -49,6 +49,10 @@ function Docente(): JSX.Element {
     dispatch(reducers.docente.iniciarEdicao());
   }
 
+  function descartar(): void {
+    dispatch(reducers.popUps.mostrar(EnumPopUp.DESCARTAR_ALTERACOES_DOCENTE));
+  }
+
   function salvar(): void {
     if (valido()) {
       api.salvarDocente({
@@ -204,7 +208,8 @@ function Docente(): JSX.Element {
         editando={docente.editando}
         editar={editar}
         salvar={salvar}
-        cancelar={cancelar}
+        sair={cancelar}
+        descartarAlteracoes={descartar}
       >
         <button onClick={atribuirCompetenciasOnclick}>
           atribuir competências

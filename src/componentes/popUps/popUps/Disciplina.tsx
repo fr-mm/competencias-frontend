@@ -44,6 +44,12 @@ function Disciplina(): JSX.Element {
     dispatch(reducers.disciplina.finalizarEdicao());
   }
 
+  function descartar(): void {
+    dispatch(
+      reducers.popUps.mostrar(EnumPopUp.DESCARTAR_ALTERACOES_DISCIPLINA)
+    );
+  }
+
   function valida(): boolean {
     const erros = [];
     let valido = true;
@@ -88,7 +94,8 @@ function Disciplina(): JSX.Element {
         editando={disciplina.editando}
         editar={editar}
         salvar={salvar}
-        cancelar={cancelar}
+        descartarAlteracoes={descartar}
+        sair={cancelar}
       />
     </PopUp>
   );
