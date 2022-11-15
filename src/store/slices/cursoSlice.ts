@@ -53,13 +53,12 @@ const cursoSlice = createSlice({
       state,
       action: PayloadAction<{
         idModulo: ITabela.IdModulo;
-        disciplina: ITabela.Disciplina;
+        idDisciplina: ITabela.IdDisciplina;
       }>
     ) {
       const modulo = state.modulos[action.payload.idModulo];
-      const disciplina = action.payload.disciplina;
-      if (!modulo.disciplinas.includes(disciplina.id)) {
-        state.modulos[modulo.id].disciplinas.push(disciplina.id);
+      if (!modulo.disciplinas.includes(action.payload.idDisciplina)) {
+        state.modulos[modulo.id].disciplinas.push(action.payload.idDisciplina);
       }
     },
 
@@ -67,14 +66,14 @@ const cursoSlice = createSlice({
       state,
       action: PayloadAction<{
         idModulo: ITabela.IdModulo;
-        disciplina: ITabela.Disciplina;
+        idDisciplina: ITabela.IdDisciplina;
       }>
     ) {
       const modulo = state.modulos[action.payload.idModulo];
-      const disciplina = action.payload.disciplina;
-      if (modulo.disciplinas.includes(disciplina.id)) {
+      const idDisciplina = action.payload.idDisciplina;
+      if (modulo.disciplinas.includes(idDisciplina)) {
         state.modulos[modulo.id].disciplinas.splice(
-          modulo.disciplinas.indexOf(disciplina.id),
+          modulo.disciplinas.indexOf(idDisciplina),
           1
         );
       }

@@ -142,13 +142,18 @@ class RandomizadorDeFakeDB {
   ): ITabela.Curso {
     const disciplinasModulo1 = disciplinas.slice(0, 4);
     const disciplinasModulo2 = disciplinas.slice(5, 8);
+    const modulos = [
+      this.construirModulo(1, disciplinasModulo1),
+      this.construirModulo(2, disciplinasModulo2),
+    ];
+    const modulosMap = {} as any;
+    for (let modulo of modulos) {
+      modulosMap[modulo.id] = modulo;
+    }
     return {
       id: this.gerarId(),
       nome,
-      modulos: {
-        1: this.construirModulo(1, disciplinasModulo1),
-        2: this.construirModulo(2, disciplinasModulo2),
-      },
+      modulos: modulosMap,
     };
   }
 

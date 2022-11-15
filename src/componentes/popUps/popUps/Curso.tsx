@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { EnumPopUp, EnumTamanhoPopUp } from "../../../enums";
 import { ITabela } from "../../../interfaces";
 import { reducers, RootState } from "../../../store";
-import { Combobox, Input, Lista, PopUp, RodapeEntidade } from "../base";
+import {
+  Combobox,
+  Input,
+  ListaDisciplinas,
+  PopUp,
+  RodapeEntidade,
+} from "../base";
 import { Item } from "../base/Combobox";
 
 function Curso(): JSX.Element {
@@ -123,7 +129,7 @@ function Modulos(props: ModulosProps): JSX.Element {
         </thead>
         <tbody>
           {Object.values(props.curso.modulos).map((modulo) => (
-            <Modulo modulo={modulo} editando={props.editando} />
+            <Modulo key={modulo.id} modulo={modulo} editando={props.editando} />
           ))}
         </tbody>
       </table>
@@ -148,25 +154,12 @@ function Modulo(props: ModuloProps): JSX.Element {
     }
     return ch;
   }
-
-  function getNomesDisciplinas(): string[] {
-    const nomes = [];
-    for (let idDisciplina of Object.values(props.modulo.disciplinas)) {
-      nomes.push(disciplinas[idDisciplina].nome);
-    }
-    return nomes;
-  }
-
   return (
     <tr>
       <td>{`Módulo ${props.modulo.numero}`}</td>
       <td>{getCargaHorariaModulo()}</td>
       <td>
-        <Lista
-          itens={getNomesDisciplinas()}
-          editando={props.editando}
-          remover={() => {}}
-        />
+        <ListaDisciplinas modulo={props.modulo} editando={props.editando} />
       </td>
     </tr>
   );

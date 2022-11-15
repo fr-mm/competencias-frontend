@@ -2,6 +2,7 @@ import Combobox from "./Combobox";
 import Erros from "./Erros";
 import Input from "./Input";
 import Lista from "./Lista";
+import ListaDisciplinas from "./ListaDisciplinas";
 import PopUp from "./PopUp";
 import RodapeConfirmacao from "./RodapeConfirmacao";
 import RodapeEntidade from "./RodapeEntidade";
@@ -14,4 +15,5 @@ export {
   Lista,
   Combobox,
   RodapeConfirmacao,
+  ListaDisciplinas,
 };
