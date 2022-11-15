@@ -23,7 +23,7 @@ function ListaDisciplinas(props: ListaDisciplinasProps): JSX.Element {
             key={"disciplina-listada-" + idDisciplina}
           >
             <div className="texto-item-lista">
-              {`${disciplina.nome} (${disciplina.cargaHoraria}h)`}
+              {`[${disciplina.cargaHoraria}h] ${disciplina.nome}`}
             </div>
             <Remover
               idModulo={props.modulo.id}
@@ -67,7 +67,7 @@ function ComboboxDisciplina(props: ComboboxDisciplinaProps): JSX.Element {
 
   if (props.editando) {
     return (
-      <div>
+      <div className="disciplina-combobox">
         <button onClick={adicionar}>adicionar</button>
         <select value={selecionada} onChange={onChange}>
           {Object.values(disciplinas).map((disciplina) => (

@@ -155,21 +155,27 @@ function Modulos(props: ModulosProps): JSX.Element {
     modulos.push(props.modulosOrdenados[i]);
   }
   return (
-    <div className="lista-em-popup">
-      <table className="tabela-disciplinas">
-        <thead>
-          <tr>
-            <th className="tabela-curso modulo">Módulo</th>
-            <th className="tabela-curso ch">Carga horária</th>
-            <th className="tabela-curso disciplinas">Disciplinas</th>
-          </tr>
-        </thead>
-        <tbody>
-          {modulos.map((modulo) => (
-            <Modulo key={modulo.id} modulo={modulo} editando={props.editando} />
-          ))}
-        </tbody>
-      </table>
+    <div className="tabela-modulos-container">
+      <div className="lista-em-popup">
+        <table className="tabela-disciplinas">
+          <thead>
+            <tr>
+              <th className="tabela-curso modulo">Módulo</th>
+              <th className="tabela-curso ch">Carga horária</th>
+              <th className="tabela-curso disciplinas">Disciplinas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {modulos.map((modulo) => (
+              <Modulo
+                key={modulo.id}
+                modulo={modulo}
+                editando={props.editando}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

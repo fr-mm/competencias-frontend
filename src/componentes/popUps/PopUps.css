@@ -135,11 +135,16 @@
   display: flex;
   width: 100%;
   height: 1.5rem;
+  justify-content: space-between;
 }
 
 .texto-item-lista {
-  display: flex;
   flex: 1;
+  text-align: left;
+  max-width: 18rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .erros {
@@ -215,4 +220,17 @@ th {
 }
 .tabela-curso.ch {
   width: 7rem;
+}
+
+.tabela-modulos-container {
+  margin-top: 1rem;
+}
+
+.disciplina-combobox {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.disciplina-combobox select {
+  max-width: 15rem;
 }
